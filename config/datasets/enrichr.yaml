@@ -1,0 +1,27 @@
+# Enrichr Datasets Configuration
+# This file contains the configuration for Enrichr datasets
+
+datasets:
+  reactome:
+    url: "https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=Reactome_2022"
+    adapter: "ReactomeAdapter"
+  
+  wikipathway:
+    url: "https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=WikiPathway_2023_Human"
+    adapter: "WikiPathwayAdapter"
+  
+  biological_process:
+    url: "https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=GO_Biological_Process_2023"
+    adapter: "BiologicalProcessAdapter"
+  
+  molecular_function:
+    url: "https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=GO_Molecular_Function_2023"
+    adapter: "MolecularFunctionAdapter"
+  
+  cell_component:
+    url: "https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=GO_Cellular_Component_2023"
+    adapter: "CellComponentAdapter"
+  
+  drug_targets:
+    url: "https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=DGIdb_Drug_Targets_2024"
+    adapter: "DrugDBAdapter"

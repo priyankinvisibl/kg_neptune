@@ -1,0 +1,16 @@
+# Schema configuration for MESH data
+mesh_term:
+  represented_as: node
+  preferred_id: mesh
+  input_label: mesh_term
+  is_a: named thing  # Map to biolink model
+  properties:
+    label: str
+
+mesh_tree_hierarchy:
+  represented_as: edge
+  input_label: mesh_tree_hierarchy
+  is_a: related to  # Map to biolink model
+  source: mesh_term
+  target: mesh_term
+  properties: {}

@@ -1,0 +1,231 @@
+# Schema configuration for MESH XML data (desc2025.xml)
+
+# Node types
+mesh_descriptor:
+  represented_as: node
+  preferred_id: mesh
+  input_label: mesh_descriptor
+  is_a: named thing
+  properties:
+    label: str
+    identifier: str
+    descriptor_class: str
+    date_created: str
+    date_revised: str
+    date_established: str
+    annotation: str
+    scope_note: str
+    history_note: str
+    public_mesh_note: str
+    online_note: str
+    previous_indexing: str
+    consider_also: str
+    nlm_classification_number: str
+    chemical_name: str
+    registry_number: str
+    tree_numbers: str[]
+    rdf_type: str
+
+mesh_concept:
+  represented_as: node
+  preferred_id: mesh
+  input_label: mesh_concept
+  is_a: named thing
+  properties:
+    label: str
+    identifier: str
+    is_preferred: bool
+    date_created: str
+    date_revised: str
+    scope_note: str
+    registry_numbers: str
+    related_registry_numbers: str
+    rdf_type: str
+
+mesh_term:
+  represented_as: node
+  preferred_id: mesh
+  input_label: mesh_term
+  is_a: named thing
+  properties:
+    label: str
+    identifier: str
+    is_concept_preferred: bool
+    is_record_preferred: bool
+    is_permuted: bool
+    lexical_tag: str
+    date_created: str
+    date_revised: str
+    thesaurus_ids: str
+    rdf_type: str
+
+mesh_qualifier:
+  represented_as: node
+  preferred_id: mesh
+  input_label: mesh_qualifier
+  is_a: named thing
+  properties:
+    label: str
+    identifier: str
+    abbreviation: str
+    date_created: str
+    date_revised: str
+    annotation: str
+    scope_note: str
+    rdf_type: str
+
+# Edge types - Hierarchical relationships
+parent_tree_number:
+  represented_as: edge
+  input_label: parent_tree_number
+  is_a: related to
+  source: mesh_descriptor
+  target: mesh_descriptor
+  properties:
+    data_source: str
+
+broader_descriptor:
+  represented_as: edge
+  input_label: broader_descriptor
+  is_a: related to
+  source: mesh_descriptor
+  target: mesh_descriptor
+  properties:
+    data_source: str
+
+# Concept relationships
+broader_concept:
+  represented_as: edge
+  input_label: broader_concept
+  is_a: related to
+  source: mesh_concept
+  target: mesh_concept
+  properties:
+    data_source: str
+    relation_name: str
+
+narrower_concept:
+  represented_as: edge
+  input_label: narrower_concept
+  is_a: related to
+  source: mesh_concept
+  target: mesh_concept
+  properties:
+    data_source: str
+    relation_name: str
+
+related_concept:
+  represented_as: edge
+  input_label: related_concept
+  is_a: related to
+  source: mesh_concept
+  target: mesh_concept
+  properties:
+    data_source: str
+    relation_name: str
+
+# Descriptor-Concept relationships
+preferred_concept:
+  represented_as: edge
+  input_label: preferred_concept
+  is_a: related to
+  source: mesh_descriptor
+  target: mesh_concept
+  properties:
+    data_source: str
+
+has_concept:
+  represented_as: edge
+  input_label: has_concept
+  is_a: related to
+  source: mesh_descriptor
+  target: mesh_concept
+  properties:
+    data_source: str
+
+# Term relationships
+preferred_term:
+  represented_as: edge
+  input_label: preferred_term
+  is_a: related to
+  source: mesh_concept
+  target: mesh_term
+  properties:
+    data_source: str
+
+has_term:
+  represented_as: edge
+  input_label: has_term
+  is_a: related to
+  source: mesh_concept
+  target: mesh_term
+  properties:
+    data_source: str
+
+# Qualifier relationships
+allowable_qualifier:
+  represented_as: edge
+  input_label: allowable_qualifier
+  is_a: related to
+  source: mesh_descriptor
+  target: mesh_qualifier
+  properties:
+    data_source: str
+    abbreviation: str
+
+# Pharmacological relationships
+pharmacological_action:
+  represented_as: edge
+  input_label: pharmacological_action
+  is_a: related to
+  source: mesh_descriptor
+  target: mesh_descriptor
+  properties:
+    data_source: str
+
+# Cross-references
+see_also:
+  represented_as: edge
+  input_label: see_also
+  is_a: related to
+  source: mesh_descriptor
+  target: mesh_descriptor
+  properties:
+    data_source: str
+
+indexer_consider_also:
+  represented_as: edge
+  input_label: indexer_consider_also
+  is_a: related to
+  source: mesh_descriptor
+  target: mesh_descriptor
+  properties:
+    data_source: str
+
+# Mapping relationships
+mapped_to:
+  represented_as: edge
+  input_label: mapped_to
+  is_a: related to
+  source: mesh_descriptor
+  target: mesh_descriptor
+  properties:
+    data_source: str
+
+preferred_mapped_to:
+  represented_as: edge
+  input_label: preferred_mapped_to
+  is_a: related to
+  source: mesh_descriptor
+  target: mesh_descriptor
+  properties:
+    data_source: str
+
+use_instead:
+  represented_as: edge
+  input_label: use_instead
+  is_a: related to
+  source: mesh_descriptor
+  target: mesh_descriptor
+  properties:
+    data_source: str

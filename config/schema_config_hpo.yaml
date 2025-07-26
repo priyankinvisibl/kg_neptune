@@ -1,0 +1,56 @@
+disease:
+  input_label: disease
+  properties:
+    disease_name: str
+  represented_as: node
+disease to phenotypic feature association:
+  input_label: has_phenotype
+  is_a: association
+  properties:
+    data_source: str
+    evidence: str
+    frequency: str
+    onset: str
+    reference: str
+    sex: str
+  represented_as: edge
+  source: disease
+  target: phenotype
+gene:
+  input_label: gene
+  properties: {}
+  represented_as: node
+gene to disease association:
+  input_label: associated_with_disease
+  is_a: association
+  properties:
+    association_type: str
+    data_source: str
+    source: str
+  represented_as: edge
+  source: gene
+  target: disease
+gene to phenotypic feature association:
+  input_label: associated_with_gene
+  is_a: association
+  properties:
+    data_source: str
+    via_disease: str
+  represented_as: edge
+  source: gene
+  target: phenotype
+phenotypic feature:
+  input_label: phenotype
+  properties:
+    hpo_name: str
+    ncbi_gene_id: str
+  represented_as: node
+phenotypic feature to disease association:
+  input_label: phenotype_to_disease
+  is_a: association
+  properties:
+    data_source: str
+    via_gene: str
+  represented_as: edge
+  source: phenotype
+  target: disease

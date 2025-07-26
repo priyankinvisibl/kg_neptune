@@ -1,0 +1,259 @@
+# BioCypher schema configuration for CIViC data
+gene:
+  represented_as: node
+  label_in_input: gene
+  preferred_id: id
+  is_a: biolink:Gene
+  properties:
+    name:
+      type: str
+      description: Gene name
+    aliases:
+      type: list
+      description: Alternative names for the gene
+    description:
+      type: str
+      description: Description of the gene
+    entrez_id:
+      type: str
+      description: Entrez Gene ID
+    data_source:
+      type: str
+      description: Source of the data
+
+variant:
+  represented_as: node
+  label_in_input: variant
+  preferred_id: id
+  is_a: biolink:SequenceVariant
+  properties:
+    name:
+      type: str
+      description: Variant name
+    feature_id:
+      type: str
+      description: ID of the associated feature (gene)
+    feature_name:
+      type: str
+      description: Name of the associated feature (gene)
+    variant_types:
+      type: str
+      description: Type of variant
+    aliases:
+      type: list
+      description: Alternative names for the variant
+    hgvs:
+      type: list
+      description: HGVS descriptions
+    chromosome:
+      type: str
+      description: Chromosome location
+    start:
+      type: str
+      description: Start position
+    stop:
+      type: str
+      description: Stop position
+    reference_bases:
+      type: str
+      description: Reference bases
+    variant_bases:
+      type: str
+      description: Variant bases
+    representative_transcript:
+      type: str
+      description: Representative transcript
+    ensembl_version:
+      type: str
+      description: Ensembl version
+    reference_build:
+      type: str
+      description: Reference genome build
+    data_source:
+      type: str
+      description: Source of the data
+
+molecular_profile:
+  represented_as: node
+  label_in_input: molecular_profile
+  preferred_id: id
+  is_a: biolink:MolecularEntity
+  properties:
+    name:
+      type: str
+      description: Molecular profile name
+    description:
+      type: str
+      description: Description of the molecular profile
+    evidence_score:
+      type: float
+      description: Evidence score
+    aliases:
+      type: list
+      description: Alternative names for the molecular profile
+    data_source:
+      type: str
+      description: Source of the data
+
+evidence:
+  represented_as: node
+  label_in_input: evidence
+  preferred_id: id
+  is_a: biolink:EvidenceType
+  properties:
+    description:
+      type: str
+      description: Evidence statement
+    evidence_level:
+      type: str
+      description: Level of evidence (A, B, C, D, E)
+    evidence_type:
+      type: str
+      description: Type of evidence
+    evidence_direction:
+      type: str
+      description: Direction of evidence (supports, does not support)
+    clinical_significance:
+      type: str
+      description: Clinical significance
+    disease:
+      type: str
+      description: Associated disease
+    doid:
+      type: str
+      description: Disease Ontology ID
+    therapies:
+      type: str
+      description: Associated therapies
+    rating:
+      type: str
+      description: Evidence rating
+    citation:
+      type: str
+      description: Citation information
+    data_source:
+      type: str
+      description: Source of the data
+
+assertion:
+  represented_as: node
+  label_in_input: assertion
+  preferred_id: id
+  is_a: biolink:Association
+  properties:
+    description:
+      type: str
+      description: Assertion description
+      required: true
+    assertion_type:
+      type: str
+      description: Type of assertion
+      required: true
+    assertion_direction:
+      type: str
+      description: Direction of assertion (supports, does not support)
+      required: true
+    clinical_significance:
+      type: str
+      description: Clinical significance
+      required: true
+    disease:
+      type: str
+      description: Associated disease
+      required: true
+    doid:
+      type: str
+      description: Disease Ontology ID
+      required: true
+    therapies:
+      type: str
+      description: Associated therapies
+      required: true
+    summary:
+      type: str
+      description: Assertion summary
+      required: true
+    amp_category:
+      type: str
+      description: AMP/ASCO/CAP category
+      required: true
+    data_source:
+      type: str
+      description: Source of the data
+      required: true
+
+HAS_VARIANT:
+  represented_as: edge
+  label_in_input: HAS_VARIANT
+  source: gene
+  target: variant
+  is_a: biolink:has_variant
+  properties:
+    data_source:
+      type: str
+      description: Source of the data
+
+INCLUDES_VARIANT:
+  represented_as: edge
+  label_in_input: INCLUDES_VARIANT
+  source: molecular_profile
+  target: variant
+  is_a: biolink:has_part
+  properties:
+    data_source:
+      type: str
+      description: Source of the data
+
+HAS_EVIDENCE:
+  represented_as: edge
+  label_in_input: HAS_EVIDENCE
+  source: molecular_profile
+  target: evidence
+  is_a: biolink:has_evidence
+  properties:
+    data_source:
+      type: str
+      description: Source of the data
+
+HAS_ASSERTION:
+  represented_as: edge
+  label_in_input: HAS_ASSERTION
+  source: molecular_profile
+  target: assertion
+  is_a: biolink:related_to
+  properties:
+    data_source:
+      type: str
+      description: Source of the data
+
+SUPPORTS_ASSERTION:
+  represented_as: edge
+  label_in_input: SUPPORTS_ASSERTION
+  source: evidence
+  target: assertion
+  is_a: biolink:supports
+  properties:
+    data_source:
+      type: str
+      description: Source of the data
+ASSOCIATED_WITH_GENE:
+  represented_as: edge
+  label_in_input: ASSOCIATED_WITH_GENE
+  source: molecular_profile
+  target: gene
+  is_a: biolink:related_to
+  properties:
+    data_source:
+      type: str
+      description: Source of the data
+
+ASSOCIATED_WITH_VARIANT:
+  represented_as: edge
+  label_in_input: ASSOCIATED_WITH_VARIANT
+  source: evidence
+  target: variant
+  is_a: biolink:related_to
+  properties:
+    data_source:
+      type: str
+      description: Source of the data

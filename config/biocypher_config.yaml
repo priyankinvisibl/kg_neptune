@@ -1,0 +1,92 @@
+# BioCypher configuration for MESH processing
+biocypher:
+  offline: true
+  debug: false
+  schema_config_path: /home/priyank/invisibl/mesh/config/schema_enrichr.yaml
+  head_join_hint: "|"
+  tail_join_hint: "|"
+
+neo4j:
+  delimiter: '\t'
+  array_delimiter: '|'
+  quote_character: '"'
+  skip_duplicate_nodes: true
+  skip_bad_relationships: true
+  import_call_file_prefix: "neo4j-admin-import-call"
+  import_call_bin_prefix: "bin/"
+
+  header_map:
+    gene:
+      - ID
+      - LABEL
+      - name
+      - data_source
+    variant:
+      - ID
+      - LABEL
+      - name
+      - data_source
+    molecular_profile:
+      - ID
+      - LABEL
+      - name
+      - description
+      - data_source
+    evidence:
+      - ID
+      - LABEL
+      - description
+      - evidence_level
+      - evidence_type
+      - clinical_significance
+      - rating
+      - data_source
+    assertion:
+      - ID
+      - LABEL
+      - description
+      - assertion_type
+      - assertion_direction
+      - clinical_significance
+      - disease
+      - doid
+      - therapies
+      - summary
+      - amp_category
+      - data_source
+    evidence_to_assertion:
+      - ID
+      - START_ID
+      - END_ID
+      - TYPE
+      - data_source
+    molecular_profile_to_evidence:
+      - ID
+      - START_ID
+      - END_ID
+      - TYPE
+      - data_source
+    evidence_to_variant:
+      - ID
+      - START_ID
+      - END_ID
+      - TYPE
+      - data_source
+    molecular_profile_to_variant:
+      - ID
+      - START_ID
+      - END_ID
+      - TYPE
+      - data_source
+    molecular_profile_to_gene:
+      - ID
+      - START_ID
+      - END_ID
+      - TYPE
+      - data_source
+    gene_to_variant:
+      - ID
+      - START_ID
+      - END_ID
+      - TYPE
+      - data_source

@@ -1,0 +1,52 @@
+# HPO Column Configuration
+# This file defines which columns from HPO files should be included as properties
+
+genes_to_disease:
+  # Produces output files: Gene-*, Disease-*, GeneToDiseaseAssociation-*
+  file_path: "hpo/genes_to_disease.txt"
+  id_column: "gene_symbol"  # Column to use as node ID
+  node_properties:
+    # Additional properties to include for gene nodes
+    # - ncbi_gene_id
+  edge_properties:
+    # Properties to include for gene-disease associations
+    - association_type
+    - source  # Commented out to test schema synchronization
+  target_id_column: "disease_id"  # Column for target disease ID
+
+phenotype_to_genes:
+  # Produces output files: Gene-*, Disease-*, PhenotypicFeature-*, GeneToPhenotypicFeatureAssociation-*, PhenotypicFeatureToDiseaseAssociation-*
+  file_path: "hpo/phenotype_to_genes.txt"
+  id_column: "hpo_id"  # Column to use as phenotype node ID
+  node_properties:
+    # Additional properties to include for phenotype nodes
+    - hpo_name
+    - ncbi_gene_id
+  edge_properties: []  # Empty list instead of commented items
+  gene_id_column: "gene_symbol"  # Column for gene ID
+  disease_id_column: "disease_id"  # Column for disease ID
+  # Special properties for bridging relationships
+  special_properties:
+    gene_to_phenotype_via: "via_disease"  # Property name for gene→phenotype edges
+    phenotype_to_disease_via: "via_gene"  # Property name for phenotype→disease edges
+
+phenotype_hpoa:
+  # Produces output files: Disease-*, PhenotypicFeature-*, DiseaseToPhenotypicFeatureAssociation-*
+  file_path: "hpo/phenotype.hpoa"
+  id_column: "database_id"  # Column to use as disease node ID
+  node_properties:
+    # Additional properties to include for disease nodes
+    - disease_name
+  edge_properties:
+    # Properties to include for disease-phenotype associations
+    - reference
+    - evidence
+    - onset
+    - frequency
+    - sex
+  target_id_column: "hpo_id"  # Column for target phenotype ID
+
+# Global settings
+global:
+  data_source: "hpo"  # Default data source for all edges
+  include_empty_properties: false  # Whether to include properties with empty values

@@ -1,0 +1,109 @@
+gene:
+    represented_as: node
+    preferred_id: gene_id
+    input_label: gene
+    properties:
+     ensembl_id: str
+
+
+material sample:
+    represented_as: node
+    preferred_id: sample_id
+    input_label: gtex_sample
+
+cancer_tissue_sample:
+    is_a: material sample
+    represented_as: node
+    preferred_id: c_tissue_sample_id
+    input_label: tcga_id
+
+mutation:
+    is_a: is sequence variant of
+    represented_as: node
+    preferred_id: genomic_variant_id
+    input_label: genomic_variant
+
+
+case:
+    represented_as: node
+    preferred_id: subject_id
+    input_label: sub_id
+    
+variant to gene association:
+    represented_as: edge
+    preferred_id: variant_gene_association_id
+    input_label: variant_associated_with
+
+
+case to entity association:
+    is_a: Association
+    represented_as: edge
+    preferred_id: c2e_a_id
+    input_label: subject_associated_with
+
+material sample to entity association:
+    is_a: Association
+    represented_as: edge
+    preferred_id: ms2e_a_id
+    input_label: tissue_sample_associated_with
+
+drug:
+    represented_as: node
+    preferred_id: drug_id
+    input_label: drug
+
+pathway:
+    represented_as: node
+    preferred_id: reactome/wiki_pathway
+    input_label: pathway
+    properties:
+     name: str
+
+biological process:
+    represented_as: node
+    preferred_id: biological_process_id
+    input_label: biological_process
+    properties:
+     name: str
+
+molecular activity:
+    represented_as: node
+    preferred_id: molecular_function_id
+    input_label: molecular_function
+    properties:
+     name: str
+
+cellular component:
+    represented_as: node
+    preferred_id: cellular component_id
+    input_label: cell_component
+    properties:
+     name: str
+
+
+macromolecular machine to molecular activity association:
+  represented_as: edge
+  preferred_id: M2MA_id
+  input_label: involved_in
+  properties:
+   function_name: str
+
+pathway gene interaction:
+  is_a: gene to pathway association
+  represented_as: edge
+  preferred_id: G2PA_id
+  input_label: associated_with
+  properties:
+   pathway_name: str
+
+drug to gene association:
+  represented_as: edge
+  preferred_id: D2G_id
+  input_label: targets
+
+macromolecular machine to cellular component association:
+  represented_as: edge
+  preferred_id: MM2CCA_id
+  input_label: located_in
+  properties:
+   component_name: str
