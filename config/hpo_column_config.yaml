@@ -5,7 +5,7 @@ genes_to_disease:
   # Produces output files: Gene-*, Disease-*, GeneToDiseaseAssociation-*
   file_path: "hpo/genes_to_disease.txt"
   id_column: "gene_symbol"  # Column to use as node ID
-  node_properties:
+  node_properties: []
     # Additional properties to include for gene nodes
     # - ncbi_gene_id
   edge_properties:
@@ -17,14 +17,16 @@ genes_to_disease:
 phenotype_to_genes:
   # Produces output files: Gene-*, Disease-*, PhenotypicFeature-*, GeneToPhenotypicFeatureAssociation-*, PhenotypicFeatureToDiseaseAssociation-*
   file_path: "hpo/phenotype_to_genes.txt"
-  id_column: "hpo_id"  # Column to use as phenotype node ID
+  phenotype_id_column: 0  # hpo_id column index
+  phenotype_name_column: 1  # hpo_name column index
+  gene_id_column: 2  # ncbi_gene_id column index
+  gene_name_column: 3  # gene_symbol column index
+  disease_id_column: 4  # disease_id column index
   node_properties:
     # Additional properties to include for phenotype nodes
     - hpo_name
     - ncbi_gene_id
   edge_properties: []  # Empty list instead of commented items
-  gene_id_column: "gene_symbol"  # Column for gene ID
-  disease_id_column: "disease_id"  # Column for disease ID
   # Special properties for bridging relationships
   special_properties:
     gene_to_phenotype_via: "via_disease"  # Property name for gene→phenotype edges

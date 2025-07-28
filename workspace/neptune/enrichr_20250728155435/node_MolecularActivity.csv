@@ -1,0 +1,1148 @@
+~id,name:String,preferred_id:String,~label
+GO:0003841,1-Acylglycerol-3-Phosphate O-acyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0047184,1-Acylglycerophosphocholine O-acyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0003847,1-Alkyl-2-Acetylglycerophosphocholine Esterase Activity,molecular_function_id,MolecularActivity
+GO:0005545,1-Phosphatidylinositol Binding,molecular_function_id,MolecularActivity
+GO:0016303,1-Phosphatidylinositol-3-Kinase Activity,molecular_function_id,MolecularActivity
+GO:0046935,1-Phosphatidylinositol-3-Kinase Regulator Activity,molecular_function_id,MolecularActivity
+GO:0035005,1-Phosphatidylinositol-4-Phosphate 3-Kinase Activity,molecular_function_id,MolecularActivity
+GO:0016308,1-Phosphatidylinositol-4-Phosphate 5-Kinase Activity,molecular_function_id,MolecularActivity
+GO:0005502,11-Cis Retinal Binding,molecular_function_id,MolecularActivity
+GO:0051537,"2 Iron, 2 Sulfur Cluster Binding",molecular_function_id,MolecularActivity
+GO:0047144,2-Acylglycerol-3-Phosphate O-acyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0016706,2-Oxoglutarate-Dependent Dioxygenase Activity,molecular_function_id,MolecularActivity
+GO:0004115,"3,5-cyclic-AMP Phosphodiesterase Activity",molecular_function_id,MolecularActivity
+GO:0047555,"3,5-cyclic-GMP Phosphodiesterase Activity",molecular_function_id,MolecularActivity
+GO:0004114,"3,5-Cyclic-Nucleotide Phosphodiesterase Activity",molecular_function_id,MolecularActivity
+GO:0043138,3-5 DNA Helicase Activity,molecular_function_id,MolecularActivity
+GO:0034458,3-5 RNA Helicase Activity,molecular_function_id,MolecularActivity
+GO:0008408,3-5 Exonuclease Activity,molecular_function_id,MolecularActivity
+GO:0008296,3-5-DNA Exonuclease Activity,molecular_function_id,MolecularActivity
+GO:0000175,3-5-RNA Exonuclease Activity,molecular_function_id,MolecularActivity
+GO:0018812,3-hydroxyacyl-CoA Dehydratase Activity,molecular_function_id,MolecularActivity
+GO:0003857,3-hydroxyacyl-CoA Dehydrogenase Activity,molecular_function_id,MolecularActivity
+GO:0051539,"4 Iron, 4 Sulfur Cluster Binding",molecular_function_id,MolecularActivity
+GO:0017083,4-galactosyl-N-acetylglucosaminide 3-alpha-L-fucosyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0140933,5-(N(7)-methylguanosine 5-triphospho)-[mRNA] Hydrolase Activity,molecular_function_id,MolecularActivity
+GO:0035312,5-3 DNA Exonuclease Activity,molecular_function_id,MolecularActivity
+GO:0043139,5-3 DNA Helicase Activity,molecular_function_id,MolecularActivity
+GO:0034062,5-3 RNA Polymerase Activity,molecular_function_id,MolecularActivity
+GO:0008409,5-3 Exonuclease Activity,molecular_function_id,MolecularActivity
+GO:0017108,5-Flap Endonuclease Activity,molecular_function_id,MolecularActivity
+GO:0008253,5-Nucleotidase Activity,molecular_function_id,MolecularActivity
+GO:0008097,5S rRNA Binding,molecular_function_id,MolecularActivity
+GO:0097322,7SK snRNA Binding,molecular_function_id,MolecularActivity
+GO:0015431,ABC-type Glutathione S-conjugate Transporter Activity,molecular_function_id,MolecularActivity
+GO:0008559,ABC-type Xenobiotic Transporter Activity,molecular_function_id,MolecularActivity
+GO:0043531,ADP Binding,molecular_function_id,MolecularActivity
+GO:0015217,ADP Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0160002,ADP-D-ribose Modification-Dependent Protein Binding,molecular_function_id,MolecularActivity
+GO:0016208,AMP Binding,molecular_function_id,MolecularActivity
+GO:0005524,ATP Binding,molecular_function_id,MolecularActivity
+GO:0005347,ATP Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015272,ATP-activated Inward Rectifier Potassium Channel Activity,molecular_function_id,MolecularActivity
+GO:0035381,ATP-gated Ion Channel Activity,molecular_function_id,MolecularActivity
+GO:0044769,"ATPase Activity, Coupled To Transmembrane Movement Of Ions, Rotational Mechanism",molecular_function_id,MolecularActivity
+GO:0051117,ATPase Binding,molecular_function_id,MolecularActivity
+GO:0051400,BH Domain Binding,molecular_function_id,MolecularActivity
+GO:0051434,BH3 Domain Binding,molecular_function_id,MolecularActivity
+GO:0036122,BMP Binding,molecular_function_id,MolecularActivity
+GO:0098821,BMP Receptor Activity,molecular_function_id,MolecularActivity
+GO:0070700,BMP Receptor Binding,molecular_function_id,MolecularActivity
+GO:0019957,C-C Chemokine Binding,molecular_function_id,MolecularActivity
+GO:0016408,C-acyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0070742,C2H2 Zinc Finger Domain Binding,molecular_function_id,MolecularActivity
+GO:0055131,C3HC4-type RING Finger Domain Binding,molecular_function_id,MolecularActivity
+GO:0015556,C4-dicarboxylate Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0050700,CARD Domain Binding,molecular_function_id,MolecularActivity
+GO:0048020,CCR Chemokine Receptor Binding,molecular_function_id,MolecularActivity
+GO:0031731,CCR6 Chemokine Receptor Binding,molecular_function_id,MolecularActivity
+GO:0042609,CD4 Receptor Binding,molecular_function_id,MolecularActivity
+GO:0017169,CDP-alcohol Phosphatidyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0045236,CXCR Chemokine Receptor Binding,molecular_function_id,MolecularActivity
+GO:0016421,CoA Carboxylase Activity,molecular_function_id,MolecularActivity
+GO:0016289,CoA Hydrolase Activity,molecular_function_id,MolecularActivity
+GO:0016405,CoA-ligase Activity,molecular_function_id,MolecularActivity
+GO:0055056,D-glucose Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0017151,DEAD/H-box RNA Helicase Binding,molecular_function_id,MolecularActivity
+GO:0019104,DNA N-glycosylase Activity,molecular_function_id,MolecularActivity
+GO:0003677,DNA Binding,molecular_function_id,MolecularActivity
+GO:0008301,"DNA Binding, Bending",molecular_function_id,MolecularActivity
+GO:0004520,DNA Endonuclease Activity,molecular_function_id,MolecularActivity
+GO:0016889,"DNA Endonuclease Activity, Producing 3-Phosphomonoesters",molecular_function_id,MolecularActivity
+GO:0016895,"DNA Exonuclease Activity, Producing 5-Phosphomonoesters",molecular_function_id,MolecularActivity
+GO:0004536,DNA Nuclease Activity,molecular_function_id,MolecularActivity
+GO:0034061,DNA Polymerase Activity,molecular_function_id,MolecularActivity
+GO:0070182,DNA Polymerase Binding,molecular_function_id,MolecularActivity
+GO:0003688,DNA Replication Origin Binding,molecular_function_id,MolecularActivity
+GO:0000217,DNA Secondary Structure Binding,molecular_function_id,MolecularActivity
+GO:0003906,DNA-(apurinic Or Apyrimidinic Site) Endonuclease Activity,molecular_function_id,MolecularActivity
+GO:0001228,"DNA-binding Transcription Activator Activity, RNA Polymerase II-specific",molecular_function_id,MolecularActivity
+GO:0140297,DNA-binding Transcription Factor Binding,molecular_function_id,MolecularActivity
+GO:0001227,"DNA-binding Transcription Repressor Activity, RNA Polymerase II-specific",molecular_function_id,MolecularActivity
+GO:0003899,DNA-directed 5-3 RNA Polymerase Activity,molecular_function_id,MolecularActivity
+GO:0003887,DNA-directed DNA Polymerase Activity,molecular_function_id,MolecularActivity
+GO:0009008,DNA-methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0070888,E-box Binding,molecular_function_id,MolecularActivity
+GO:0071949,FAD Binding,molecular_function_id,MolecularActivity
+GO:0010181,FMN Binding,molecular_function_id,MolecularActivity
+GO:0016907,G Protein-Coupled Acetylcholine Receptor Activity,molecular_function_id,MolecularActivity
+GO:0008227,G Protein-Coupled Amine Receptor Activity,molecular_function_id,MolecularActivity
+GO:0001637,G Protein-Coupled Chemoattractant Receptor Activity,molecular_function_id,MolecularActivity
+GO:0035256,G Protein-Coupled Glutamate Receptor Binding,molecular_function_id,MolecularActivity
+GO:0099528,G Protein-Coupled Neurotransmitter Receptor Activity,molecular_function_id,MolecularActivity
+GO:0004985,G Protein-Coupled Opioid Receptor Activity,molecular_function_id,MolecularActivity
+GO:0008528,G Protein-Coupled Peptide Receptor Activity,molecular_function_id,MolecularActivity
+GO:0008020,G Protein-Coupled Photoreceptor Activity,molecular_function_id,MolecularActivity
+GO:0045028,G Protein-Coupled Purinergic Nucleotide Receptor Activity,molecular_function_id,MolecularActivity
+GO:0004930,G Protein-Coupled Receptor Activity,molecular_function_id,MolecularActivity
+GO:0001664,G Protein-Coupled Receptor Binding,molecular_function_id,MolecularActivity
+GO:0004703,G Protein-Coupled Receptor Kinase Activity,molecular_function_id,MolecularActivity
+GO:0004993,G Protein-Coupled Serotonin Receptor Activity,molecular_function_id,MolecularActivity
+GO:0051880,G-quadruplex DNA Binding,molecular_function_id,MolecularActivity
+GO:0002151,G-quadruplex RNA Binding,molecular_function_id,MolecularActivity
+GO:0098505,G-rich Strand Telomeric DNA Binding,molecular_function_id,MolecularActivity
+GO:0016917,GABA Receptor Activity,molecular_function_id,MolecularActivity
+GO:0050811,GABA Receptor Binding,molecular_function_id,MolecularActivity
+GO:0004890,GABA-A Receptor Activity,molecular_function_id,MolecularActivity
+GO:0022851,GABA-gated Chloride Ion Channel Activity,molecular_function_id,MolecularActivity
+GO:0019003,GDP Binding,molecular_function_id,MolecularActivity
+GO:0004382,GDP Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0005092,GDP-dissociation Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0034235,GPI Anchor Binding,molecular_function_id,MolecularActivity
+GO:0005525,GTP Binding,molecular_function_id,MolecularActivity
+GO:0005096,GTPase Activator Activity,molecular_function_id,MolecularActivity
+GO:0003924,GTPase Activity,molecular_function_id,MolecularActivity
+GO:0051020,GTPase Binding,molecular_function_id,MolecularActivity
+GO:0005095,GTPase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0030695,GTPase Regulator Activity,molecular_function_id,MolecularActivity
+GO:0030544,Hsp70 Protein Binding,molecular_function_id,MolecularActivity
+GO:0051879,Hsp90 Protein Binding,molecular_function_id,MolecularActivity
+GO:0070411,I-SMAD Binding,molecular_function_id,MolecularActivity
+GO:0008432,JUN Kinase Binding,molecular_function_id,MolecularActivity
+GO:0004706,JUN Kinase Kinase Kinase Activity,molecular_function_id,MolecularActivity
+GO:1990380,K48-linked Deubiquitinase Activity,molecular_function_id,MolecularActivity
+GO:0036435,K48-linked Polyubiquitin Modification-Dependent Protein Binding,molecular_function_id,MolecularActivity
+GO:0061578,K63-linked Deubiquitinase Activity,molecular_function_id,MolecularActivity
+GO:0070530,K63-linked Polyubiquitin Modification-Dependent Protein Binding,molecular_function_id,MolecularActivity
+GO:0015180,L-alanine Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015179,L-amino Acid Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0061459,L-arginine Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015183,L-aspartate Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0005313,L-glutamate Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015186,L-glutamine Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015190,L-leucine Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015189,L-lysine Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015193,L-proline Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015194,L-serine Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0050693,LBD Domain Binding,molecular_function_id,MolecularActivity
+GO:0030275,LRR Domain Binding,molecular_function_id,MolecularActivity
+GO:0004707,MAP Kinase Activity,molecular_function_id,MolecularActivity
+GO:0004708,MAP Kinase Kinase Activity,molecular_function_id,MolecularActivity
+GO:0004709,MAP Kinase Kinase Kinase Activity,molecular_function_id,MolecularActivity
+GO:0033549,MAP Kinase Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0033550,MAP Kinase Tyrosine Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0017017,MAP Kinase Tyrosine/Serine/Threonine Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0005078,MAP-kinase Scaffold Activity,molecular_function_id,MolecularActivity
+GO:0042288,MHC Class I Protein Binding,molecular_function_id,MolecularActivity
+GO:0032393,MHC Class I Receptor Activity,molecular_function_id,MolecularActivity
+GO:0042289,MHC Class II Protein Binding,molecular_function_id,MolecularActivity
+GO:0023026,MHC Class II Protein Complex Binding,molecular_function_id,MolecularActivity
+GO:0032395,MHC Class II Receptor Activity,molecular_function_id,MolecularActivity
+GO:0023029,MHC Class Ib Protein Binding,molecular_function_id,MolecularActivity
+GO:0042287,MHC Protein Binding,molecular_function_id,MolecularActivity
+GO:0032405,MutLalpha Complex Binding,molecular_function_id,MolecularActivity
+GO:0032407,MutSalpha Complex Binding,molecular_function_id,MolecularActivity
+GO:0004499,"N,N-dimethylaniline Monooxygenase Activity",molecular_function_id,MolecularActivity
+GO:0001517,N-acetylglucosamine 6-O-sulfotransferase Activity,molecular_function_id,MolecularActivity
+GO:0008080,N-acetyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0017040,N-acylsphingosine Amidohydrolase Activity,molecular_function_id,MolecularActivity
+GO:0016410,N-acyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0008170,N-methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:1990247,N6-methyladenosine-containing RNA Binding,molecular_function_id,MolecularActivity
+GO:0051287,NAD Binding,molecular_function_id,MolecularActivity
+GO:0016174,NAD(P)H Oxidase H2O2-forming Activity,molecular_function_id,MolecularActivity
+GO:0003950,NAD+ ADP-ribosyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0070403,NAD+ Binding,molecular_function_id,MolecularActivity
+GO:0034979,NAD-dependent Protein Deacetylase Activity,molecular_function_id,MolecularActivity
+GO:0004745,NAD-retinol Dehydrogenase Activity,molecular_function_id,MolecularActivity
+GO:0050136,NADH Dehydrogenase (Quinone) Activity,molecular_function_id,MolecularActivity
+GO:0008137,NADH Dehydrogenase (Ubiquinone) Activity,molecular_function_id,MolecularActivity
+GO:0003954,NADH Dehydrogenase Activity,molecular_function_id,MolecularActivity
+GO:0050661,NADP Binding,molecular_function_id,MolecularActivity
+GO:0052650,NADP-retinol Dehydrogenase Activity,molecular_function_id,MolecularActivity
+GO:0070402,NADPH Binding,molecular_function_id,MolecularActivity
+GO:0019788,NEDD8 Transferase Activity,molecular_function_id,MolecularActivity
+GO:0051059,NF-kappaB Binding,molecular_function_id,MolecularActivity
+GO:0004972,NMDA Glutamate Receptor Activity,molecular_function_id,MolecularActivity
+GO:0005112,Notch Binding,molecular_function_id,MolecularActivity
+GO:0016413,O-acetyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0008374,O-acyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0008171,O-methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0005388,P-type Calcium Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015662,P-type Ion Transporter Activity,molecular_function_id,MolecularActivity
+GO:0008556,P-type Potassium Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0008554,P-type Sodium Transporter Activity,molecular_function_id,MolecularActivity
+GO:0005391,P-type Sodium:Potassium-Exchanging Transporter Activity,molecular_function_id,MolecularActivity
+GO:0030165,PDZ Domain Binding,molecular_function_id,MolecularActivity
+GO:0070412,R-SMAD Binding,molecular_function_id,MolecularActivity
+GO:0050786,RAGE Receptor Binding,molecular_function_id,MolecularActivity
+GO:0062105,RNA 2-O-methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0000340,RNA 7-Methylguanosine Cap Binding,molecular_function_id,MolecularActivity
+GO:0003723,RNA Binding,molecular_function_id,MolecularActivity
+GO:0000339,RNA Cap Binding,molecular_function_id,MolecularActivity
+GO:0004521,RNA Endonuclease Activity,molecular_function_id,MolecularActivity
+GO:0016892,"RNA Endonuclease Activity, Producing 3-Phosphomonoesters",molecular_function_id,MolecularActivity
+GO:0016891,"RNA Endonuclease Activity, Producing 5-Phosphomonoesters",molecular_function_id,MolecularActivity
+GO:0004532,RNA Exonuclease Activity,molecular_function_id,MolecularActivity
+GO:0016896,"RNA Exonuclease Activity, Producing 5-Phosphomonoesters",molecular_function_id,MolecularActivity
+GO:0008173,RNA Methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0004540,RNA Nuclease Activity,molecular_function_id,MolecularActivity
+GO:0001054,RNA Polymerase I Activity,molecular_function_id,MolecularActivity
+GO:0001164,RNA Polymerase I Core Promoter Sequence-Specific DNA Binding,molecular_function_id,MolecularActivity
+GO:0001163,RNA Polymerase I Transcription Regulatory Region Sequence-Specific DNA Binding,molecular_function_id,MolecularActivity
+GO:0099122,RNA Polymerase II C-terminal Domain Binding,molecular_function_id,MolecularActivity
+GO:0008353,RNA Polymerase II CTD Heptapeptide Repeat Kinase Activity,molecular_function_id,MolecularActivity
+GO:0008420,RNA Polymerase II CTD Heptapeptide Repeat Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0001055,RNA Polymerase II Activity,molecular_function_id,MolecularActivity
+GO:0000978,RNA Polymerase II Cis-Regulatory Region Sequence-Specific DNA Binding,molecular_function_id,MolecularActivity
+GO:0000993,RNA Polymerase II Complex Binding,molecular_function_id,MolecularActivity
+GO:0000979,RNA Polymerase II Core Promoter Sequence-Specific DNA Binding,molecular_function_id,MolecularActivity
+GO:0001091,RNA Polymerase II General Transcription Initiation Factor Binding,molecular_function_id,MolecularActivity
+GO:0000977,RNA Polymerase II Transcription Regulatory Region Sequence-Specific DNA Binding,molecular_function_id,MolecularActivity
+GO:0061629,RNA Polymerase II-specific DNA-binding Transcription Factor Binding,molecular_function_id,MolecularActivity
+GO:0001056,RNA Polymerase III Activity,molecular_function_id,MolecularActivity
+GO:0000992,RNA Polymerase III Cis-Regulatory Region Sequence-Specific DNA Binding,molecular_function_id,MolecularActivity
+GO:0001006,RNA Polymerase III Type 3 Promoter Sequence-Specific DNA Binding,molecular_function_id,MolecularActivity
+GO:0070063,RNA Polymerase Binding,molecular_function_id,MolecularActivity
+GO:0043175,RNA Polymerase Core Enzyme Binding,molecular_function_id,MolecularActivity
+GO:0035613,RNA Stem-Loop Binding,molecular_function_id,MolecularActivity
+GO:0003964,RNA-directed DNA Polymerase Activity,molecular_function_id,MolecularActivity
+GO:0048495,Roundabout Binding,molecular_function_id,MolecularActivity
+GO:0008757,S-adenosylmethionine-dependent Methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0008172,S-methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0042169,SH2 Domain Binding,molecular_function_id,MolecularActivity
+GO:0017124,SH3 Domain Binding,molecular_function_id,MolecularActivity
+GO:0097677,STAT Family Protein Binding,molecular_function_id,MolecularActivity
+GO:0032183,SUMO Binding,molecular_function_id,MolecularActivity
+GO:0061665,SUMO Ligase Activity,molecular_function_id,MolecularActivity
+GO:0019789,SUMO Transferase Activity,molecular_function_id,MolecularActivity
+GO:0017025,TBP-class Protein Binding,molecular_function_id,MolecularActivity
+GO:0030957,Tat Protein Binding,molecular_function_id,MolecularActivity
+GO:0035325,Toll-like Receptor Binding,molecular_function_id,MolecularActivity
+GO:0030619,U1 snRNA Binding,molecular_function_id,MolecularActivity
+GO:0034511,U3 snoRNA Binding,molecular_function_id,MolecularActivity
+GO:0030621,U4 snRNA Binding,molecular_function_id,MolecularActivity
+GO:0017070,U6 snRNA Binding,molecular_function_id,MolecularActivity
+GO:0045134,UDP Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0008499,"UDP-galactose:beta-N-acetylglucosamine Beta-1,3-Galactosyltransferase Activity",molecular_function_id,MolecularActivity
+GO:0035250,UDP-galactosyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0035251,UDP-glucosyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0008194,UDP-glycosyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0035252,UDP-xylosyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0050699,WW Domain Binding,molecular_function_id,MolecularActivity
+GO:0042813,Wnt Receptor Activity,molecular_function_id,MolecularActivity
+GO:0008467,[Heparan Sulfate]-Glucosamine 3-Sulfotransferase 1 Activity,molecular_function_id,MolecularActivity
+GO:0003988,acetyl-CoA C-acyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0140033,Acetylation-Dependent Protein Binding,molecular_function_id,MolecularActivity
+GO:0015464,Acetylcholine Receptor Activity,molecular_function_id,MolecularActivity
+GO:0033130,Acetylcholine Receptor Binding,molecular_function_id,MolecularActivity
+GO:0030550,Acetylcholine Receptor Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0030548,Acetylcholine Receptor Regulator Activity,molecular_function_id,MolecularActivity
+GO:0022848,Acetylcholine-Gated Monoatomic Cation-Selective Channel Activity,molecular_function_id,MolecularActivity
+GO:0008376,Acetylgalactosaminyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0008375,Acetylglucosaminyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0010698,Acetyltransferase Activator Activity,molecular_function_id,MolecularActivity
+GO:0016407,Acetyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0003993,Acid Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0016881,Acid-Amino Acid Ligase Activity,molecular_function_id,MolecularActivity
+GO:0016878,Acid-Thiol Ligase Activity,molecular_function_id,MolecularActivity
+GO:0015172,Acidic Amino Acid Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0003779,Actin Binding,molecular_function_id,MolecularActivity
+GO:0003785,Actin Monomer Binding,molecular_function_id,MolecularActivity
+GO:0042805,Actinin Binding,molecular_function_id,MolecularActivity
+GO:0022853,Active Monoatomic Ion Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0017002,Activin Receptor Activity,molecular_function_id,MolecularActivity
+GO:0003995,acyl-CoA Dehydrogenase Activity,molecular_function_id,MolecularActivity
+GO:0047617,acyl-CoA Hydrolase Activity,molecular_function_id,MolecularActivity
+GO:0003997,acyl-CoA Oxidase Activity,molecular_function_id,MolecularActivity
+GO:0016411,Acylglycerol O-acyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0047372,Acylglycerol Lipase Activity,molecular_function_id,MolecularActivity
+GO:0016747,"Acyltransferase Activity, Transferring Groups Other Than Amino-Acyl Groups",molecular_function_id,MolecularActivity
+GO:0000295,Adenine Nucleotide Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0004000,Adenosine Deaminase Activity,molecular_function_id,MolecularActivity
+GO:0030554,Adenyl Nucleotide Binding,molecular_function_id,MolecularActivity
+GO:0032559,Adenyl Ribonucleotide Binding,molecular_function_id,MolecularActivity
+GO:0008179,Adenylate Cyclase Binding,molecular_function_id,MolecularActivity
+GO:0001640,Adenylate Cyclase Inhibiting G Protein-Coupled Glutamate Receptor Activity,molecular_function_id,MolecularActivity
+GO:0010854,Adenylate Cyclase Regulator Activity,molecular_function_id,MolecularActivity
+GO:0004017,Adenylate Kinase Activity,molecular_function_id,MolecularActivity
+GO:0070566,Adenylyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0031690,Adrenergic Receptor Binding,molecular_function_id,MolecularActivity
+GO:0022858,Alanine Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0004022,Alcohol Dehydrogenase (NAD+) Activity,molecular_function_id,MolecularActivity
+GO:0008106,Alcohol Dehydrogenase (NADP+) Activity,molecular_function_id,MolecularActivity
+GO:0018455,Alcohol Dehydrogenase [NAD(P)+] Activity,molecular_function_id,MolecularActivity
+GO:0004024,"Alcohol Dehydrogenase Activity, Zinc-Dependent",molecular_function_id,MolecularActivity
+GO:0004029,Aldehyde Dehydrogenase (NAD+) Activity,molecular_function_id,MolecularActivity
+GO:0004030,Aldehyde Dehydrogenase [NAD(P)+] Activity,molecular_function_id,MolecularActivity
+GO:0016832,Aldehyde-Lyase Activity,molecular_function_id,MolecularActivity
+GO:0004032,alditol:NADP+ 1-Oxidoreductase Activity,molecular_function_id,MolecularActivity
+GO:0004033,Aldo-Keto Reductase (NADP) Activity,molecular_function_id,MolecularActivity
+GO:0031420,Alkali Metal Ion Binding,molecular_function_id,MolecularActivity
+GO:0004035,Alkaline Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0046920,Alpha-(1->3)-Fucosyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0001665,"alpha-N-acetylgalactosaminide Alpha-2,6-Sialyltransferase Activity",molecular_function_id,MolecularActivity
+GO:0003828,"alpha-N-acetylneuraminate Alpha-2,8-Sialyltransferase Activity",molecular_function_id,MolecularActivity
+GO:0051393,Alpha-Actinin Binding,molecular_function_id,MolecularActivity
+GO:0090599,Alpha-Glucosidase Activity,molecular_function_id,MolecularActivity
+GO:0004559,Alpha-Mannosidase Activity,molecular_function_id,MolecularActivity
+GO:0043014,Alpha-Tubulin Binding,molecular_function_id,MolecularActivity
+GO:0016597,Amino Acid Binding,molecular_function_id,MolecularActivity
+GO:0015171,Amino Acid Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0005416,Amino Acid:Monoatomic Cation Symporter Activity,molecular_function_id,MolecularActivity
+GO:0005280,Amino Acid:Proton Symporter Activity,molecular_function_id,MolecularActivity
+GO:0005283,Amino Acid:Sodium Symporter Activity,molecular_function_id,MolecularActivity
+GO:0004812,aminoacyl-tRNA Ligase Activity,molecular_function_id,MolecularActivity
+GO:0004177,Aminopeptidase Activity,molecular_function_id,MolecularActivity
+GO:0015247,Aminophospholipid Flippase Activity,molecular_function_id,MolecularActivity
+GO:0008519,Ammonium Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0001540,Amyloid-Beta Binding,molecular_function_id,MolecularActivity
+GO:0047023,Androsterone Dehydrogenase Activity,molecular_function_id,MolecularActivity
+GO:0030506,Ankyrin Binding,molecular_function_id,MolecularActivity
+GO:0140666,Annealing Activity,molecular_function_id,MolecularActivity
+GO:0015297,Antiporter Activity,molecular_function_id,MolecularActivity
+GO:0034190,Apolipoprotein Receptor Binding,molecular_function_id,MolecularActivity
+GO:0047676,arachidonate-CoA Ligase Activity,molecular_function_id,MolecularActivity
+GO:0050544,Arachidonic Acid Binding,molecular_function_id,MolecularActivity
+GO:0008392,Arachidonic Acid Epoxygenase Activity,molecular_function_id,MolecularActivity
+GO:0008391,Arachidonic Acid Monooxygenase Activity,molecular_function_id,MolecularActivity
+GO:0016273,Arginine N-methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0034618,Arginine Binding,molecular_function_id,MolecularActivity
+GO:0070016,Armadillo Repeat Domain Binding,molecular_function_id,MolecularActivity
+GO:0015173,Aromatic Amino Acid Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0017162,Aryl Hydrocarbon Receptor Binding,molecular_function_id,MolecularActivity
+GO:0004062,Aryl Sulfotransferase Activity,molecular_function_id,MolecularActivity
+GO:0004064,Arylesterase Activity,molecular_function_id,MolecularActivity
+GO:0004065,Arylsulfatase Activity,molecular_function_id,MolecularActivity
+GO:0042500,"Aspartic Endopeptidase Activity, Intramembrane Cleaving",molecular_function_id,MolecularActivity
+GO:0004190,Aspartic-Type Endopeptidase Activity,molecular_function_id,MolecularActivity
+GO:0019828,Aspartic-Type Endopeptidase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0070001,Aspartic-Type Peptidase Activity,molecular_function_id,MolecularActivity
+GO:0008046,Axon Guidance Receptor Activity,molecular_function_id,MolecularActivity
+GO:0043425,bHLH Transcription Factor Binding,molecular_function_id,MolecularActivity
+GO:0001099,Basal RNA Polymerase II Transcription Machinery Binding,molecular_function_id,MolecularActivity
+GO:0015174,Basic Amino Acid Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0008503,Benzodiazepine Receptor Activity,molecular_function_id,MolecularActivity
+GO:0048531,"Beta-1,3-Galactosyltransferase Activity",molecular_function_id,MolecularActivity
+GO:0003836,"Beta-Galactoside (CMP) Alpha-2,3-Sialyltransferase Activity",molecular_function_id,MolecularActivity
+GO:0008422,Beta-Glucosidase Activity,molecular_function_id,MolecularActivity
+GO:0048487,Beta-Tubulin Binding,molecular_function_id,MolecularActivity
+GO:0015106,Bicarbonate Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0032052,Bile Acid Binding,molecular_function_id,MolecularActivity
+GO:0008508,Bile Acid:Sodium Symporter Activity,molecular_function_id,MolecularActivity
+GO:0045125,Bioactive Lipid Receptor Activity,molecular_function_id,MolecularActivity
+GO:0033038,Bitter Taste Receptor Activity,molecular_function_id,MolecularActivity
+GO:0015658,Branched-Chain Amino Acid Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0000405,Bubble DNA Binding,molecular_function_id,MolecularActivity
+GO:0030552,cAMP Binding,molecular_function_id,MolecularActivity
+GO:0035497,cAMP Response Element Binding,molecular_function_id,MolecularActivity
+GO:0008140,cAMP Response Element Binding Protein Binding,molecular_function_id,MolecularActivity
+GO:0004691,cAMP-dependent Protein Kinase Activity,molecular_function_id,MolecularActivity
+GO:0004862,cAMP-dependent Protein Kinase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0008603,cAMP-dependent Protein Kinase Regulator Activity,molecular_function_id,MolecularActivity
+GO:0030553,cGMP Binding,molecular_function_id,MolecularActivity
+GO:0045296,Cadherin Binding,molecular_function_id,MolecularActivity
+GO:0098641,Cadherin Binding Involved In Cell-Cell Adhesion,molecular_function_id,MolecularActivity
+GO:0005227,Calcium Activated Cation Channel Activity,molecular_function_id,MolecularActivity
+GO:0005262,Calcium Channel Activity,molecular_function_id,MolecularActivity
+GO:0019855,Calcium Channel Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0005246,Calcium Channel Regulator Activity,molecular_function_id,MolecularActivity
+GO:0005509,Calcium Ion Binding,molecular_function_id,MolecularActivity
+GO:0015085,Calcium Ion Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015269,Calcium-Activated Potassium Channel Activity,molecular_function_id,MolecularActivity
+GO:0004198,Calcium-Dependent Cysteine-Type Endopeptidase Activity,molecular_function_id,MolecularActivity
+GO:0047498,Calcium-Dependent Phospholipase A2 Activity,molecular_function_id,MolecularActivity
+GO:0005544,Calcium-Dependent Phospholipid Binding,molecular_function_id,MolecularActivity
+GO:0010857,Calcium-Dependent Protein Kinase Activity,molecular_function_id,MolecularActivity
+GO:0009931,Calcium-Dependent Protein Serine/Threonine Kinase Activity,molecular_function_id,MolecularActivity
+GO:0004723,Calcium-Dependent Protein Serine/Threonine Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0047499,Calcium-Independent Phospholipase A2 Activity,molecular_function_id,MolecularActivity
+GO:0015278,Calcium-Release Channel Activity,molecular_function_id,MolecularActivity
+GO:0015368,Calcium:Monoatomic Cation Antiporter Activity,molecular_function_id,MolecularActivity
+GO:0005432,Calcium:Sodium Antiporter Activity,molecular_function_id,MolecularActivity
+GO:0004683,Calmodulin-Dependent Protein Kinase Activity,molecular_function_id,MolecularActivity
+GO:0019200,Carbohydrate Kinase Activity,molecular_function_id,MolecularActivity
+GO:0005402,Carbohydrate:Monoatomic Cation Symporter Activity,molecular_function_id,MolecularActivity
+GO:0005351,Carbohydrate:Proton Symporter Activity,molecular_function_id,MolecularActivity
+GO:0016884,"Carbon-Nitrogen Ligase Activity, With Glutamine As amido-N-donor",molecular_function_id,MolecularActivity
+GO:0004089,Carbonate Dehydratase Activity,molecular_function_id,MolecularActivity
+GO:0004090,Carbonyl Reductase (NADPH) Activity,molecular_function_id,MolecularActivity
+GO:0016831,Carboxy-Lyase Activity,molecular_function_id,MolecularActivity
+GO:0031406,Carboxylic Acid Binding,molecular_function_id,MolecularActivity
+GO:0046943,Carboxylic Acid Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0052689,Carboxylic Ester Hydrolase Activity,molecular_function_id,MolecularActivity
+GO:0004180,Carboxypeptidase Activity,molecular_function_id,MolecularActivity
+GO:1901612,Cardiolipin Binding,molecular_function_id,MolecularActivity
+GO:0016406,Carnitine O-acyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0089720,Caspase Binding,molecular_function_id,MolecularActivity
+GO:0140101,"Catalytic Activity, Acting On A tRNA",molecular_function_id,MolecularActivity
+GO:0098631,Cell Adhesion Mediator Activity,molecular_function_id,MolecularActivity
+GO:0098632,Cell-Cell Adhesion Mediator Activity,molecular_function_id,MolecularActivity
+GO:0098634,Cell-Matrix Adhesion Mediator Activity,molecular_function_id,MolecularActivity
+GO:1902387,Ceramide 1-Phosphate Binding,molecular_function_id,MolecularActivity
+GO:1902388,Ceramide 1-Phosphate Transfer Activity,molecular_function_id,MolecularActivity
+GO:0120017,Ceramide Transfer Activity,molecular_function_id,MolecularActivity
+GO:0015267,Channel Activity,molecular_function_id,MolecularActivity
+GO:0042056,Chemoattractant Activity,molecular_function_id,MolecularActivity
+GO:0008009,Chemokine Activity,molecular_function_id,MolecularActivity
+GO:0019956,Chemokine Binding,molecular_function_id,MolecularActivity
+GO:0004950,Chemokine Receptor Activity,molecular_function_id,MolecularActivity
+GO:0042379,Chemokine Receptor Binding,molecular_function_id,MolecularActivity
+GO:0045499,Chemorepellent Activity,molecular_function_id,MolecularActivity
+GO:0004568,Chitinase Activity,molecular_function_id,MolecularActivity
+GO:0005254,Chloride Channel Activity,molecular_function_id,MolecularActivity
+GO:0019869,Chloride Channel Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0017081,Chloride Channel Regulator Activity,molecular_function_id,MolecularActivity
+GO:0031404,Chloride Ion Binding,molecular_function_id,MolecularActivity
+GO:0015108,Chloride Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015377,Chloride:Monoatomic Cation Symporter Activity,molecular_function_id,MolecularActivity
+GO:0015485,Cholesterol Binding,molecular_function_id,MolecularActivity
+GO:0120020,Cholesterol Transfer Activity,molecular_function_id,MolecularActivity
+GO:0015220,Choline Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0034481,Chondroitin Sulfotransferase Activity,molecular_function_id,MolecularActivity
+GO:0031490,Chromatin DNA Binding,molecular_function_id,MolecularActivity
+GO:0070087,Chromo Shadow Domain Binding,molecular_function_id,MolecularActivity
+GO:0005127,Ciliary Neurotrophic Factor Receptor Binding,molecular_function_id,MolecularActivity
+GO:0000987,Cis-Regulatory Region Sequence-Specific DNA Binding,molecular_function_id,MolecularActivity
+GO:0035615,Clathrin Adaptor Activity,molecular_function_id,MolecularActivity
+GO:0032050,Clathrin Heavy Chain Binding,molecular_function_id,MolecularActivity
+GO:0032051,Clathrin Light Chain Binding,molecular_function_id,MolecularActivity
+GO:0070410,co-SMAD Binding,molecular_function_id,MolecularActivity
+GO:0031419,Cobalamin Binding,molecular_function_id,MolecularActivity
+GO:0001851,Complement Component C3b Binding,molecular_function_id,MolecularActivity
+GO:0004875,Complement Receptor Activity,molecular_function_id,MolecularActivity
+GO:0005507,Copper Ion Binding,molecular_function_id,MolecularActivity
+GO:0001046,Core Promoter Sequence-Specific DNA Binding,molecular_function_id,MolecularActivity
+GO:0071936,Coreceptor Activity Involved In Wnt Signaling Pathway,molecular_function_id,MolecularActivity
+GO:1904929,"Coreceptor Activity Involved In Wnt Signaling Pathway, Planar Cell Polarity Pathway",molecular_function_id,MolecularActivity
+GO:0008821,Crossover Junction DNA Endonuclease Activity,molecular_function_id,MolecularActivity
+GO:1903136,Cuprous Ion Binding,molecular_function_id,MolecularActivity
+GO:0010853,Cyclase Activator Activity,molecular_function_id,MolecularActivity
+GO:0030551,Cyclic Nucleotide Binding,molecular_function_id,MolecularActivity
+GO:0004690,Cyclic Nucleotide-Dependent Protein Kinase Activity,molecular_function_id,MolecularActivity
+GO:0004112,Cyclic-Nucleotide Phosphodiesterase Activity,molecular_function_id,MolecularActivity
+GO:0097472,Cyclin-Dependent Protein Kinase Activity,molecular_function_id,MolecularActivity
+GO:0061575,Cyclin-Dependent Protein Serine/Threonine Kinase Activator Activity,molecular_function_id,MolecularActivity
+GO:0004693,Cyclin-Dependent Protein Serine/Threonine Kinase Activity,molecular_function_id,MolecularActivity
+GO:0004861,Cyclin-Dependent Protein Serine/Threonine Kinase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0016538,Cyclin-Dependent Protein Serine/Threonine Kinase Regulator Activity,molecular_function_id,MolecularActivity
+GO:0016018,Cyclosporin A Binding,molecular_function_id,MolecularActivity
+GO:0004843,Cysteine-Type Deubiquitinase Activity,molecular_function_id,MolecularActivity
+GO:0008656,Cysteine-Type Endopeptidase Activator Activity Involved In Apoptotic Process,molecular_function_id,MolecularActivity
+GO:0004197,Cysteine-Type Endopeptidase Activity,molecular_function_id,MolecularActivity
+GO:0097153,Cysteine-Type Endopeptidase Activity Involved In Apoptotic Process,molecular_function_id,MolecularActivity
+GO:0097200,Cysteine-Type Endopeptidase Activity Involved In Execution Phase Of Apoptosis,molecular_function_id,MolecularActivity
+GO:0004869,Cysteine-Type Endopeptidase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0043027,Cysteine-Type Endopeptidase Inhibitor Activity Involved In Apoptotic Process,molecular_function_id,MolecularActivity
+GO:0008234,Cysteine-Type Peptidase Activity,molecular_function_id,MolecularActivity
+GO:0004126,Cytidine Deaminase Activity,molecular_function_id,MolecularActivity
+GO:0070567,Cytidylyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0004128,"Cytochrome-B5 Reductase Activity, Acting On NAD(P)H",molecular_function_id,MolecularActivity
+GO:0004129,Cytochrome-C Oxidase Activity,molecular_function_id,MolecularActivity
+GO:0005125,Cytokine Activity,molecular_function_id,MolecularActivity
+GO:0004896,Cytokine Receptor Activity,molecular_function_id,MolecularActivity
+GO:0005126,Cytokine Receptor Binding,molecular_function_id,MolecularActivity
+GO:0003684,Damaged DNA Binding,molecular_function_id,MolecularActivity
+GO:0019784,deNEDDylase Activity,molecular_function_id,MolecularActivity
+GO:0016929,deSUMOylase Activity,molecular_function_id,MolecularActivity
+GO:0019239,Deaminase Activity,molecular_function_id,MolecularActivity
+GO:0070513,Death Domain Binding,molecular_function_id,MolecularActivity
+GO:0005035,Death Receptor Activity,molecular_function_id,MolecularActivity
+GO:0005123,Death Receptor Binding,molecular_function_id,MolecularActivity
+GO:0033300,Dehydroascorbic Acid Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0005251,Delayed Rectifier Potassium Channel Activity,molecular_function_id,MolecularActivity
+GO:0047844,Deoxycytidine Deaminase Activity,molecular_function_id,MolecularActivity
+GO:0101005,Deubiquitinase Activity,molecular_function_id,MolecularActivity
+GO:0004144,Diacylglycerol O-acyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0004143,Diacylglycerol Kinase Activity,molecular_function_id,MolecularActivity
+GO:0005310,Dicarboxylic Acid Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0004157,Dihydropyrimidinase Activity,molecular_function_id,MolecularActivity
+GO:0004551,Dinucleotide Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0016805,Dipeptidase Activity,molecular_function_id,MolecularActivity
+GO:0008239,Dipeptidyl-Peptidase Activity,molecular_function_id,MolecularActivity
+GO:0016778,Diphosphotransferase Activity,molecular_function_id,MolecularActivity
+GO:0097718,Disordered Domain Specific Binding,molecular_function_id,MolecularActivity
+GO:0015036,Disulfide Oxidoreductase Activity,molecular_function_id,MolecularActivity
+GO:0050780,Dopamine Receptor Binding,molecular_function_id,MolecularActivity
+GO:0003690,Double-Stranded DNA Binding,molecular_function_id,MolecularActivity
+GO:0003725,Double-Stranded RNA Binding,molecular_function_id,MolecularActivity
+GO:0010385,Double-Stranded Methylated DNA Binding,molecular_function_id,MolecularActivity
+GO:0003691,Double-Stranded Telomeric DNA Binding,molecular_function_id,MolecularActivity
+GO:0034452,Dynactin Binding,molecular_function_id,MolecularActivity
+GO:0016888,"Endodeoxyribonuclease Activity, Producing 5-Phosphomonoesters",molecular_function_id,MolecularActivity
+GO:0004519,Endonuclease Activity,molecular_function_id,MolecularActivity
+GO:0061133,Endopeptidase Activator Activity,molecular_function_id,MolecularActivity
+GO:0004175,Endopeptidase Activity,molecular_function_id,MolecularActivity
+GO:0004866,Endopeptidase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0061135,Endopeptidase Regulator Activity,molecular_function_id,MolecularActivity
+GO:0004300,enoyl-CoA Hydratase Activity,molecular_function_id,MolecularActivity
+GO:0005003,Ephrin Receptor Activity,molecular_function_id,MolecularActivity
+GO:0046875,Ephrin Receptor Binding,molecular_function_id,MolecularActivity
+GO:0005154,Epidermal Growth Factor Receptor Binding,molecular_function_id,MolecularActivity
+GO:0051379,Epinephrine Binding,molecular_function_id,MolecularActivity
+GO:0004303,Estradiol 17-Beta-Dehydrogenase [NAD(P)] Activity,molecular_function_id,MolecularActivity
+GO:0101020,Estrogen 16-Alpha-Hydroxylase Activity,molecular_function_id,MolecularActivity
+GO:0034056,Estrogen Response Element Binding,molecular_function_id,MolecularActivity
+GO:0016803,Ether Hydrolase Activity,molecular_function_id,MolecularActivity
+GO:0008190,Eukaryotic Initiation Factor 4E Binding,molecular_function_id,MolecularActivity
+GO:0005231,Excitatory Extracellular Ligand-Gated Monoatomic Ion Channel Activity,molecular_function_id,MolecularActivity
+GO:0004527,Exonuclease Activity,molecular_function_id,MolecularActivity
+GO:0008238,Exopeptidase Activity,molecular_function_id,MolecularActivity
+GO:0005230,Extracellular Ligand-Gated Monoatomic Ion Channel Activity,molecular_function_id,MolecularActivity
+GO:0004931,Extracellularly ATP-gated Monoatomic Cation Channel Activity,molecular_function_id,MolecularActivity
+GO:0009922,Fatty Acid Elongase Activity,molecular_function_id,MolecularActivity
+GO:0004312,Fatty Acid Synthase Activity,molecular_function_id,MolecularActivity
+GO:0000062,fatty-acyl-CoA Binding,molecular_function_id,MolecularActivity
+GO:0004321,fatty-acyl-CoA Synthase Activity,molecular_function_id,MolecularActivity
+GO:0008198,Ferrous Iron Binding,molecular_function_id,MolecularActivity
+GO:0004322,Ferroxidase Activity,molecular_function_id,MolecularActivity
+GO:0017134,Fibroblast Growth Factor Binding,molecular_function_id,MolecularActivity
+GO:0005104,Fibroblast Growth Factor Receptor Binding,molecular_function_id,MolecularActivity
+GO:0031005,Filamin Binding,molecular_function_id,MolecularActivity
+GO:0048256,Flap Endonuclease Activity,molecular_function_id,MolecularActivity
+GO:0050660,Flavin Adenine Dinucleotide Binding,molecular_function_id,MolecularActivity
+GO:0000400,Four-Way Junction DNA Binding,molecular_function_id,MolecularActivity
+GO:0009378,Four-Way Junction Helicase Activity,molecular_function_id,MolecularActivity
+GO:0005109,Frizzled Binding,molecular_function_id,MolecularActivity
+GO:0070061,Fructose Binding,molecular_function_id,MolecularActivity
+GO:0005353,Fructose Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0042806,Fucose Binding,molecular_function_id,MolecularActivity
+GO:0008417,Fucosyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0015925,Galactosidase Activity,molecular_function_id,MolecularActivity
+GO:0008378,Galactosyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0015185,Gamma-Aminobutyric Acid Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0043015,Gamma-Tubulin Binding,molecular_function_id,MolecularActivity
+GO:0005243,Gap Junction Channel Activity,molecular_function_id,MolecularActivity
+GO:1903763,Gap Junction Channel Activity Involved In Cell Communication By Electrical Coupling,molecular_function_id,MolecularActivity
+GO:0055077,Gap Junction Hemi-Channel Activity,molecular_function_id,MolecularActivity
+GO:0140296,General Transcription Initiation Factor Binding,molecular_function_id,MolecularActivity
+GO:0005355,Glucose Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0005412,Glucose:Sodium Symporter Activity,molecular_function_id,MolecularActivity
+GO:0015926,Glucosidase Activity,molecular_function_id,MolecularActivity
+GO:0046527,Glucosyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0047238,glucuronosyl-N-acetylgalactosaminyl-proteoglycan 4-beta-N-acetylgalactosaminyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0015020,Glucuronosyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0008066,Glutamate Receptor Activity,molecular_function_id,MolecularActivity
+GO:0035254,Glutamate Receptor Binding,molecular_function_id,MolecularActivity
+GO:0043295,Glutathione Binding,molecular_function_id,MolecularActivity
+GO:0004364,Glutathione Transferase Activity,molecular_function_id,MolecularActivity
+GO:0015254,Glycerol Channel Activity,molecular_function_id,MolecularActivity
+GO:0015168,Glycerol Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0140333,Glycerophospholipid Flippase Activity,molecular_function_id,MolecularActivity
+GO:0016594,Glycine Binding,molecular_function_id,MolecularActivity
+GO:0015187,Glycine Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:2001069,Glycogen Binding,molecular_function_id,MolecularActivity
+GO:0008083,Growth Factor Activity,molecular_function_id,MolecularActivity
+GO:0070851,Growth Factor Receptor Binding,molecular_function_id,MolecularActivity
+GO:0005131,Growth Hormone Receptor Binding,molecular_function_id,MolecularActivity
+GO:0032561,Guanyl Ribonucleotide Binding,molecular_function_id,MolecularActivity
+GO:0005085,Guanyl-Nucleotide Exchange Factor Activity,molecular_function_id,MolecularActivity
+GO:0030250,Guanylate Cyclase Activator Activity,molecular_function_id,MolecularActivity
+GO:0004385,Guanylate Kinase Activity,molecular_function_id,MolecularActivity
+GO:0070568,Guanylyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0020037,Heme Binding,molecular_function_id,MolecularActivity
+GO:0034483,Heparan Sulfate Sulfotransferase Activity,molecular_function_id,MolecularActivity
+GO:0015929,Hexosaminidase Activity,molecular_function_id,MolecularActivity
+GO:0015149,Hexose Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0016758,Hexosyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0008331,High Voltage-Gated Calcium Channel Activity,molecular_function_id,MolecularActivity
+GO:0008035,High-Density Lipoprotein Particle Binding,molecular_function_id,MolecularActivity
+GO:0010484,Histone H3 Acetyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0140996,Histone H3 Kinase Activity,molecular_function_id,MolecularActivity
+GO:0140938,Histone H3 Methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0036408,Histone H3K14 Acetyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0051864,Histone H3K36 Demethylase Activity,molecular_function_id,MolecularActivity
+GO:0046975,Histone H3K36 Methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0032453,Histone H3K4 Demethylase Activity,molecular_function_id,MolecularActivity
+GO:0042800,Histone H3K4 Methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0032454,Histone H3K9 Demethylase Activity,molecular_function_id,MolecularActivity
+GO:0046974,Histone H3K9 Methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0010485,Histone H4 Acetyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0140939,Histone H4 Methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0043997,Histone H4K12 Acetyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0046972,Histone H4K16 Acetyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0042799,Histone H4K20 Methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0043995,Histone H4K5 Acetyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0043996,Histone H4K8 Acetyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0004402,Histone Acetyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0035035,Histone Acetyltransferase Binding,molecular_function_id,MolecularActivity
+GO:0004407,Histone Deacetylase Activity,molecular_function_id,MolecularActivity
+GO:0042826,Histone Deacetylase Binding,molecular_function_id,MolecularActivity
+GO:0032452,Histone Demethylase Activity,molecular_function_id,MolecularActivity
+GO:0140934,Histone Deubiquitinase Activity,molecular_function_id,MolecularActivity
+GO:0042054,Histone Methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:1990226,Histone Methyltransferase Binding,molecular_function_id,MolecularActivity
+GO:0140566,Histone Reader Activity,molecular_function_id,MolecularActivity
+GO:0140852,Histone Ubiquitin Ligase Activity,molecular_function_id,MolecularActivity
+GO:0005179,Hormone Activity,molecular_function_id,MolecularActivity
+GO:0051427,Hormone Receptor Binding,molecular_function_id,MolecularActivity
+GO:0005540,Hyaluronic Acid Binding,molecular_function_id,MolecularActivity
+GO:0004415,Hyalurononglucosaminidase Activity,molecular_function_id,MolecularActivity
+GO:0016836,Hydro-Lyase Activity,molecular_function_id,MolecularActivity
+GO:0016818,"Hydrolase Activity, Acting On Acid Anhydrides, In Phosphorus-Containing Anhydrides",molecular_function_id,MolecularActivity
+GO:0016812,"Hydrolase Activity, Acting On Carbon-Nitrogen (But Not Peptide) Bonds, In Cyclic Amides",molecular_function_id,MolecularActivity
+GO:0016814,"Hydrolase Activity, Acting On Carbon-Nitrogen (But Not Peptide) Bonds, In Cyclic Amidines",molecular_function_id,MolecularActivity
+GO:0016811,"Hydrolase Activity, Acting On Carbon-Nitrogen (But Not Peptide) Bonds, In Linear Amides",molecular_function_id,MolecularActivity
+GO:0016813,"Hydrolase Activity, Acting On Carbon-Nitrogen (But Not Peptide) Bonds, In Linear Amidines",molecular_function_id,MolecularActivity
+GO:0016799,"Hydrolase Activity, Hydrolyzing N-glycosyl Compounds",molecular_function_id,MolecularActivity
+GO:0004553,"Hydrolase Activity, Hydrolyzing O-glycosyl Compounds",molecular_function_id,MolecularActivity
+GO:0016742,"Hydroxymethyl-, Formyl- And Related Transferase Activity",molecular_function_id,MolecularActivity
+GO:0050542,Icosanoid Binding,molecular_function_id,MolecularActivity
+GO:0050543,Icosatetraenoic Acid Binding,molecular_function_id,MolecularActivity
+GO:0034987,Immunoglobulin Receptor Binding,molecular_function_id,MolecularActivity
+GO:0032396,Inhibitory MHC Class I Receptor Activity,molecular_function_id,MolecularActivity
+GO:0005237,Inhibitory Extracellular Ligand-Gated Monoatomic Ion Channel Activity,molecular_function_id,MolecularActivity
+GO:0015103,Inorganic Anion Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0022890,Inorganic Cation Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0005315,Inorganic Phosphate Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0070679,"Inositol 1,4,5 Trisphosphate Binding",molecular_function_id,MolecularActivity
+GO:0046030,Inositol Trisphosphate Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0031994,Insulin-Like Growth Factor I Binding,molecular_function_id,MolecularActivity
+GO:0031995,Insulin-Like Growth Factor II Binding,molecular_function_id,MolecularActivity
+GO:0005520,Insulin-Like Growth Factor Binding,molecular_function_id,MolecularActivity
+GO:0005159,Insulin-Like Growth Factor Receptor Binding,molecular_function_id,MolecularActivity
+GO:0019966,Interleukin-1 Binding,molecular_function_id,MolecularActivity
+GO:0005149,Interleukin-1 Receptor Binding,molecular_function_id,MolecularActivity
+GO:0030368,Interleukin-17 Receptor Activity,molecular_function_id,MolecularActivity
+GO:0005138,Interleukin-6 Receptor Binding,molecular_function_id,MolecularActivity
+GO:0005222,Intracellular cAMP-activated Cation Channel Activity,molecular_function_id,MolecularActivity
+GO:0005223,Intracellular cGMP-activated Cation Channel Activity,molecular_function_id,MolecularActivity
+GO:0005229,Intracellular Calcium Activated Chloride Channel Activity,molecular_function_id,MolecularActivity
+GO:0061778,Intracellular Chloride Channel Activity,molecular_function_id,MolecularActivity
+GO:0005221,Intracellular Cyclic Nucleotide Activated Monoatomic Cation Channel Activity,molecular_function_id,MolecularActivity
+GO:0005217,Intracellular Ligand-Gated Monoatomic Ion Channel Activity,molecular_function_id,MolecularActivity
+GO:0016861,"Intramolecular Oxidoreductase Activity, Interconverting Aldoses And Ketoses",molecular_function_id,MolecularActivity
+GO:0016863,"Intramolecular Oxidoreductase Activity, Transposing C=C Bonds",molecular_function_id,MolecularActivity
+GO:0016868,"Intramolecular Transferase Activity, Phosphotransferases",molecular_function_id,MolecularActivity
+GO:0005242,Inward Rectifier Potassium Channel Activity,molecular_function_id,MolecularActivity
+GO:0008200,Ion Channel Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0004970,Ionotropic Glutamate Receptor Activity,molecular_function_id,MolecularActivity
+GO:0035255,Ionotropic Glutamate Receptor Binding,molecular_function_id,MolecularActivity
+GO:0005506,Iron Ion Binding,molecular_function_id,MolecularActivity
+GO:0005381,Iron Ion Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:1990254,Keratin Filament Binding,molecular_function_id,MolecularActivity
+GO:0019209,Kinase Activator Activity,molecular_function_id,MolecularActivity
+GO:0016301,Kinase Activity,molecular_function_id,MolecularActivity
+GO:0019900,Kinase Binding,molecular_function_id,MolecularActivity
+GO:0019210,Kinase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0019894,Kinesin Binding,molecular_function_id,MolecularActivity
+GO:0004457,Lactate Dehydrogenase Activity,molecular_function_id,MolecularActivity
+GO:0070180,Large Ribosomal Subunit rRNA Binding,molecular_function_id,MolecularActivity
+GO:0022840,Leak Channel Activity,molecular_function_id,MolecularActivity
+GO:0070728,Leucine Binding,molecular_function_id,MolecularActivity
+GO:0043522,Leucine Zipper Domain Binding,molecular_function_id,MolecularActivity
+GO:0099604,Ligand-Gated Calcium Channel Activity,molecular_function_id,MolecularActivity
+GO:0022834,Ligand-Gated Channel Activity,molecular_function_id,MolecularActivity
+GO:0099095,Ligand-Gated Monoatomic Anion Channel Activity,molecular_function_id,MolecularActivity
+GO:0099094,Ligand-Gated Monoatomic Cation Channel Activity,molecular_function_id,MolecularActivity
+GO:0015276,Ligand-Gated Monoatomic Ion Channel Activity,molecular_function_id,MolecularActivity
+GO:0099507,Ligand-Gated Monoatomic Ion Channel Activity Involved In Regulation Of Presynaptic Membrane Potential,molecular_function_id,MolecularActivity
+GO:0015280,Ligand-Gated Sodium Channel Activity,molecular_function_id,MolecularActivity
+GO:0060229,Lipase Activator Activity,molecular_function_id,MolecularActivity
+GO:0016298,Lipase Activity,molecular_function_id,MolecularActivity
+GO:0055102,Lipase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0001727,Lipid Kinase Activity,molecular_function_id,MolecularActivity
+GO:0042577,Lipid Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0004465,Lipoprotein Lipase Activity,molecular_function_id,MolecularActivity
+GO:0071813,Lipoprotein Particle Binding,molecular_function_id,MolecularActivity
+GO:0070325,Lipoprotein Particle Receptor Binding,molecular_function_id,MolecularActivity
+GO:0036041,Long-Chain Fatty Acid Binding,molecular_function_id,MolecularActivity
+GO:0030169,Low-Density Lipoprotein Particle Binding,molecular_function_id,MolecularActivity
+GO:0050750,Low-Density Lipoprotein Particle Receptor Binding,molecular_function_id,MolecularActivity
+GO:0016278,Lysine N-methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0070577,Lysine-Acetylated Histone Binding,molecular_function_id,MolecularActivity
+GO:0042171,Lysophosphatidic Acid Acyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0052642,Lysophosphatidic Acid Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0004622,Lysophospholipase Activity,molecular_function_id,MolecularActivity
+GO:0071617,Lysophospholipid Acyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0035925,mRNA 3-UTR AU-rich Region Binding,molecular_function_id,MolecularActivity
+GO:0003730,mRNA 3-UTR Binding,molecular_function_id,MolecularActivity
+GO:0048027,mRNA 5-UTR Binding,molecular_function_id,MolecularActivity
+GO:0140818,mRNA 5-Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0003729,mRNA Binding,molecular_function_id,MolecularActivity
+GO:0008174,mRNA Methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0000287,Magnesium Ion Binding,molecular_function_id,MolecularActivity
+GO:0015095,Magnesium Ion Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0016615,Malate Dehydrogenase Activity,molecular_function_id,MolecularActivity
+GO:0030145,Manganese Ion Binding,molecular_function_id,MolecularActivity
+GO:0005384,Manganese Ion Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0005537,Mannose Binding,molecular_function_id,MolecularActivity
+GO:0015923,Mannosidase Activity,molecular_function_id,MolecularActivity
+GO:0004571,"Mannosyl-Oligosaccharide 1,2-Alpha-Mannosidase Activity",molecular_function_id,MolecularActivity
+GO:0015924,Mannosyl-Oligosaccharide Mannosidase Activity,molecular_function_id,MolecularActivity
+GO:0000030,Mannosyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0008381,Mechanosensitive Monoatomic Ion Channel Activity,molecular_function_id,MolecularActivity
+GO:0004977,Melanocortin Receptor Activity,molecular_function_id,MolecularActivity
+GO:0051139,Metal Cation:Proton Antiporter Activity,molecular_function_id,MolecularActivity
+GO:0046872,Metal Ion Binding,molecular_function_id,MolecularActivity
+GO:0046873,Metal Ion Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0140492,Metal-Dependent Deubiquitinase Activity,molecular_function_id,MolecularActivity
+GO:0070006,Metalloaminopeptidase Activity,molecular_function_id,MolecularActivity
+GO:0004181,Metallocarboxypeptidase Activity,molecular_function_id,MolecularActivity
+GO:0004222,Metalloendopeptidase Activity,molecular_function_id,MolecularActivity
+GO:0008191,Metalloendopeptidase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0008235,Metalloexopeptidase Activity,molecular_function_id,MolecularActivity
+GO:0008237,Metallopeptidase Activity,molecular_function_id,MolecularActivity
+GO:0008327,methyl-CpG Binding,molecular_function_id,MolecularActivity
+GO:0035064,Methylated Histone Binding,molecular_function_id,MolecularActivity
+GO:0140034,Methylation-Dependent Protein Binding,molecular_function_id,MolecularActivity
+GO:0008168,Methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0035198,miRNA Binding,molecular_function_id,MolecularActivity
+GO:0008017,Microtubule Binding,molecular_function_id,MolecularActivity
+GO:0051011,Microtubule Minus-End Binding,molecular_function_id,MolecularActivity
+GO:0051010,Microtubule Plus-End Binding,molecular_function_id,MolecularActivity
+GO:0003680,Minor Groove Of Adenine-Thymine-Rich DNA Binding,molecular_function_id,MolecularActivity
+GO:0030983,Mismatched DNA Binding,molecular_function_id,MolecularActivity
+GO:0097177,Mitochondrial Ribosome Binding,molecular_function_id,MolecularActivity
+GO:0051019,Mitogen-Activated Protein Kinase Binding,molecular_function_id,MolecularActivity
+GO:0031434,Mitogen-Activated Protein Kinase Kinase Binding,molecular_function_id,MolecularActivity
+GO:0031435,Mitogen-Activated Protein Kinase Kinase Kinase Binding,molecular_function_id,MolecularActivity
+GO:0008504,Monoamine Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0005253,Monoatomic Anion Channel Activity,molecular_function_id,MolecularActivity
+GO:0008509,Monoatomic Anion Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0005261,Monoatomic Cation Channel Activity,molecular_function_id,MolecularActivity
+GO:0008324,Monoatomic Cation Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0140410,Monoatomic Cation:Bicarbonate Symporter Activity,molecular_function_id,MolecularActivity
+GO:0005216,Monoatomic Ion Channel Activity,molecular_function_id,MolecularActivity
+GO:0022839,Monoatomic Ion Gated Channel Activity,molecular_function_id,MolecularActivity
+GO:0140161,Monocarboxylate:Sodium Symporter Activity,molecular_function_id,MolecularActivity
+GO:0033293,Monocarboxylic Acid Binding,molecular_function_id,MolecularActivity
+GO:0008028,Monocarboxylic Acid Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015145,Monosaccharide Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0016015,Morphogen Activity,molecular_function_id,MolecularActivity
+GO:0051371,Muscle Alpha-Actinin Binding,molecular_function_id,MolecularActivity
+GO:0045159,Myosin II Binding,molecular_function_id,MolecularActivity
+GO:0031489,Myosin V Binding,molecular_function_id,MolecularActivity
+GO:0017022,Myosin Binding,molecular_function_id,MolecularActivity
+GO:0032036,Myosin Heavy Chain Binding,molecular_function_id,MolecularActivity
+GO:0032027,Myosin Light Chain Binding,molecular_function_id,MolecularActivity
+GO:0046703,Natural Killer Cell Lectin-Like Receptor Binding,molecular_function_id,MolecularActivity
+GO:0042043,Neurexin Family Protein Binding,molecular_function_id,MolecularActivity
+GO:0004983,Neuropeptide Y Receptor Activity,molecular_function_id,MolecularActivity
+GO:0160041,Neuropeptide Activity,molecular_function_id,MolecularActivity
+GO:0042923,Neuropeptide Binding,molecular_function_id,MolecularActivity
+GO:0005184,Neuropeptide Hormone Activity,molecular_function_id,MolecularActivity
+GO:0008188,Neuropeptide Receptor Activity,molecular_function_id,MolecularActivity
+GO:0071855,Neuropeptide Receptor Binding,molecular_function_id,MolecularActivity
+GO:0099529,Neurotransmitter Receptor Activity Involved In Regulation Of Postsynaptic Membrane Potential,molecular_function_id,MolecularActivity
+GO:0005167,Neurotrophin TRK Receptor Binding,molecular_function_id,MolecularActivity
+GO:0005168,Neurotrophin TRKA Receptor Binding,molecular_function_id,MolecularActivity
+GO:0043121,Neurotrophin Binding,molecular_function_id,MolecularActivity
+GO:0015175,Neutral L-amino Acid Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0005295,Neutral L-amino Acid:Sodium Symporter Activity,molecular_function_id,MolecularActivity
+GO:0050998,Nitric-Oxide Synthase Binding,molecular_function_id,MolecularActivity
+GO:0004715,Non-Membrane Spanning Protein Tyrosine Kinase Activity,molecular_function_id,MolecularActivity
+GO:0004726,Non-Membrane Spanning Protein Tyrosine Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0050681,Nuclear Androgen Receptor Binding,molecular_function_id,MolecularActivity
+GO:0030331,Nuclear Estrogen Receptor Binding,molecular_function_id,MolecularActivity
+GO:0035259,Nuclear Glucocorticoid Receptor Binding,molecular_function_id,MolecularActivity
+GO:0008139,Nuclear Localization Sequence Binding,molecular_function_id,MolecularActivity
+GO:0016922,Nuclear Receptor Binding,molecular_function_id,MolecularActivity
+GO:0030374,Nuclear Receptor Coactivator Activity,molecular_function_id,MolecularActivity
+GO:0042974,Nuclear Retinoic Acid Receptor Binding,molecular_function_id,MolecularActivity
+GO:0046965,Nuclear Retinoid X Receptor Binding,molecular_function_id,MolecularActivity
+GO:0046966,Nuclear Thyroid Hormone Receptor Binding,molecular_function_id,MolecularActivity
+GO:0042809,Nuclear Vitamin D Receptor Binding,molecular_function_id,MolecularActivity
+GO:0004518,Nuclease Activity,molecular_function_id,MolecularActivity
+GO:0019205,Nucleobase-Containing Compound Kinase Activity,molecular_function_id,MolecularActivity
+GO:0004550,Nucleoside Diphosphate Kinase Activity,molecular_function_id,MolecularActivity
+GO:0017110,Nucleoside Diphosphate Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0019206,Nucleoside Kinase Activity,molecular_function_id,MolecularActivity
+GO:0050145,Nucleoside Monophosphate Kinase Activity,molecular_function_id,MolecularActivity
+GO:0005337,Nucleoside Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0047429,Nucleoside Triphosphate Diphosphatase Activity,molecular_function_id,MolecularActivity
+GO:0031492,Nucleosomal DNA Binding,molecular_function_id,MolecularActivity
+GO:0031491,Nucleosome Binding,molecular_function_id,MolecularActivity
+GO:0008252,Nucleotidase Activity,molecular_function_id,MolecularActivity
+GO:0016502,Nucleotide Receptor Activity,molecular_function_id,MolecularActivity
+GO:0015215,Nucleotide Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0016779,Nucleotidyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0004984,Olfactory Receptor Activity,molecular_function_id,MolecularActivity
+GO:0031849,Olfactory Receptor Binding,molecular_function_id,MolecularActivity
+GO:0004576,Oligosaccharyl Transferase Activity,molecular_function_id,MolecularActivity
+GO:0008242,Omega Peptidase Activity,molecular_function_id,MolecularActivity
+GO:0005343,Organic Acid:Sodium Symporter Activity,molecular_function_id,MolecularActivity
+GO:0015271,Outward Rectifier Potassium Channel Activity,molecular_function_id,MolecularActivity
+GO:0019531,Oxalate Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0032356,Oxidized DNA Binding,molecular_function_id,MolecularActivity
+GO:0032357,Oxidized Purine DNA Binding,molecular_function_id,MolecularActivity
+GO:0016653,"Oxidoreductase Activity, Acting On NAD(P)H, Heme Protein As Acceptor",molecular_function_id,MolecularActivity
+GO:0050664,"Oxidoreductase Activity, Acting On NAD(P)H, Oxygen As Acceptor",molecular_function_id,MolecularActivity
+GO:0016655,"Oxidoreductase Activity, Acting On NAD(P)H, Quinone Or Similar Compound As Acceptor",molecular_function_id,MolecularActivity
+GO:0016671,"Oxidoreductase Activity, Acting On A Sulfur Group Of Donors, Disulfide As Acceptor",molecular_function_id,MolecularActivity
+GO:0016670,"Oxidoreductase Activity, Acting On A Sulfur Group Of Donors, Oxygen As Acceptor",molecular_function_id,MolecularActivity
+GO:0016724,"Oxidoreductase Activity, Acting On Metal Ions, Oxygen As Acceptor",molecular_function_id,MolecularActivity
+GO:0016709,"Oxidoreductase Activity, Acting On Paired Donors, With Incorporation Or Reduction Of Molecular Oxygen, NAD(P)H As One Donor, And Incorporation Of One Atom Of Oxygen",molecular_function_id,MolecularActivity
+GO:0016716,"Oxidoreductase Activity, Acting On Paired Donors, With Incorporation Or Reduction Of Molecular Oxygen, Another Compound As One Donor, And Incorporation Of One Atom Of Oxygen",molecular_function_id,MolecularActivity
+GO:0016712,"Oxidoreductase Activity, Acting On Paired Donors, With Incorporation Or Reduction Of Molecular Oxygen, Reduced Flavin Or Flavoprotein As One Donor, And Incorporation Of One Atom Of Oxygen",molecular_function_id,MolecularActivity
+GO:0016713,"Oxidoreductase Activity, Acting On Paired Donors, With Incorporation Or Reduction Of Molecular Oxygen, Reduced Iron-Sulfur Protein As One Donor, And Incorporation Of One Atom Of Oxygen",molecular_function_id,MolecularActivity
+GO:0016717,"Oxidoreductase Activity, Acting On Paired Donors, With Oxidation Of A Pair Of Donors Resulting In The Reduction Of Molecular Oxygen To Two Molecules Of Water",molecular_function_id,MolecularActivity
+GO:0016702,"Oxidoreductase Activity, Acting On Single Donors With Incorporation Of Molecular Oxygen, Incorporation Of Two Atoms Of Oxygen",molecular_function_id,MolecularActivity
+GO:0016628,"Oxidoreductase Activity, Acting On The CH-CH Group Of Donors, NAD Or NADP As Acceptor",molecular_function_id,MolecularActivity
+GO:0052890,"Oxidoreductase Activity, Acting On The CH-CH Group Of Donors, With A Flavin As Acceptor",molecular_function_id,MolecularActivity
+GO:0016646,"Oxidoreductase Activity, Acting On The CH-NH Group Of Donors, NAD Or NADP As Acceptor",molecular_function_id,MolecularActivity
+GO:0016641,"Oxidoreductase Activity, Acting On The CH-NH2 Group Of Donors, Oxygen As Acceptor",molecular_function_id,MolecularActivity
+GO:0016616,"Oxidoreductase Activity, Acting On The CH-OH Group Of Donors, NAD Or NADP As Acceptor",molecular_function_id,MolecularActivity
+GO:0016620,"Oxidoreductase Activity, Acting On The Aldehyde Or Oxo Group Of Donors, NAD Or NADP As Acceptor",molecular_function_id,MolecularActivity
+GO:0016624,"Oxidoreductase Activity, Acting On The Aldehyde Or Oxo Group Of Donors, Disulfide As Acceptor",molecular_function_id,MolecularActivity
+GO:0015453,Oxidoreduction-Driven Active Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0008142,Oxysterol Binding,molecular_function_id,MolecularActivity
+GO:0016290,palmitoyl-CoA Hydrolase Activity,molecular_function_id,MolecularActivity
+GO:0016409,Palmitoyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0005113,Patched Binding,molecular_function_id,MolecularActivity
+GO:0016763,Pentosyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0016504,Peptidase Activator Activity,molecular_function_id,MolecularActivity
+GO:0016505,Peptidase Activator Activity Involved In Apoptotic Process,molecular_function_id,MolecularActivity
+GO:0030414,Peptidase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0034212,Peptide N-acetyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0004596,Peptide alpha-N-acetyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0051428,Peptide Hormone Receptor Binding,molecular_function_id,MolecularActivity
+GO:1904680,Peptide Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0042834,Peptidoglycan Binding,molecular_function_id,MolecularActivity
+GO:0031545,Peptidyl-Proline 4-Dioxygenase Activity,molecular_function_id,MolecularActivity
+GO:0042975,Peroxisome Proliferator Activated Receptor Binding,molecular_function_id,MolecularActivity
+GO:0019211,Phosphatase Activator Activity,molecular_function_id,MolecularActivity
+GO:0016791,Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0019902,Phosphatase Binding,molecular_function_id,MolecularActivity
+GO:0019212,Phosphatase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0042301,Phosphate Ion Binding,molecular_function_id,MolecularActivity
+GO:0008195,Phosphatidate Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0070300,Phosphatidic Acid Binding,molecular_function_id,MolecularActivity
+GO:1990050,Phosphatidic Acid Transfer Activity,molecular_function_id,MolecularActivity
+GO:0008525,Phosphatidylcholine Transporter Activity,molecular_function_id,MolecularActivity
+GO:0060228,Phosphatidylcholine-Sterol O-acyltransferase Activator Activity,molecular_function_id,MolecularActivity
+GO:0008429,Phosphatidylethanolamine Binding,molecular_function_id,MolecularActivity
+GO:1901611,Phosphatidylglycerol Binding,molecular_function_id,MolecularActivity
+GO:0035004,Phosphatidylinositol 3-Kinase Activity,molecular_function_id,MolecularActivity
+GO:0035014,Phosphatidylinositol 3-Kinase Regulator Activity,molecular_function_id,MolecularActivity
+GO:0036312,Phosphatidylinositol 3-Kinase Regulatory Subunit Binding,molecular_function_id,MolecularActivity
+GO:0035091,Phosphatidylinositol Binding,molecular_function_id,MolecularActivity
+GO:1902936,Phosphatidylinositol Bisphosphate Binding,molecular_function_id,MolecularActivity
+GO:0052813,Phosphatidylinositol Bisphosphate Kinase Activity,molecular_function_id,MolecularActivity
+GO:0052742,Phosphatidylinositol Kinase Activity,molecular_function_id,MolecularActivity
+GO:0052744,Phosphatidylinositol Monophosphate Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0034596,Phosphatidylinositol Phosphate 4-Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0034595,Phosphatidylinositol Phosphate 5-Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:1901981,Phosphatidylinositol Phosphate Binding,molecular_function_id,MolecularActivity
+GO:0016307,Phosphatidylinositol Phosphate Kinase Activity,molecular_function_id,MolecularActivity
+GO:0004435,Phosphatidylinositol Phospholipase C Activity,molecular_function_id,MolecularActivity
+GO:0008526,Phosphatidylinositol Transfer Activity,molecular_function_id,MolecularActivity
+GO:0034594,Phosphatidylinositol Trisphosphate Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0005547,"Phosphatidylinositol-3,4,5-Trisphosphate Binding",molecular_function_id,MolecularActivity
+GO:0043325,"Phosphatidylinositol-3,4-Bisphosphate Binding",molecular_function_id,MolecularActivity
+GO:0052629,"Phosphatidylinositol-3,5-Bisphosphate 3-Phosphatase Activity",molecular_function_id,MolecularActivity
+GO:0080025,"Phosphatidylinositol-3,5-Bisphosphate Binding",molecular_function_id,MolecularActivity
+GO:0106018,"Phosphatidylinositol-3,5-Bisphosphate Phosphatase Activity",molecular_function_id,MolecularActivity
+GO:0032266,Phosphatidylinositol-3-Phosphate Binding,molecular_function_id,MolecularActivity
+GO:0004438,Phosphatidylinositol-3-Phosphate Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0046934,"Phosphatidylinositol-4,5-Bisphosphate 3-Kinase Activity",molecular_function_id,MolecularActivity
+GO:0004439,"Phosphatidylinositol-4,5-Bisphosphate 5-Phosphatase Activity",molecular_function_id,MolecularActivity
+GO:0005546,"Phosphatidylinositol-4,5-Bisphosphate Binding",molecular_function_id,MolecularActivity
+GO:0106019,"Phosphatidylinositol-4,5-Bisphosphate Phosphatase Activity",molecular_function_id,MolecularActivity
+GO:0070273,Phosphatidylinositol-4-Phosphate Binding,molecular_function_id,MolecularActivity
+GO:0010314,Phosphatidylinositol-5-Phosphate Binding,molecular_function_id,MolecularActivity
+GO:0008443,Phosphofructokinase Activity,molecular_function_id,MolecularActivity
+GO:0008970,Phospholipase A1 Activity,molecular_function_id,MolecularActivity
+GO:0004623,Phospholipase A2 Activity,molecular_function_id,MolecularActivity
+GO:0004629,Phospholipase C Activity,molecular_function_id,MolecularActivity
+GO:0004630,Phospholipase D Activity,molecular_function_id,MolecularActivity
+GO:0016004,Phospholipase Activator Activity,molecular_function_id,MolecularActivity
+GO:0004620,Phospholipase Activity,molecular_function_id,MolecularActivity
+GO:0043274,Phospholipase Binding,molecular_function_id,MolecularActivity
+GO:0004859,Phospholipase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0017128,Phospholipid Scramblase Activity,molecular_function_id,MolecularActivity
+GO:0120014,Phospholipid Transfer Activity,molecular_function_id,MolecularActivity
+GO:0008081,Phosphoric Diester Hydrolase Activity,molecular_function_id,MolecularActivity
+GO:0042578,Phosphoric Ester Hydrolase Activity,molecular_function_id,MolecularActivity
+GO:0050815,Phosphoserine Residue Binding,molecular_function_id,MolecularActivity
+GO:0016773,"Phosphotransferase Activity, Alcohol Group As Acceptor",molecular_function_id,MolecularActivity
+GO:0016780,"Phosphotransferase Activity, For Other Substituted Phosphate Groups",molecular_function_id,MolecularActivity
+GO:0016776,"Phosphotransferase Activity, Phosphate Group As Acceptor",molecular_function_id,MolecularActivity
+GO:0001784,Phosphotyrosine Residue Binding,molecular_function_id,MolecularActivity
+GO:0048407,Platelet-Derived Growth Factor Binding,molecular_function_id,MolecularActivity
+GO:0005161,Platelet-Derived Growth Factor Receptor Binding,molecular_function_id,MolecularActivity
+GO:1990817,poly(A) RNA Polymerase Activity,molecular_function_id,MolecularActivity
+GO:0008143,poly(A) Binding,molecular_function_id,MolecularActivity
+GO:0004535,poly(A)-specific Ribonuclease Activity,molecular_function_id,MolecularActivity
+GO:0034046,poly(G) Binding,molecular_function_id,MolecularActivity
+GO:0008266,poly(U) RNA Binding,molecular_function_id,MolecularActivity
+GO:0070717,Poly-Purine Tract Binding,molecular_function_id,MolecularActivity
+GO:0008187,Poly-Pyrimidine Tract Binding,molecular_function_id,MolecularActivity
+GO:0031593,Polyubiquitin Modification-Dependent Protein Binding,molecular_function_id,MolecularActivity
+GO:0098960,Postsynaptic Neurotransmitter Receptor Activity,molecular_function_id,MolecularActivity
+GO:0005267,Potassium Channel Activity,molecular_function_id,MolecularActivity
+GO:0015459,Potassium Channel Regulator Activity,molecular_function_id,MolecularActivity
+GO:0030955,Potassium Ion Binding,molecular_function_id,MolecularActivity
+GO:0022841,Potassium Ion Leak Channel Activity,molecular_function_id,MolecularActivity
+GO:0015079,Potassium Ion Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015379,Potassium:Chloride Symporter Activity,molecular_function_id,MolecularActivity
+GO:0015386,Potassium:Proton Antiporter Activity,molecular_function_id,MolecularActivity
+GO:0030628,pre-mRNA 3-Splice Site Binding,molecular_function_id,MolecularActivity
+GO:0036002,pre-mRNA Binding,molecular_function_id,MolecularActivity
+GO:0097157,pre-mRNA Intronic Binding,molecular_function_id,MolecularActivity
+GO:0070883,pre-miRNA Binding,molecular_function_id,MolecularActivity
+GO:0004659,Prenyltransferase Activity,molecular_function_id,MolecularActivity
+GO:1990275,Preribosome Binding,molecular_function_id,MolecularActivity
+GO:0008131,Primary Amine Oxidase Activity,molecular_function_id,MolecularActivity
+GO:0070878,Primary miRNA Binding,molecular_function_id,MolecularActivity
+GO:0019798,Procollagen-Proline Dioxygenase Activity,molecular_function_id,MolecularActivity
+GO:1990841,Promoter-Specific Chromatin Binding,molecular_function_id,MolecularActivity
+GO:0004955,Prostaglandin Receptor Activity,molecular_function_id,MolecularActivity
+GO:0015132,Prostaglandin Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0002020,Protease Binding,molecular_function_id,MolecularActivity
+GO:0086080,Protein Binding Involved In Heterotypic Cell-Cell Adhesion,molecular_function_id,MolecularActivity
+GO:0051998,Protein Carboxyl O-methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0046982,Protein Heterodimerization Activity,molecular_function_id,MolecularActivity
+GO:0042803,Protein Homodimerization Activity,molecular_function_id,MolecularActivity
+GO:0034236,Protein Kinase A Catalytic Subunit Binding,molecular_function_id,MolecularActivity
+GO:0034237,Protein Kinase A Regulatory Subunit Binding,molecular_function_id,MolecularActivity
+GO:0043422,Protein Kinase B Binding,molecular_function_id,MolecularActivity
+GO:0004697,Protein Kinase C Activity,molecular_function_id,MolecularActivity
+GO:0005080,Protein Kinase C Binding,molecular_function_id,MolecularActivity
+GO:0030295,Protein Kinase Activator Activity,molecular_function_id,MolecularActivity
+GO:0019901,Protein Kinase Binding,molecular_function_id,MolecularActivity
+GO:0004860,Protein Kinase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0019887,Protein Kinase Regulator Activity,molecular_function_id,MolecularActivity
+GO:0008157,Protein Phosphatase 1 Binding,molecular_function_id,MolecularActivity
+GO:0051721,Protein Phosphatase 2A Binding,molecular_function_id,MolecularActivity
+GO:0030346,Protein Phosphatase 2B Binding,molecular_function_id,MolecularActivity
+GO:0072542,Protein Phosphatase Activator Activity,molecular_function_id,MolecularActivity
+GO:0019903,Protein Phosphatase Binding,molecular_function_id,MolecularActivity
+GO:0004864,Protein Phosphatase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0019888,Protein Phosphatase Regulator Activity,molecular_function_id,MolecularActivity
+GO:0045309,Protein Phosphorylated Amino Acid Binding,molecular_function_id,MolecularActivity
+GO:0106310,Protein Serine Kinase Activity,molecular_function_id,MolecularActivity
+GO:0043539,Protein Serine/Threonine Kinase Activator Activity,molecular_function_id,MolecularActivity
+GO:0004674,Protein Serine/Threonine Kinase Activity,molecular_function_id,MolecularActivity
+GO:0030291,Protein Serine/Threonine Kinase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0004722,Protein Serine/Threonine Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0004865,Protein Serine/Threonine Phosphatase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0004712,Protein Serine/Threonine/Tyrosine Kinase Activity,molecular_function_id,MolecularActivity
+GO:0030296,Protein Tyrosine Kinase Activator Activity,molecular_function_id,MolecularActivity
+GO:0004713,Protein Tyrosine Kinase Activity,molecular_function_id,MolecularActivity
+GO:1990782,Protein Tyrosine Kinase Binding,molecular_function_id,MolecularActivity
+GO:0030292,Protein Tyrosine Kinase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0004725,Protein Tyrosine Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0008138,Protein Tyrosine/Serine/Threonine Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0008330,Protein Tyrosine/Threonine Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0016274,Protein-Arginine N-methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0019706,Protein-Cysteine S-palmitoyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0003810,Protein-Glutamine Gamma-Glutamyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0016279,Protein-Lysine N-methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0015252,Proton Channel Activity,molecular_function_id,MolecularActivity
+GO:0015078,Proton Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0046961,"Proton-Transporting ATPase Activity, Rotational Mechanism",molecular_function_id,MolecularActivity
+GO:0009982,Pseudouridine Synthase Activity,molecular_function_id,MolecularActivity
+GO:0005345,Purine Nucleobase Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015216,Purine Nucleotide Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0035639,Purine Ribonucleoside Triphosphate Binding,molecular_function_id,MolecularActivity
+GO:0005346,Purine Ribonucleotide Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0001614,Purinergic Nucleotide Receptor Activity,molecular_function_id,MolecularActivity
+GO:0030170,Pyridoxal Phosphate Binding,molecular_function_id,MolecularActivity
+GO:0005350,Pyrimidine Nucleobase Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015214,Pyrimidine Nucleoside Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015165,Pyrimidine Nucleotide-Sugar Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0016462,Pyrophosphatase Activity,molecular_function_id,MolecularActivity
+GO:0009678,Pyrophosphate Hydrolysis-Driven Proton Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0050833,Pyruvate Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015651,Quaternary Ammonium Group Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0000182,rDNA Binding,molecular_function_id,MolecularActivity
+GO:0016433,rRNA (Adenine) Methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0019843,rRNA Binding,molecular_function_id,MolecularActivity
+GO:0008649,rRNA Methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0016857,"Racemase And Epimerase Activity, Acting On Carbohydrates And Derivatives",molecular_function_id,MolecularActivity
+GO:0048019,Receptor Antagonist Activity,molecular_function_id,MolecularActivity
+GO:0048018,Receptor Ligand Activity,molecular_function_id,MolecularActivity
+GO:0030971,Receptor Tyrosine Kinase Binding,molecular_function_id,MolecularActivity
+GO:0061980,Regulatory RNA Binding,molecular_function_id,MolecularActivity
+GO:0016918,Retinal Binding,molecular_function_id,MolecularActivity
+GO:0001758,Retinal Dehydrogenase Activity,molecular_function_id,MolecularActivity
+GO:0008401,Retinoic Acid 4-Hydroxylase Activity,molecular_function_id,MolecularActivity
+GO:0001972,Retinoic Acid Binding,molecular_function_id,MolecularActivity
+GO:0005501,Retinoid Binding,molecular_function_id,MolecularActivity
+GO:0019841,Retinol Binding,molecular_function_id,MolecularActivity
+GO:0050253,Retinyl-Palmitate Esterase Activity,molecular_function_id,MolecularActivity
+GO:0032217,Riboflavin Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0033204,Ribonuclease P RNA Binding,molecular_function_id,MolecularActivity
+GO:0004526,Ribonuclease P Activity,molecular_function_id,MolecularActivity
+GO:0017111,Ribonucleoside Triphosphate Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0043023,Ribosomal Large Subunit Binding,molecular_function_id,MolecularActivity
+GO:0043024,Ribosomal Small Subunit Binding,molecular_function_id,MolecularActivity
+GO:0043022,Ribosome Binding,molecular_function_id,MolecularActivity
+GO:0015355,Secondary Active Monocarboxylate Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015291,Secondary Active Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0017154,Semaphorin Receptor Activity,molecular_function_id,MolecularActivity
+GO:0030215,Semaphorin Receptor Binding,molecular_function_id,MolecularActivity
+GO:0043565,Sequence-Specific DNA Binding,molecular_function_id,MolecularActivity
+GO:1990837,Sequence-Specific Double-Stranded DNA Binding,molecular_function_id,MolecularActivity
+GO:1990825,Sequence-Specific mRNA Binding,molecular_function_id,MolecularActivity
+GO:0022889,Serine Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0004252,Serine-Type Endopeptidase Activity,molecular_function_id,MolecularActivity
+GO:0004867,Serine-Type Endopeptidase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0070008,Serine-Type Exopeptidase Activity,molecular_function_id,MolecularActivity
+GO:0008236,Serine-Type Peptidase Activity,molecular_function_id,MolecularActivity
+GO:0099589,Serotonin Receptor Activity,molecular_function_id,MolecularActivity
+GO:0035197,siRNA Binding,molecular_function_id,MolecularActivity
+GO:0008373,Sialyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0005047,Signal Recognition Particle Binding,molecular_function_id,MolecularActivity
+GO:0005048,Signal Sequence Binding,molecular_function_id,MolecularActivity
+GO:0030159,Signaling Receptor Complex Adaptor Activity,molecular_function_id,MolecularActivity
+GO:0003697,Single-Stranded DNA Binding,molecular_function_id,MolecularActivity
+GO:0000014,Single-Stranded DNA Endodeoxyribonuclease Activity,molecular_function_id,MolecularActivity
+GO:0008297,Single-Stranded DNA Exodeoxyribonuclease Activity,molecular_function_id,MolecularActivity
+GO:0017116,Single-Stranded DNA Helicase Activity,molecular_function_id,MolecularActivity
+GO:0003727,Single-Stranded RNA Binding,molecular_function_id,MolecularActivity
+GO:0043047,Single-Stranded Telomeric DNA Binding,molecular_function_id,MolecularActivity
+GO:0031267,Small GTPase Binding,molecular_function_id,MolecularActivity
+GO:0070181,Small Ribosomal Subunit rRNA Binding,molecular_function_id,MolecularActivity
+GO:0017069,snRNA Binding,molecular_function_id,MolecularActivity
+GO:0030515,snoRNA Binding,molecular_function_id,MolecularActivity
+GO:0005272,Sodium Channel Activity,molecular_function_id,MolecularActivity
+GO:0019871,Sodium Channel Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:0017080,Sodium Channel Regulator Activity,molecular_function_id,MolecularActivity
+GO:0031402,Sodium Ion Binding,molecular_function_id,MolecularActivity
+GO:0015081,Sodium Ion Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015347,Sodium-Independent Organic Anion Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015378,Sodium:Chloride Symporter Activity,molecular_function_id,MolecularActivity
+GO:0005436,Sodium:Phosphate Symporter Activity,molecular_function_id,MolecularActivity
+GO:0015385,Sodium:Proton Antiporter Activity,molecular_function_id,MolecularActivity
+GO:0005452,Solute:Inorganic Anion Antiporter Activity,molecular_function_id,MolecularActivity
+GO:0015294,Solute:Monoatomic Cation Symporter Activity,molecular_function_id,MolecularActivity
+GO:0022821,Solute:Potassium Antiporter Activity,molecular_function_id,MolecularActivity
+GO:0015295,Solute:Proton Symporter Activity,molecular_function_id,MolecularActivity
+GO:0015370,Solute:Sodium Symporter Activity,molecular_function_id,MolecularActivity
+GO:0050291,Sphingosine N-acyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0042392,Sphingosine-1-Phosphate Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0033764,"Steroid Dehydrogenase Activity, Acting On The CH-OH Group Of Donors, NAD Or NADP As Acceptor",molecular_function_id,MolecularActivity
+GO:0008395,Steroid Hydroxylase Activity,molecular_function_id,MolecularActivity
+GO:0032934,Sterol Binding,molecular_function_id,MolecularActivity
+GO:0004771,Sterol Esterase Activity,molecular_function_id,MolecularActivity
+GO:0120015,Sterol Transfer Activity,molecular_function_id,MolecularActivity
+GO:0015279,Store-Operated Calcium Channel Activity,molecular_function_id,MolecularActivity
+GO:0015141,Succinate Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0050308,Sugar-Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0015116,Sulfate Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0120146,Sulfatide Binding,molecular_function_id,MolecularActivity
+GO:0008146,Sulfotransferase Activity,molecular_function_id,MolecularActivity
+GO:0000099,Sulfur Amino Acid Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0008484,Sulfuric Ester Hydrolase Activity,molecular_function_id,MolecularActivity
+GO:0016783,Sulfurtransferase Activity,molecular_function_id,MolecularActivity
+GO:0097100,Supercoiled DNA Binding,molecular_function_id,MolecularActivity
+GO:0016175,Superoxide-Generating NAD(P)H Oxidase Activity,molecular_function_id,MolecularActivity
+GO:0016176,Superoxide-Generating NADPH Oxidase Activator Activity,molecular_function_id,MolecularActivity
+GO:0015293,Symporter Activity,molecular_function_id,MolecularActivity
+GO:0019905,Syntaxin Binding,molecular_function_id,MolecularActivity
+GO:0017075,Syntaxin-1 Binding,molecular_function_id,MolecularActivity
+GO:0016427,tRNA (Cytosine) Methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0016423,tRNA (Guanine) Methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0000049,tRNA Binding,molecular_function_id,MolecularActivity
+GO:0008175,tRNA Methyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0008251,tRNA-specific Adenosine Deaminase Activity,molecular_function_id,MolecularActivity
+GO:0004549,tRNA-specific Ribonuclease Activity,molecular_function_id,MolecularActivity
+GO:0008527,Taste Receptor Activity,molecular_function_id,MolecularActivity
+GO:0048156,Tau Protein Binding,molecular_function_id,MolecularActivity
+GO:0050321,Tau-Protein Kinase Activity,molecular_function_id,MolecularActivity
+GO:0031433,Telethonin Binding,molecular_function_id,MolecularActivity
+GO:0070034,Telomerase RNA Binding,molecular_function_id,MolecularActivity
+GO:0003720,Telomerase Activity,molecular_function_id,MolecularActivity
+GO:0042162,Telomeric DNA Binding,molecular_function_id,MolecularActivity
+GO:0030283,Testosterone Dehydrogenase [NAD(P)] Activity,molecular_function_id,MolecularActivity
+GO:0015234,Thiamine Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0031996,Thioesterase Binding,molecular_function_id,MolecularActivity
+GO:0070003,Threonine-Type Peptidase Activity,molecular_function_id,MolecularActivity
+GO:0015349,Thyroid Hormone Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0031432,Titin Binding,molecular_function_id,MolecularActivity
+GO:0001594,Trace-Amine Receptor Activity,molecular_function_id,MolecularActivity
+GO:0008483,Transaminase Activity,molecular_function_id,MolecularActivity
+GO:0000976,Transcription Cis-Regulatory Region Binding,molecular_function_id,MolecularActivity
+GO:0001223,Transcription Coactivator Binding,molecular_function_id,MolecularActivity
+GO:0001221,Transcription Coregulator Binding,molecular_function_id,MolecularActivity
+GO:0001222,Transcription Corepressor Binding,molecular_function_id,MolecularActivity
+GO:0001067,Transcription Regulatory Region Nucleic Acid Binding,molecular_function_id,MolecularActivity
+GO:1990459,Transferrin Receptor Binding,molecular_function_id,MolecularActivity
+GO:0050431,Transforming Growth Factor Beta Binding,molecular_function_id,MolecularActivity
+GO:0005024,Transforming Growth Factor Beta Receptor Activity,molecular_function_id,MolecularActivity
+GO:0005160,Transforming Growth Factor Beta Receptor Binding,molecular_function_id,MolecularActivity
+GO:0046914,Transition Metal Ion Binding,molecular_function_id,MolecularActivity
+GO:0046915,Transition Metal Ion Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0003746,Translation Elongation Factor Activity,molecular_function_id,MolecularActivity
+GO:0003743,Translation Initiation Factor Activity,molecular_function_id,MolecularActivity
+GO:0019199,Transmembrane Receptor Protein Kinase Activity,molecular_function_id,MolecularActivity
+GO:0019198,Transmembrane Receptor Protein Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0004675,Transmembrane Receptor Protein Serine/Threonine Kinase Activity,molecular_function_id,MolecularActivity
+GO:0070696,Transmembrane Receptor Protein Serine/Threonine Kinase Binding,molecular_function_id,MolecularActivity
+GO:0030297,Transmembrane Receptor Protein Tyrosine Kinase Activator Activity,molecular_function_id,MolecularActivity
+GO:0004714,Transmembrane Receptor Protein Tyrosine Kinase Activity,molecular_function_id,MolecularActivity
+GO:0005068,Transmembrane Receptor Protein Tyrosine Kinase Adaptor Activity,molecular_function_id,MolecularActivity
+GO:0005001,Transmembrane Receptor Protein Tyrosine Phosphatase Activity,molecular_function_id,MolecularActivity
+GO:0005005,Transmembrane-Ephrin Receptor Activity,molecular_function_id,MolecularActivity
+GO:0022824,Transmitter-Gated Monoatomic Ion Channel Activity,molecular_function_id,MolecularActivity
+GO:1904315,Transmitter-Gated Monoatomic Ion Channel Activity Involved In Regulation Of Postsynaptic Membrane Potential,molecular_function_id,MolecularActivity
+GO:0004806,Triglyceride Lipase Activity,molecular_function_id,MolecularActivity
+GO:0005523,Tropomyosin Binding,molecular_function_id,MolecularActivity
+GO:0015631,Tubulin Binding,molecular_function_id,MolecularActivity
+GO:0070740,Tubulin-Glutamic Acid Ligase Activity,molecular_function_id,MolecularActivity
+GO:0005031,Tumor Necrosis Factor Receptor Activity,molecular_function_id,MolecularActivity
+GO:0005164,Tumor Necrosis Factor Receptor Binding,molecular_function_id,MolecularActivity
+GO:0032813,Tumor Necrosis Factor Receptor Superfamily Binding,molecular_function_id,MolecularActivity
+GO:0034713,Type I Transforming Growth Factor Beta Receptor Binding,molecular_function_id,MolecularActivity
+GO:0005114,Type II Transforming Growth Factor Beta Receptor Binding,molecular_function_id,MolecularActivity
+GO:0043130,Ubiquitin Binding,molecular_function_id,MolecularActivity
+GO:0061631,Ubiquitin Conjugating Enzyme Activity,molecular_function_id,MolecularActivity
+GO:0031624,Ubiquitin Conjugating Enzyme Binding,molecular_function_id,MolecularActivity
+GO:1990757,Ubiquitin Ligase Activator Activity,molecular_function_id,MolecularActivity
+GO:1990948,Ubiquitin Ligase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:1990756,Ubiquitin Ligase-Substrate Adaptor Activity,molecular_function_id,MolecularActivity
+GO:0061630,Ubiquitin Protein Ligase Activity,molecular_function_id,MolecularActivity
+GO:0031625,Ubiquitin Protein Ligase Binding,molecular_function_id,MolecularActivity
+GO:0140036,Ubiquitin-Dependent Protein Binding,molecular_function_id,MolecularActivity
+GO:0061650,Ubiquitin-Like Protein Conjugating Enzyme Activity,molecular_function_id,MolecularActivity
+GO:0044390,Ubiquitin-Like Protein Conjugating Enzyme Binding,molecular_function_id,MolecularActivity
+GO:0061659,Ubiquitin-Like Protein Ligase Activity,molecular_function_id,MolecularActivity
+GO:0044389,Ubiquitin-Like Protein Ligase Binding,molecular_function_id,MolecularActivity
+GO:0019783,Ubiquitin-Like Protein Peptidase Activity,molecular_function_id,MolecularActivity
+GO:0019787,Ubiquitin-Like Protein Transferase Activity,molecular_function_id,MolecularActivity
+GO:0097027,Ubiquitin-Protein Transferase Activator Activity,molecular_function_id,MolecularActivity
+GO:0004842,Ubiquitin-Protein Transferase Activity,molecular_function_id,MolecularActivity
+GO:0055105,Ubiquitin-Protein Transferase Inhibitor Activity,molecular_function_id,MolecularActivity
+GO:1990381,Ubiquitin-Specific Protease Binding,molecular_function_id,MolecularActivity
+GO:0034450,Ubiquitin-Ubiquitin Ligase Activity,molecular_function_id,MolecularActivity
+GO:0140035,Ubiquitination-Like Modification-Dependent Protein Binding,molecular_function_id,MolecularActivity
+GO:0045322,Unmethylated CpG Binding,molecular_function_id,MolecularActivity
+GO:0015143,Urate Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015204,Urea Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0015213,Uridine Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0070569,Uridylyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0043184,Vascular Endothelial Growth Factor Receptor 2 Binding,molecular_function_id,MolecularActivity
+GO:0005021,Vascular Endothelial Growth Factor Receptor Activity,molecular_function_id,MolecularActivity
+GO:0005172,Vascular Endothelial Growth Factor Receptor Binding,molecular_function_id,MolecularActivity
+GO:0005000,Vasopressin Receptor Activity,molecular_function_id,MolecularActivity
+GO:0017166,Vinculin Binding,molecular_function_id,MolecularActivity
+GO:0005245,Voltage-Gated Calcium Channel Activity,molecular_function_id,MolecularActivity
+GO:0022832,Voltage-Gated Channel Activity,molecular_function_id,MolecularActivity
+GO:0005247,Voltage-Gated Chloride Channel Activity,molecular_function_id,MolecularActivity
+GO:0008308,Voltage-Gated Monoatomic Anion Channel Activity,molecular_function_id,MolecularActivity
+GO:0022843,Voltage-Gated Monoatomic Cation Channel Activity,molecular_function_id,MolecularActivity
+GO:0005244,Voltage-Gated Monoatomic Ion Channel Activity,molecular_function_id,MolecularActivity
+GO:0005249,Voltage-Gated Potassium Channel Activity,molecular_function_id,MolecularActivity
+GO:0086008,Voltage-Gated Potassium Channel Activity Involved In Cardiac Muscle Cell Action Potential Repolarization,molecular_function_id,MolecularActivity
+GO:1902282,Voltage-Gated Potassium Channel Activity Involved In Ventricular Cardiac Muscle Cell Action Potential Repolarization,molecular_function_id,MolecularActivity
+GO:0005248,Voltage-Gated Sodium Channel Activity,molecular_function_id,MolecularActivity
+GO:0005225,Volume-Sensitive Anion Channel Activity,molecular_function_id,MolecularActivity
+GO:0015250,Water Channel Activity,molecular_function_id,MolecularActivity
+GO:0005372,Water Transmembrane Transporter Activity,molecular_function_id,MolecularActivity
+GO:0022829,Wide Pore Channel Activity,molecular_function_id,MolecularActivity
+GO:0042285,Xylosyltransferase Activity,molecular_function_id,MolecularActivity
+GO:0008270,Zinc Ion Binding,molecular_function_id,MolecularActivity
+GO:0005385,Zinc Ion Transmembrane Transporter Activity,molecular_function_id,MolecularActivity

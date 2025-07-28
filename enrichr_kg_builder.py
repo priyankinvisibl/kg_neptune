@@ -350,39 +350,39 @@ def build_enrichr_knowledge_graph(output_dir=None, datasets=None, convert_to_nep
         try:
             from utils.neptune_loader import NeptuneLoader
             logger.info(f"\nLoading data into Neptune database at {neptune_endpoint}...")
+            logger.info("Using ordered loading: nodes first, then edges...")
             
             # Create Neptune loader
             loader = NeptuneLoader(neptune_endpoint, iam_role_arn)
             
-            # Start load job
+            # Use ordered loading to ensure nodes are loaded before edges
             s3_source_uri = f"s3://{s3_bucket}/{s3_prefix}/"
-            load_id = loader.start_load_job(s3_source_uri)
+            results = loader.start_ordered_load_job(
+                s3_source_uri,
+                load_format="csv",
+                fail_on_error=False,  # Continue loading even if some files fail
+                parallelism="MEDIUM",
+                poll_interval=15,     # Check status every 15 seconds
+                timeout=1800          # 30 minute timeout per file
+            )
             
-            if load_id:
-                logger.info(f"Started Neptune load job with ID: {load_id}")
+            if results["status"] == "success":
+                total_jobs = len(results["node_jobs"]) + len(results["edge_jobs"])
+                logger.info(f"✅ Neptune ordered load completed successfully!")
+                logger.info(f"   Node files loaded: {len(results['node_jobs'])}")
+                logger.info(f"   Edge files loaded: {len(results['edge_jobs'])}")
+                logger.info(f"   Total jobs: {total_jobs}")
                 
-                # Wait for job completion
-                logger.info("Waiting for load job to complete...")
-                status = loader.wait_for_load_completion(load_id)
-                
-                if status:
-                    overall_status = status.get("overallStatus", {}).get("status")
-                    logger.info(f"Load job completed with status: {overall_status}")
-                    
-                    # Log loading statistics
-                    if "failedFeatures" in status:
-                        logger.warning("Some features failed to load:")
-                        for feature in status["failedFeatures"]:
-                            logger.warning(f"  - {feature}")
-                    
-                    if "errors" in status and status["errors"]:
-                        logger.warning(f"Load job had {len(status['errors'])} errors")
-                        for error in status["errors"][:5]:  # Show first 5 errors
-                            logger.warning(f"  - {error}")
-                else:
-                    logger.error("Failed to get load job status")
+                if results["errors"]:
+                    logger.warning(f"Encountered {len(results['errors'])} warnings:")
+                    for error in results["errors"][:5]:  # Show first 5 errors
+                        logger.warning(f"  - {error}")
+                    if len(results["errors"]) > 5:
+                        logger.warning(f"  ... and {len(results['errors']) - 5} more")
             else:
-                logger.error("Failed to start Neptune load job")
+                logger.error(f"❌ Neptune ordered load failed!")
+                logger.error(f"Errors: {results.get('errors', [])}")
+                
         except Exception as e:
             logger.error(f"Error loading to Neptune: {e}")
             import traceback

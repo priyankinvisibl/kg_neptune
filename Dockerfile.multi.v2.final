@@ -1,0 +1,40 @@
+# Multi-Builder Knowledge Graph Builder v2 (FINAL)
+# Supports multiple builders with proper S3 and Neptune integration
+# FINAL VERSION: Properly handles output directory mapping and only processes current run
+
+FROM python:3.9-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /app
+
+# Copy requirements and install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy all source files
+COPY enrichr_kg_builder.py .
+COPY civic_kg_builder.py .
+COPY hpo_configurable_kg_builder.py .
+COPY mesh_nt_kg.py .
+COPY mesh_xml_kg.py .
+COPY run_single_volume_multi_fixed_v2_final.py .
+COPY adapters/ ./adapters/
+COPY utils/ ./utils/
+COPY config/ ./config/
+COPY hpo/ ./hpo/
+
+# Create output directory
+RUN mkdir -p /app/output
+
+# Set permissions
+RUN chmod +x run_single_volume_multi_fixed_v2_final.py
+
+# Set the entrypoint to use the final version
+ENTRYPOINT ["python", "/app/run_single_volume_multi_fixed_v2_final.py"]

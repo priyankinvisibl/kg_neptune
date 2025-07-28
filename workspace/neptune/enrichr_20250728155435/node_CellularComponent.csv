@@ -1,0 +1,475 @@
+~id,name:String,preferred_id:String,~label
+GO:0097731,9+0 Non-Motile Cilium,cellular component_id,CellularComponent
+GO:0097729,9+2 Motile Cilium,cellular component_id,CellularComponent
+GO:0030686,90S Preribosome,cellular component_id,CellularComponent
+GO:0032281,AMPA Glutamate Receptor Complex,cellular component_id,CellularComponent
+GO:0030121,AP-1 Adaptor Complex,cellular component_id,CellularComponent
+GO:0030122,AP-2 Adaptor Complex,cellular component_id,CellularComponent
+GO:0030123,AP-3 Adaptor Complex,cellular component_id,CellularComponent
+GO:0140672,ATAC Complex,cellular component_id,CellularComponent
+GO:0043190,ATP-binding Cassette (ABC) Transporter Complex,cellular component_id,CellularComponent
+GO:0098533,ATPase Dependent Transmembrane Transport Complex,cellular component_id,CellularComponent
+GO:0110016,B-WICH Complex,cellular component_id,CellularComponent
+GO:0031083,BLOC-1 Complex,cellular component_id,CellularComponent
+GO:0035631,CD40 Receptor Complex,cellular component_id,CellularComponent
+GO:0071162,CMG Complex,cellular component_id,CellularComponent
+GO:0030126,COPI Vesicle Coat,cellular component_id,CellularComponent
+GO:0030137,COPI-coated Vesicle,cellular component_id,CellularComponent
+GO:0030663,COPI-coated Vesicle Membrane,cellular component_id,CellularComponent
+GO:0030127,COPII Vesicle Coat,cellular component_id,CellularComponent
+GO:0030134,COPII-coated ER To Golgi Transport Vesicle,cellular component_id,CellularComponent
+GO:0036128,CatSper Complex,cellular component_id,CellularComponent
+GO:0016593,Cdc73/Paf1 Complex,cellular component_id,CellularComponent
+GO:0031462,Cul2-RING Ubiquitin Ligase Complex,cellular component_id,CellularComponent
+GO:0031463,Cul3-RING Ubiquitin Ligase Complex,cellular component_id,CellularComponent
+GO:0080008,Cul4-RING E3 Ubiquitin Ligase Complex,cellular component_id,CellularComponent
+GO:0031464,Cul4A-RING E3 Ubiquitin Ligase Complex,cellular component_id,CellularComponent
+GO:0031466,Cul5-RING Ubiquitin Ligase Complex,cellular component_id,CellularComponent
+GO:0012507,ER To Golgi Transport Vesicle Membrane,cellular component_id,CellularComponent
+GO:0035098,ESC/E(Z) Complex,cellular component_id,CellularComponent
+GO:0038037,G Protein-Coupled Receptor Dimeric Complex,cellular component_id,CellularComponent
+GO:1902711,GABA-A Receptor Complex,cellular component_id,CellularComponent
+GO:0098982,GABA-ergic Synapse,cellular component_id,CellularComponent
+GO:0140288,GBAF Complex,cellular component_id,CellularComponent
+GO:0000137,Golgi Cis Cisterna,cellular component_id,CellularComponent
+GO:0031985,Golgi Cisterna,cellular component_id,CellularComponent
+GO:0032580,Golgi Cisterna Membrane,cellular component_id,CellularComponent
+GO:0005796,Golgi Lumen,cellular component_id,CellularComponent
+GO:0005797,Golgi Medial Cisterna,cellular component_id,CellularComponent
+GO:0000139,Golgi Membrane,cellular component_id,CellularComponent
+GO:0005795,Golgi Stack,cellular component_id,CellularComponent
+GO:0000138,Golgi Trans Cisterna,cellular component_id,CellularComponent
+GO:0005798,Golgi-associated Vesicle,cellular component_id,CellularComponent
+GO:0030660,Golgi-associated Vesicle Membrane,cellular component_id,CellularComponent
+GO:0070775,H3 Histone Acetyltransferase Complex,cellular component_id,CellularComponent
+GO:1902562,H4 Histone Acetyltransferase Complex,cellular component_id,CellularComponent
+GO:0043189,H4/H2A Histone Acetyltransferase Complex,cellular component_id,CellularComponent
+GO:1990712,HFE-transferrin Receptor Complex,cellular component_id,CellularComponent
+GO:0000839,Hrd1p Ubiquitin Ligase ERAD-L Complex,cellular component_id,CellularComponent
+GO:0000836,Hrd1p Ubiquitin Ligase Complex,cellular component_id,CellularComponent
+GO:0097346,INO80-type Complex,cellular component_id,CellularComponent
+GO:0031010,ISWI-type Complex,cellular component_id,CellularComponent
+GO:0031011,Ino80 Complex,cellular component_id,CellularComponent
+GO:0042612,MHC Class I Protein Complex,cellular component_id,CellularComponent
+GO:0042613,MHC Class II Protein Complex,cellular component_id,CellularComponent
+GO:0042611,MHC Protein Complex,cellular component_id,CellularComponent
+GO:0140275,MIB Complex,cellular component_id,CellularComponent
+GO:0061617,MICOS Complex,cellular component_id,CellularComponent
+GO:0071339,MLL1 Complex,cellular component_id,CellularComponent
+GO:0044665,MLL1/2 Complex,cellular component_id,CellularComponent
+GO:0044666,MLL3/4 Complex,cellular component_id,CellularComponent
+GO:0070776,MOZ/MORF Histone Acetyltransferase Complex,cellular component_id,CellularComponent
+GO:0043020,NADPH Oxidase Complex,cellular component_id,CellularComponent
+GO:0017146,NMDA Selective Glutamate Receptor Complex,cellular component_id,CellularComponent
+GO:0044545,NSL Complex,cellular component_id,CellularComponent
+GO:0016589,NURF Complex,cellular component_id,CellularComponent
+GO:0035267,NuA4 Histone Acetyltransferase Complex,cellular component_id,CellularComponent
+GO:0043186,P Granule,cellular component_id,CellularComponent
+GO:0000932,P-body,cellular component_id,CellularComponent
+GO:0120157,PAR Polarity Complex,cellular component_id,CellularComponent
+GO:0035102,PRC1 Complex,cellular component_id,CellularComponent
+GO:0072357,PTW/PP1 Phosphatase Complex,cellular component_id,CellularComponent
+GO:0016442,RISC Complex,cellular component_id,CellularComponent
+GO:0070578,RISC-loading Complex,cellular component_id,CellularComponent
+GO:0036396,RNA N6-methyladenosine Methyltransferase Complex,cellular component_id,CellularComponent
+GO:0005736,RNA Polymerase I Complex,cellular component_id,CellularComponent
+GO:0005665,"RNA Polymerase II, Core Complex",cellular component_id,CellularComponent
+GO:0005666,RNA Polymerase III Complex,cellular component_id,CellularComponent
+GO:0016586,RSC-type Complex,cellular component_id,CellularComponent
+GO:0000124,SAGA Complex,cellular component_id,CellularComponent
+GO:0070461,SAGA-type Complex,cellular component_id,CellularComponent
+GO:0001401,SAM Complex,cellular component_id,CellularComponent
+GO:0019005,SCF Ubiquitin Ligase Complex,cellular component_id,CellularComponent
+GO:0106068,SUMO Ligase Complex,cellular component_id,CellularComponent
+GO:0016514,SWI/SNF Complex,cellular component_id,CellularComponent
+GO:0048188,Set1C/COMPASS Complex,cellular component_id,CellularComponent
+GO:0016580,Sin3 Complex,cellular component_id,CellularComponent
+GO:0070822,Sin3-type Complex,cellular component_id,CellularComponent
+GO:0030915,Smc5-Smc6 Complex,cellular component_id,CellularComponent
+GO:0000812,Swr1 Complex,cellular component_id,CellularComponent
+GO:0042101,T Cell Receptor Complex,cellular component_id,CellularComponent
+GO:0000445,THO Complex Part Of Transcription Export Complex,cellular component_id,CellularComponent
+GO:0042721,TIM22 Mitochondrial Import Inner Membrane Insertion Complex,cellular component_id,CellularComponent
+GO:0005744,TIM23 Mitochondrial Import Inner Membrane Translocase Complex,cellular component_id,CellularComponent
+GO:0031932,TORC2 Complex,cellular component_id,CellularComponent
+GO:1990071,TRAPPII Protein Complex,cellular component_id,CellularComponent
+GO:1990072,TRAPPIII Protein Complex,cellular component_id,CellularComponent
+GO:0005685,U1 snRNP,cellular component_id,CellularComponent
+GO:0005689,U12-type Spliceosomal Complex,cellular component_id,CellularComponent
+GO:0005686,U2 snRNP,cellular component_id,CellularComponent
+GO:0071006,U2-type Catalytic Step 1 Spliceosome,cellular component_id,CellularComponent
+GO:0071007,U2-type Catalytic Step 2 Spliceosome,cellular component_id,CellularComponent
+GO:0071005,U2-type Precatalytic Spliceosome,cellular component_id,CellularComponent
+GO:0071004,U2-type Prespliceosome,cellular component_id,CellularComponent
+GO:0005684,U2-type Spliceosomal Complex,cellular component_id,CellularComponent
+GO:0005687,U4 snRNP,cellular component_id,CellularComponent
+GO:0046540,U4/U6 X U5 tri-snRNP Complex,cellular component_id,CellularComponent
+GO:0005682,U5 snRNP,cellular component_id,CellularComponent
+GO:0005688,U6 snRNP,cellular component_id,CellularComponent
+GO:0005683,U7 snRNP,cellular component_id,CellularComponent
+GO:0000805,X Chromosome,cellular component_id,CellularComponent
+GO:0005892,Acetylcholine-Gated Channel Complex,cellular component_id,CellularComponent
+GO:0002080,Acrosomal Membrane,cellular component_id,CellularComponent
+GO:0001669,Acrosomal Vesicle,cellular component_id,CellularComponent
+GO:0015629,Actin Cytoskeleton,cellular component_id,CellularComponent
+GO:0005884,Actin Filament,cellular component_id,CellularComponent
+GO:0098858,Actin-Based Cell Projection,cellular component_id,CellularComponent
+GO:0048179,Activin Receptor Complex,cellular component_id,CellularComponent
+GO:0005912,Adherens Junction,cellular component_id,CellularComponent
+GO:0016235,Aggresome,cellular component_id,CellularComponent
+GO:0042105,Alpha-Beta T Cell Receptor Complex,cellular component_id,CellularComponent
+GO:0097208,Alveolar Lamellar Body,cellular component_id,CellularComponent
+GO:0044753,Amphisome,cellular component_id,CellularComponent
+GO:1904930,Amphisome Membrane,cellular component_id,CellularComponent
+GO:0005680,Anaphase-Promoting Complex,cellular component_id,CellularComponent
+GO:0097440,Apical Dendrite,cellular component_id,CellularComponent
+GO:0043296,Apical Junction Complex,cellular component_id,CellularComponent
+GO:0016327,Apicolateral Plasma Membrane,cellular component_id,CellularComponent
+GO:0000235,Astral Microtubule,cellular component_id,CellularComponent
+GO:0097449,Astrocyte Projection,cellular component_id,CellularComponent
+GO:0032279,Asymmetric Synapse,cellular component_id,CellularComponent
+GO:0098985,"Asymmetric, Glutamatergic, Excitatory Synapse",cellular component_id,CellularComponent
+GO:0044754,Autolysosome,cellular component_id,CellularComponent
+GO:0005776,Autophagosome,cellular component_id,CellularComponent
+GO:0000421,Autophagosome Membrane,cellular component_id,CellularComponent
+GO:0030424,Axon,cellular component_id,CellularComponent
+GO:0044295,Axonal Growth Cone,cellular component_id,CellularComponent
+GO:0042582,Azurophil Granule,cellular component_id,CellularComponent
+GO:0035578,Azurophil Granule Lumen,cellular component_id,CellularComponent
+GO:0035577,Azurophil Granule Membrane,cellular component_id,CellularComponent
+GO:0140092,bBAF Complex,cellular component_id,CellularComponent
+GO:0005604,Basement Membrane,cellular component_id,CellularComponent
+GO:0016323,Basolateral Plasma Membrane,cellular component_id,CellularComponent
+GO:1990907,beta-catenin-TCF Complex,cellular component_id,CellularComponent
+GO:0005923,Bicellular Tight Junction,cellular component_id,CellularComponent
+GO:0098588,Bounding Membrane Of Organelle,cellular component_id,CellularComponent
+GO:0031428,Box C/D RNP Complex,cellular component_id,CellularComponent
+GO:0035060,Brahma Complex,cellular component_id,CellularComponent
+GO:0031526,Brush Border Membrane,cellular component_id,CellularComponent
+GO:0034704,Calcium Channel Complex,cellular component_id,CellularComponent
+GO:0016342,Catenin Complex,cellular component_id,CellularComponent
+GO:0034703,Cation Channel Complex,cellular component_id,CellularComponent
+GO:0090533,Cation-Transporting ATPase Complex,cellular component_id,CellularComponent
+GO:0005901,Caveola,cellular component_id,CellularComponent
+GO:0031253,Cell Projection Membrane,cellular component_id,CellularComponent
+GO:0044291,Cell-Cell Contact Zone,cellular component_id,CellularComponent
+GO:0005911,Cell-Cell Junction,cellular component_id,CellularComponent
+GO:0030055,Cell-Substrate Junction,cellular component_id,CellularComponent
+GO:0045009,Chitosome,cellular component_id,CellularComponent
+GO:0034707,Chloride Channel Complex,cellular component_id,CellularComponent
+GO:0033391,Chromatoid Body,cellular component_id,CellularComponent
+GO:0010369,Chromocenter,cellular component_id,CellularComponent
+GO:0005694,Chromosome,cellular component_id,CellularComponent
+GO:0042627,Chylomicron,cellular component_id,CellularComponent
+GO:0060170,Ciliary Membrane,cellular component_id,CellularComponent
+GO:0005929,Cilium,cellular component_id,CellularComponent
+GO:0005801,cis-Golgi Network,cellular component_id,CellularComponent
+GO:0033106,cis-Golgi Network Membrane,cellular component_id,CellularComponent
+GO:0030131,Clathrin Adaptor Complex,cellular component_id,CellularComponent
+GO:0030118,Clathrin Coat,cellular component_id,CellularComponent
+GO:0030132,Clathrin Coat Of Coated Pit,cellular component_id,CellularComponent
+GO:0030128,Clathrin Coat Of Endocytic Vesicle,cellular component_id,CellularComponent
+GO:0030130,Clathrin Coat Of trans-Golgi Network Vesicle,cellular component_id,CellularComponent
+GO:0030125,Clathrin Vesicle Coat,cellular component_id,CellularComponent
+GO:0045334,Clathrin-Coated Endocytic Vesicle,cellular component_id,CellularComponent
+GO:0030669,Clathrin-Coated Endocytic Vesicle Membrane,cellular component_id,CellularComponent
+GO:0030136,Clathrin-Coated Vesicle,cellular component_id,CellularComponent
+GO:0030665,Clathrin-Coated Vesicle Membrane,cellular component_id,CellularComponent
+GO:0061200,Clathrin-Sculpted Gamma-Aminobutyric Acid Transport Vesicle,cellular component_id,CellularComponent
+GO:0061202,Clathrin-Sculpted Gamma-Aminobutyric Acid Transport Vesicle Membrane,cellular component_id,CellularComponent
+GO:0030135,Coated Vesicle,cellular component_id,CellularComponent
+GO:0030662,Coated Vesicle Membrane,cellular component_id,CellularComponent
+GO:0062023,Collagen-Containing Extracellular Matrix,cellular component_id,CellularComponent
+GO:0000793,Condensed Chromosome,cellular component_id,CellularComponent
+GO:0000779,"Condensed Chromosome, Centromeric Region",cellular component_id,CellularComponent
+GO:0000794,Condensed Nuclear Chromosome,cellular component_id,CellularComponent
+GO:0005922,Connexin Complex,cellular component_id,CellularComponent
+GO:0070847,Core Mediator Complex,cellular component_id,CellularComponent
+GO:0001533,Cornified Envelope,cellular component_id,CellularComponent
+GO:0030864,Cortical Actin Cytoskeleton,cellular component_id,CellularComponent
+GO:0030863,Cortical Cytoskeleton,cellular component_id,CellularComponent
+GO:0032541,Cortical Endoplasmic Reticulum,cellular component_id,CellularComponent
+GO:0060473,Cortical Granule,cellular component_id,CellularComponent
+GO:0031461,cullin-RING Ubiquitin Ligase Complex,cellular component_id,CellularComponent
+GO:0000307,Cyclin-Dependent Protein Kinase Holoenzyme Complex,cellular component_id,CellularComponent
+GO:0008024,cyclin/CDK Positive Transcription Elongation Factor Complex,cellular component_id,CellularComponent
+GO:0044194,Cytolytic Granule,cellular component_id,CellularComponent
+GO:0005868,Cytoplasmic Dynein Complex,cellular component_id,CellularComponent
+GO:0098554,Cytoplasmic Side Of Endoplasmic Reticulum Membrane,cellular component_id,CellularComponent
+GO:0010009,Cytoplasmic Side Of Endosome Membrane,cellular component_id,CellularComponent
+GO:0098574,Cytoplasmic Side Of Lysosomal Membrane,cellular component_id,CellularComponent
+GO:0009898,Cytoplasmic Side Of Plasma Membrane,cellular component_id,CellularComponent
+GO:0010494,Cytoplasmic Stress Granule,cellular component_id,CellularComponent
+GO:0060205,Cytoplasmic Vesicle Lumen,cellular component_id,CellularComponent
+GO:0030659,Cytoplasmic Vesicle Membrane,cellular component_id,CellularComponent
+GO:0005856,Cytoskeleton,cellular component_id,CellularComponent
+GO:0048788,Cytoskeleton Of Presynaptic Active Zone,cellular component_id,CellularComponent
+GO:0022625,Cytosolic Large Ribosomal Subunit,cellular component_id,CellularComponent
+GO:0022627,Cytosolic Small Ribosomal Subunit,cellular component_id,CellularComponent
+GO:0031264,Death-Inducing Signaling Complex,cellular component_id,CellularComponent
+GO:0030425,Dendrite,cellular component_id,CellularComponent
+GO:0032839,Dendrite Cytoplasm,cellular component_id,CellularComponent
+GO:0032590,Dendrite Membrane,cellular component_id,CellularComponent
+GO:0032591,Dendritic Spine Membrane,cellular component_id,CellularComponent
+GO:0031045,Dense Core Granule,cellular component_id,CellularComponent
+GO:0030057,Desmosome,cellular component_id,CellularComponent
+GO:0045240,Dihydrolipoyl Dehydrogenase Complex,cellular component_id,CellularComponent
+GO:0016011,Dystroglycan Complex,cellular component_id,CellularComponent
+GO:0005769,Early Endosome,cellular component_id,CellularComponent
+GO:0031901,Early Endosome Membrane,cellular component_id,CellularComponent
+GO:0032009,Early Phagosome,cellular component_id,CellularComponent
+GO:0030139,Endocytic Vesicle,cellular component_id,CellularComponent
+GO:0071682,Endocytic Vesicle Lumen,cellular component_id,CellularComponent
+GO:0030666,Endocytic Vesicle Membrane,cellular component_id,CellularComponent
+GO:0036019,Endolysosome,cellular component_id,CellularComponent
+GO:0036020,Endolysosome Membrane,cellular component_id,CellularComponent
+GO:1905369,Endopeptidase Complex,cellular component_id,CellularComponent
+GO:0005788,Endoplasmic Reticulum Lumen,cellular component_id,CellularComponent
+GO:0005789,Endoplasmic Reticulum Membrane,cellular component_id,CellularComponent
+GO:0071782,Endoplasmic Reticulum Tubular Network,cellular component_id,CellularComponent
+GO:0033116,Endoplasmic reticulum-Golgi Intermediate Compartment Membrane,cellular component_id,CellularComponent
+GO:1902555,Endoribonuclease Complex,cellular component_id,CellularComponent
+GO:0031904,Endosome Lumen,cellular component_id,CellularComponent
+GO:0010008,Endosome Membrane,cellular component_id,CellularComponent
+GO:0000791,Euchromatin,cellular component_id,CellularComponent
+GO:0060076,Excitatory Synapse,cellular component_id,CellularComponent
+GO:0070382,Exocytic Vesicle,cellular component_id,CellularComponent
+GO:0099501,Exocytic Vesicle Membrane,cellular component_id,CellularComponent
+GO:0098591,External Side Of Apical Plasma Membrane,cellular component_id,CellularComponent
+GO:0065010,Extracellular Membrane-Bounded Organelle,cellular component_id,CellularComponent
+GO:1903561,Extracellular Vesicle,cellular component_id,CellularComponent
+GO:0031234,Extrinsic Component Of Cytoplasmic Side Of Plasma Membrane,cellular component_id,CellularComponent
+GO:0042406,Extrinsic Component Of Endoplasmic Reticulum Membrane,cellular component_id,CellularComponent
+GO:0031313,Extrinsic Component Of Endosome Membrane,cellular component_id,CellularComponent
+GO:0101002,Ficolin-1-Rich Granule,cellular component_id,CellularComponent
+GO:1904813,Ficolin-1-Rich Granule Lumen,cellular component_id,CellularComponent
+GO:0101003,Ficolin-1-Rich Granule Membrane,cellular component_id,CellularComponent
+GO:0030175,Filopodium,cellular component_id,CellularComponent
+GO:0031527,Filopodium Membrane,cellular component_id,CellularComponent
+GO:0016600,Flotillin Complex,cellular component_id,CellularComponent
+GO:0005925,Focal Adhesion,cellular component_id,CellularComponent
+GO:0042106,Gamma-Delta T Cell Receptor Complex,cellular component_id,CellularComponent
+GO:0005921,Gap Junction,cellular component_id,CellularComponent
+GO:0060293,Germ Plasm,cellular component_id,CellularComponent
+GO:0097386,Glial Cell Projection,cellular component_id,CellularComponent
+GO:0098978,Glutamatergic Synapse,cellular component_id,CellularComponent
+GO:0030056,Hemidesmosome,cellular component_id,CellularComponent
+GO:0000792,Heterochromatin,cellular component_id,CellularComponent
+GO:0005834,Heterotrimeric G-protein Complex,cellular component_id,CellularComponent
+GO:0034364,High-Density Lipoprotein Particle,cellular component_id,CellularComponent
+GO:0000123,Histone Acetyltransferase Complex,cellular component_id,CellularComponent
+GO:0060077,Inhibitory Synapse,cellular component_id,CellularComponent
+GO:0032593,Insulin-Responsive Compartment,cellular component_id,CellularComponent
+GO:0014704,Intercalated Disc,cellular component_id,CellularComponent
+GO:0005882,Intermediate Filament,cellular component_id,CellularComponent
+GO:0045111,Intermediate Filament Cytoskeleton,cellular component_id,CellularComponent
+GO:0017071,Intracellular Cyclic Nucleotide Activated Cation Channel Complex,cellular component_id,CellularComponent
+GO:0043231,Intracellular Membrane-Bounded Organelle,cellular component_id,CellularComponent
+GO:0043232,Intracellular Non-Membrane-Bounded Organelle,cellular component_id,CellularComponent
+GO:0070013,Intracellular Organelle Lumen,cellular component_id,CellularComponent
+GO:0097708,Intracellular Vesicle,cellular component_id,CellularComponent
+GO:0008328,Ionotropic Glutamate Receptor Complex,cellular component_id,CellularComponent
+GO:0014701,Junctional Sarcoplasmic Reticulum Membrane,cellular component_id,CellularComponent
+GO:0045095,Keratin Filament,cellular component_id,CellularComponent
+GO:0005828,Kinetochore Microtubule,cellular component_id,CellularComponent
+GO:0042599,Lamellar Body,cellular component_id,CellularComponent
+GO:0015934,Large Ribosomal Subunit,cellular component_id,CellularComponent
+GO:0005770,Late Endosome,cellular component_id,CellularComponent
+GO:0031906,Late Endosome Lumen,cellular component_id,CellularComponent
+GO:0031902,Late Endosome Membrane,cellular component_id,CellularComponent
+GO:0005811,Lipid Droplet,cellular component_id,CellularComponent
+GO:0034362,Low-Density Lipoprotein Particle,cellular component_id,CellularComponent
+GO:0098553,Lumenal Side Of Endoplasmic Reticulum Membrane,cellular component_id,CellularComponent
+GO:0043202,Lysosomal Lumen,cellular component_id,CellularComponent
+GO:0005765,Lysosomal Membrane,cellular component_id,CellularComponent
+GO:0005764,Lysosome,cellular component_id,CellularComponent
+GO:0000323,Lytic Vacuole,cellular component_id,CellularComponent
+GO:0098852,Lytic Vacuole Membrane,cellular component_id,CellularComponent
+GO:0005847,mRNA Cleavage And Polyadenylation Specificity Factor Complex,cellular component_id,CellularComponent
+GO:0044354,Macropinosome,cellular component_id,CellularComponent
+GO:0042470,Melanosome,cellular component_id,CellularComponent
+GO:0033162,Melanosome Membrane,cellular component_id,CellularComponent
+GO:0005579,Membrane Attack Complex,cellular component_id,CellularComponent
+GO:0045121,Membrane Raft,cellular component_id,CellularComponent
+GO:0031907,Microbody Lumen,cellular component_id,CellularComponent
+GO:0031903,Microbody Membrane,cellular component_id,CellularComponent
+GO:0001527,Microfibril,cellular component_id,CellularComponent
+GO:0005874,Microtubule,cellular component_id,CellularComponent
+GO:0015630,Microtubule Cytoskeleton,cellular component_id,CellularComponent
+GO:0005902,Microvillus,cellular component_id,CellularComponent
+GO:0031528,Microvillus Membrane,cellular component_id,CellularComponent
+GO:0005947,Mitochondrial Alpha-Ketoglutarate Dehydrogenase Complex,cellular component_id,CellularComponent
+GO:0005740,Mitochondrial Envelope,cellular component_id,CellularComponent
+GO:0005743,Mitochondrial Inner Membrane,cellular component_id,CellularComponent
+GO:0005758,Mitochondrial Intermembrane Space,cellular component_id,CellularComponent
+GO:0005759,Mitochondrial Matrix,cellular component_id,CellularComponent
+GO:0031966,Mitochondrial Membrane,cellular component_id,CellularComponent
+GO:0005741,Mitochondrial Outer Membrane,cellular component_id,CellularComponent
+GO:0005742,Mitochondrial Outer Membrane Translocase Complex,cellular component_id,CellularComponent
+GO:0005753,Mitochondrial Proton-Transporting ATP Synthase Complex,cellular component_id,CellularComponent
+GO:0000276,"Mitochondrial Proton-Transporting ATP Synthase Complex, Coupling Factor F(o)",cellular component_id,CellularComponent
+GO:0005747,Mitochondrial Respiratory Chain Complex I,cellular component_id,CellularComponent
+GO:0005750,Mitochondrial Respiratory Chain Complex III,cellular component_id,CellularComponent
+GO:0005751,Mitochondrial Respiratory Chain Complex IV,cellular component_id,CellularComponent
+GO:0005761,Mitochondrial Ribosome,cellular component_id,CellularComponent
+GO:0072686,Mitotic Spindle,cellular component_id,CellularComponent
+GO:1990498,Mitotic Spindle Microtubule,cellular component_id,CellularComponent
+GO:0034702,Monoatomic Ion Channel Complex,cellular component_id,CellularComponent
+GO:0031514,Motile Cilium,cellular component_id,CellularComponent
+GO:0030681,Multimeric Ribonuclease P Complex,cellular component_id,CellularComponent
+GO:0005771,Multivesicular Body,cellular component_id,CellularComponent
+GO:0097486,Multivesicular Body Lumen,cellular component_id,CellularComponent
+GO:0032585,Multivesicular Body Membrane,cellular component_id,CellularComponent
+GO:0097487,"Multivesicular Body, Internal Vesicle",cellular component_id,CellularComponent
+GO:0005859,Muscle Myosin Complex,cellular component_id,CellularComponent
+GO:0030016,Myofibril,cellular component_id,CellularComponent
+GO:0032982,Myosin Filament,cellular component_id,CellularComponent
+GO:0071565,nBAF Complex,cellular component_id,CellularComponent
+GO:0031594,Neuromuscular Junction,cellular component_id,CellularComponent
+GO:0043005,Neuron Projection,cellular component_id,CellularComponent
+GO:0120111,Neuron Projection Cytoplasm,cellular component_id,CellularComponent
+GO:0098984,Neuron To Neuron Synapse,cellular component_id,CellularComponent
+GO:0098992,Neuronal Dense Core Vesicle,cellular component_id,CellularComponent
+GO:0098878,Neurotransmitter Receptor Complex,cellular component_id,CellularComponent
+GO:0097730,Non-Motile Cilium,cellular component_id,CellularComponent
+GO:0071564,npBAF Complex,cellular component_id,CellularComponent
+GO:0000228,Nuclear Chromosome,cellular component_id,CellularComponent
+GO:0005641,Nuclear Envelope Lumen,cellular component_id,CellularComponent
+GO:0042405,Nuclear Inclusion Body,cellular component_id,CellularComponent
+GO:0005637,Nuclear Inner Membrane,cellular component_id,CellularComponent
+GO:0031981,Nuclear Lumen,cellular component_id,CellularComponent
+GO:0031965,Nuclear Membrane,cellular component_id,CellularComponent
+GO:0005640,Nuclear Outer Membrane,cellular component_id,CellularComponent
+GO:0097165,Nuclear Stress Granule,cellular component_id,CellularComponent
+GO:0101019,Nucleolar Exosome (RNase Complex),cellular component_id,CellularComponent
+GO:0005730,Nucleolus,cellular component_id,CellularComponent
+GO:0005634,Nucleus,cellular component_id,CellularComponent
+GO:0031970,Organelle Envelope Lumen,cellular component_id,CellularComponent
+GO:0019866,Organelle Inner Membrane,cellular component_id,CellularComponent
+GO:0031968,Organelle Outer Membrane,cellular component_id,CellularComponent
+GO:0036157,Outer Dynein Arm,cellular component_id,CellularComponent
+GO:0005721,Pericentric Heterochromatin,cellular component_id,CellularComponent
+GO:0072534,Perineuronal Net,cellular component_id,CellularComponent
+GO:0098966,Perisynaptic Extracellular Matrix,cellular component_id,CellularComponent
+GO:0005782,Peroxisomal Matrix,cellular component_id,CellularComponent
+GO:0005778,Peroxisomal Membrane,cellular component_id,CellularComponent
+GO:0005777,Peroxisome,cellular component_id,CellularComponent
+GO:0045335,Phagocytic Vesicle,cellular component_id,CellularComponent
+GO:0030670,Phagocytic Vesicle Membrane,cellular component_id,CellularComponent
+GO:0097651,"Phosphatidylinositol 3-Kinase Complex, Class I",cellular component_id,CellularComponent
+GO:0005943,"Phosphatidylinositol 3-Kinase Complex, Class IA",cellular component_id,CellularComponent
+GO:0035032,"Phosphatidylinositol 3-Kinase Complex, Class III",cellular component_id,CellularComponent
+GO:0071546,Pi-Body,cellular component_id,CellularComponent
+GO:0048770,Pigment Granule,cellular component_id,CellularComponent
+GO:0090741,Pigment Granule Membrane,cellular component_id,CellularComponent
+GO:0044352,Pinosome,cellular component_id,CellularComponent
+GO:0044853,Plasma Membrane Raft,cellular component_id,CellularComponent
+GO:0031091,Platelet Alpha Granule,cellular component_id,CellularComponent
+GO:0031093,Platelet Alpha Granule Lumen,cellular component_id,CellularComponent
+GO:0031092,Platelet Alpha Granule Membrane,cellular component_id,CellularComponent
+GO:0042827,Platelet Dense Granule,cellular component_id,CellularComponent
+GO:0031089,Platelet Dense Granule Lumen,cellular component_id,CellularComponent
+GO:0031088,Platelet Dense Granule Membrane,cellular component_id,CellularComponent
+GO:0031094,Platelet Dense Tubular Network,cellular component_id,CellularComponent
+GO:0031095,Platelet Dense Tubular Network Membrane,cellular component_id,CellularComponent
+GO:0002102,Podosome,cellular component_id,CellularComponent
+GO:0099513,Polymeric Cytoskeletal Fiber,cellular component_id,CellularComponent
+GO:0042788,Polysomal Ribosome,cellular component_id,CellularComponent
+GO:0071014,post-mRNA Release Spliceosomal Complex,cellular component_id,CellularComponent
+GO:0014069,Postsynaptic Density,cellular component_id,CellularComponent
+GO:0098839,Postsynaptic Density Membrane,cellular component_id,CellularComponent
+GO:0098837,Postsynaptic Recycling Endosome,cellular component_id,CellularComponent
+GO:0099634,Postsynaptic Specialization Membrane,cellular component_id,CellularComponent
+GO:0034705,Potassium Channel Complex,cellular component_id,CellularComponent
+GO:0071011,Precatalytic Spliceosome,cellular component_id,CellularComponent
+GO:0030687,"Preribosome, Large Subunit Precursor",cellular component_id,CellularComponent
+GO:0030688,"Preribosome, Small Subunit Precursor",cellular component_id,CellularComponent
+GO:0071010,Prespliceosome,cellular component_id,CellularComponent
+GO:0005766,Primary Lysosome,cellular component_id,CellularComponent
+GO:1902911,Protein Kinase Complex,cellular component_id,CellularComponent
+GO:0030289,Protein Phosphatase 4 Complex,cellular component_id,CellularComponent
+GO:0000159,Protein Phosphatase Type 2A Complex,cellular component_id,CellularComponent
+GO:0008287,Protein Serine/Threonine Phosphatase Complex,cellular component_id,CellularComponent
+GO:0045259,Proton-Transporting ATP Synthase Complex,cellular component_id,CellularComponent
+GO:0033176,Proton-Transporting V-type ATPase Complex,cellular component_id,CellularComponent
+GO:0033179,"Proton-Transporting V-type ATPase, V0 Domain",cellular component_id,CellularComponent
+GO:0033180,"Proton-Transporting V-type ATPase, V1 Domain",cellular component_id,CellularComponent
+GO:0031143,Pseudopodium,cellular component_id,CellularComponent
+GO:0055037,Recycling Endosome,cellular component_id,CellularComponent
+GO:0055038,Recycling Endosome Membrane,cellular component_id,CellularComponent
+GO:0045271,Respiratory Chain Complex I,cellular component_id,CellularComponent
+GO:0045275,Respiratory Chain Complex III,cellular component_id,CellularComponent
+GO:0045277,Respiratory Chain Complex IV,cellular component_id,CellularComponent
+GO:0000172,Ribonuclease MRP Complex,cellular component_id,CellularComponent
+GO:0005840,Ribosome,cellular component_id,CellularComponent
+GO:0005791,Rough Endoplasmic Reticulum,cellular component_id,CellularComponent
+GO:0030867,Rough Endoplasmic Reticulum Membrane,cellular component_id,CellularComponent
+GO:0016012,Sarcoglycan Complex,cellular component_id,CellularComponent
+GO:0042383,Sarcolemma,cellular component_id,CellularComponent
+GO:0016529,Sarcoplasmic Reticulum,cellular component_id,CellularComponent
+GO:0033017,Sarcoplasmic Reticulum Membrane,cellular component_id,CellularComponent
+GO:0005767,Secondary Lysosome,cellular component_id,CellularComponent
+GO:0034774,Secretory Granule Lumen,cellular component_id,CellularComponent
+GO:0030667,Secretory Granule Membrane,cellular component_id,CellularComponent
+GO:0099503,Secretory Vesicle,cellular component_id,CellularComponent
+GO:0032156,Septin Cytoskeleton,cellular component_id,CellularComponent
+GO:0005940,Septin Ring,cellular component_id,CellularComponent
+GO:0017059,Serine C-palmitoyltransferase Complex,cellular component_id,CellularComponent
+GO:0097180,Serine Protease Inhibitor Complex,cellular component_id,CellularComponent
+GO:1905370,Serine-Type Endopeptidase Complex,cellular component_id,CellularComponent
+GO:1905286,Serine-Type Peptidase Complex,cellular component_id,CellularComponent
+GO:1902554,Serine/Threonine Protein Kinase Complex,cellular component_id,CellularComponent
+GO:0000803,Sex Chromosome,cellular component_id,CellularComponent
+GO:0070187,Shelterin Complex,cellular component_id,CellularComponent
+GO:0005786,"Signal Recognition Particle, Endoplasmic Reticulum Targeting",cellular component_id,CellularComponent
+GO:0015935,Small Ribosomal Subunit,cellular component_id,CellularComponent
+GO:0032040,Small-Subunit Processome,cellular component_id,CellularComponent
+GO:0005790,Smooth Endoplasmic Reticulum,cellular component_id,CellularComponent
+GO:0034706,Sodium Channel Complex,cellular component_id,CellularComponent
+GO:0005890,Sodium:Potassium-Exchanging ATPase Complex,cellular component_id,CellularComponent
+GO:0042581,Specific Granule,cellular component_id,CellularComponent
+GO:0035580,Specific Granule Lumen,cellular component_id,CellularComponent
+GO:0035579,Specific Granule Membrane,cellular component_id,CellularComponent
+GO:0014731,Spectrin-Associated Cytoskeleton,cellular component_id,CellularComponent
+GO:0036126,Sperm Flagellum,cellular component_id,CellularComponent
+GO:0034366,Spherical High-Density Lipoprotein Particle,cellular component_id,CellularComponent
+GO:0005819,Spindle,cellular component_id,CellularComponent
+GO:0005876,Spindle Microtubule,cellular component_id,CellularComponent
+GO:0097525,Spliceosomal snRNP Complex,cellular component_id,CellularComponent
+GO:0097526,Spliceosomal tri-snRNP Complex,cellular component_id,CellularComponent
+GO:0099512,Supramolecular Fiber,cellular component_id,CellularComponent
+GO:0032280,Symmetric Synapse,cellular component_id,CellularComponent
+GO:0097060,Synaptic Membrane,cellular component_id,CellularComponent
+GO:0030672,Synaptic Vesicle Membrane,cellular component_id,CellularComponent
+GO:0043527,tRNA Methyltransferase Complex,cellular component_id,CellularComponent
+GO:0070820,Tertiary Granule,cellular component_id,CellularComponent
+GO:1904724,Tertiary Granule Lumen,cellular component_id,CellularComponent
+GO:0070821,Tertiary Granule Membrane,cellular component_id,CellularComponent
+GO:0070160,Tight Junction,cellular component_id,CellularComponent
+GO:0005802,trans-Golgi Network,cellular component_id,CellularComponent
+GO:0032588,trans-Golgi Network Membrane,cellular component_id,CellularComponent
+GO:0030140,trans-Golgi Network Transport Vesicle,cellular component_id,CellularComponent
+GO:0005669,Transcription Factor TFIID Complex,cellular component_id,CellularComponent
+GO:0000439,Transcription Factor TFIIH Core Complex,cellular component_id,CellularComponent
+GO:0005675,Transcription Factor TFIIH Holo Complex,cellular component_id,CellularComponent
+GO:0000127,Transcription Factor TFIIIC Complex,cellular component_id,CellularComponent
+GO:0033276,Transcription Factor TFTC Complex,cellular component_id,CellularComponent
+GO:0061695,"Transferase Complex, Transferring Phosphorus-Containing Groups",cellular component_id,CellularComponent
+GO:0030658,Transport Vesicle Membrane,cellular component_id,CellularComponent
+GO:0034385,Triglyceride-Rich Plasma Lipoprotein Particle,cellular component_id,CellularComponent
+GO:1990246,Uniplex Complex,cellular component_id,CellularComponent
+GO:0005775,Vacuolar Lumen,cellular component_id,CellularComponent
+GO:0005774,Vacuolar Membrane,cellular component_id,CellularComponent
+GO:0016471,Vacuolar Proton-Transporting V-type ATPase Complex,cellular component_id,CellularComponent
+GO:0000220,"Vacuolar Proton-Transporting V-type ATPase, V0 Domain",cellular component_id,CellularComponent
+GO:0000221,"Vacuolar Proton-Transporting V-type ATPase, V1 Domain",cellular component_id,CellularComponent
+GO:0034361,Very-Low-Density Lipoprotein Particle,cellular component_id,CellularComponent
+GO:0031982,Vesicle,cellular component_id,CellularComponent
+GO:0030120,Vesicle Coat,cellular component_id,CellularComponent
+GO:0012506,Vesicle Membrane,cellular component_id,CellularComponent
+GO:0005891,Voltage-Gated Calcium Channel Complex,cellular component_id,CellularComponent
+GO:0008076,Voltage-Gated Potassium Channel Complex,cellular component_id,CellularComponent
+GO:0001518,Voltage-Gated Sodium Channel Complex,cellular component_id,CellularComponent
+GO:0005915,Zonula Adherens,cellular component_id,CellularComponent
+GO:0042588,Zymogen Granule,cellular component_id,CellularComponent
+GO:0042589,Zymogen Granule Membrane,cellular component_id,CellularComponent

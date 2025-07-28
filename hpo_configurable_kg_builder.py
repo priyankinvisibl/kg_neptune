@@ -1,17 +1,15 @@
 #!/usr/bin/env python3
 """
-HPO Knowledge Graph Builder using BioCypher with configurable column mappings
-Integrates Human Phenotype Ontology data into a knowledge graph
-Includes gene enhancement functionality
+HPO (Human Phenotype Ontology) Knowledge Graph Builder
+Builds knowledge graphs from HPO data files with configurable properties
 """
 
 import os
 import sys
 import time
-import yaml
-import csv
-import pandas as pd
 import argparse
+import yaml
+import requests
 from pathlib import Path
 import logging
 
@@ -21,541 +19,364 @@ logging.basicConfig(level=logging.INFO,
 logger = logging.getLogger(__name__)
 
 from biocypher import BioCypher
-from adapters.hpo.hpo_configurable_adapter import HPOConfigurableAdapter
+from utils.filehandler import FileHandler
+from adapters.hpo.phenotype_hpoa_adapter import PhenotypeHpoaAdapter
+from adapters.hpo.phenotype_to_genes_adapter import PhenotypeToGenesAdapter
+from adapters.hpo.genes_to_disease_adapter import GenesToDiseaseAdapter
 from utils.neptune_converter import convert_to_neptune
 
-def load_ncbi_gene_data(ncbi_file_path):
-    """Load NCBI gene data and create a lookup dictionary by gene symbol"""
-    logger.info(f"Loading NCBI gene data from {ncbi_file_path}...")
+def load_hpo_config(config_path="/app/config/hpo_column_config.yaml"):
+    """
+    Load HPO configuration from a YAML file
     
-    if not os.path.exists(ncbi_file_path):
-        logger.warning(f"Warning: NCBI file not found at {ncbi_file_path}")
-        logger.warning("Gene enhancement will be skipped.")
-        return {}
-    
+    Args:
+        config_path: Path to the HPO config file
+        
+    Returns:
+        Dictionary containing HPO configuration
+    """
     try:
-        # Determine file type based on extension
-        file_ext = os.path.splitext(ncbi_file_path)[1].lower()
+        with open(config_path, 'r') as f:
+            config = yaml.safe_load(f)
         
-        if file_ext == '.xlsx':
-            # Load Excel file
-            df = pd.read_excel(ncbi_file_path)
-        elif file_ext in ['.tsv', '.txt']:
-            # Load TSV file
-            df = pd.read_csv(ncbi_file_path, sep='\t')
-        elif file_ext == '.csv':
-            # Load CSV file
-            df = pd.read_csv(ncbi_file_path)
-        else:
-            logger.warning(f"Unsupported file format: {file_ext}")
-            logger.warning("Gene enhancement will be skipped.")
-            return {}
+        return config
+    
+    except Exception as e:
+        logger.error(f"Error loading HPO config: {e}")
+        import traceback
+        traceback.print_exc()
+        return {}
+
+def get_hpo_data_files(config, main_config=None):
+    """
+    Get HPO data file paths from configuration, with support for URL downloads
+    
+    Args:
+        config: HPO configuration dictionary
+        main_config: Main configuration dictionary (for URL-based downloads)
         
-        logger.info(f"Loaded {len(df)} genes from NCBI data")
+    Returns:
+        Dictionary with file paths or URLs
+    """
+    files = {}
+    
+    # If main_config is provided and has HPO URLs, use those
+    if main_config and 'datasets' in main_config and 'hpo' in main_config['datasets']:
+        hpo_datasets = main_config['datasets']['hpo']
         
-        # Check for required columns with case-insensitive matching
-        columns = [col.lower() for col in df.columns]
-        
-        # Find symbol column
-        symbol_col = None
-        for col_name in ['symbol', 'gene_symbol', 'gene symbol', 'symbol_name']:
-            if col_name in columns:
-                symbol_col = df.columns[columns.index(col_name)]
-                break
-        
-        if not symbol_col:
-            logger.error("Error: Could not find Symbol column in NCBI data")
-            logger.warning("Gene enhancement will be skipped.")
-            return {}
-            
-        # Find description column
-        desc_col = None
-        for col_name in ['description', 'desc', 'gene_description', 'gene description']:
-            if col_name in columns:
-                desc_col = df.columns[columns.index(col_name)]
-                break
-        
-        if not desc_col:
-            logger.warning("Warning: Could not find description column in NCBI data")
-            logger.warning("Using empty descriptions")
-            desc_col = None
-            
-        # Find type_of_gene column
-        type_col = None
-        for col_name in ['type_of_gene', 'type of gene', 'gene_type', 'gene type']:
-            if col_name in columns:
-                type_col = df.columns[columns.index(col_name)]
-                break
-        
-        if not type_col:
-            logger.warning("Warning: Could not find type_of_gene column in NCBI data")
-            logger.warning("Using empty gene types")
-            type_col = None
-        
-        # Create lookup dictionary by Symbol
-        gene_lookup = {}
-        for _, row in df.iterrows():
-            symbol = str(row[symbol_col]).strip() if symbol_col else ''
-            if symbol and symbol != 'nan':
-                gene_lookup[symbol] = {
-                    'description': str(row[desc_col]) if desc_col and pd.notna(row[desc_col]) else '',
-                    'type_of_gene': str(row[type_col]) if type_col and pd.notna(row[type_col]) else ''
+        for dataset_name, dataset_config in hpo_datasets.items():
+            if 'url' in dataset_config:
+                files[dataset_name] = {
+                    'url': dataset_config['url'],
+                    'adapter': dataset_config.get('adapter', ''),
+                    'description': dataset_config.get('description', '')
                 }
         
-        logger.info(f"Created lookup for {len(gene_lookup)} unique gene symbols")
-        return gene_lookup
+        logger.info(f"Using URL-based HPO configuration: {files}")
+        return files
     
+    # Fallback to file-based configuration
+    if 'phenotype_hpoa' in config:
+        files['phenotype_hpoa'] = config['phenotype_hpoa'].get('file_path', 'hpo/phenotype.hpoa')
+    
+    if 'phenotype_to_genes' in config:
+        files['phenotype_to_genes'] = config['phenotype_to_genes'].get('file_path', 'hpo/phenotype_to_genes.txt')
+    
+    if 'genes_to_disease' in config:
+        files['genes_to_disease'] = config['genes_to_disease'].get('file_path', 'hpo/genes_to_disease.txt')
+    
+    logger.info(f"Using file-based HPO configuration: {files}")
+    return files
+
+def download_hpo_file(url, local_path):
+    """
+    Download HPO data file from URL
+    
+    Args:
+        url: URL to download from
+        local_path: Local path to save the file
+        
+    Returns:
+        bool: True if successful, False otherwise
+    """
+    try:
+        logger.info(f"Downloading HPO file from {url}")
+        
+        # Create directory if it doesn't exist
+        os.makedirs(os.path.dirname(local_path), exist_ok=True)
+        
+        # Download file
+        response = requests.get(url, stream=True)
+        response.raise_for_status()
+        
+        with open(local_path, 'wb') as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                f.write(chunk)
+        
+        logger.info(f"Successfully downloaded {url} -> {local_path}")
+        return True
+        
     except Exception as e:
-        logger.error(f"Error loading NCBI data: {e}")
-        import traceback
-        traceback.print_exc()
-        logger.warning("Gene enhancement will be skipped.")
-        return {}
+        logger.error(f"Failed to download {url}: {e}")
+        return False
 
-def enhance_gene_file(gene_file_path, gene_lookup):
-    """Enhance gene file with NCBI data in-place (excluding synonyms)"""
-    if not gene_lookup:
-        logger.info("Skipping gene enhancement (no NCBI data available)")
-        return
-    
-    logger.info(f"Enhancing gene file: {gene_file_path}")
-    
-    # Read the original file
-    rows = []
-    with open(gene_file_path, 'r', encoding='utf-8') as f:
-        reader = csv.reader(f, delimiter='\t')
-        for row in reader:
-            rows.append(row)
-    
-    if not rows:
-        logger.warning("No data found in gene file")
-        return
-    
-    logger.info(f"Original format: {len(rows[0])} columns")
-    
-    # Enhance gene nodes with NCBI data
-    enhanced_rows = []
-    genes_found = 0
-    genes_not_found = 0
-    
-    for row in rows:
-        if len(row) >= 4:
-            gene_symbol = row[0].strip()
-            
-            # Look up gene in NCBI data
-            if gene_symbol in gene_lookup:
-                gene_data = gene_lookup[gene_symbol]
-                # Add NCBI properties (properly quoted for CSV) - excluding synonyms
-                enhanced_row = row + [
-                    f'"{gene_data["description"]}"' if gene_data["description"] else '',
-                    f'"{gene_data["type_of_gene"]}"' if gene_data["type_of_gene"] else ''
-                ]
-                genes_found += 1
-            else:
-                # Add empty NCBI properties
-                enhanced_row = row + ['""', '""']
-                genes_not_found += 1
-            
-            enhanced_rows.append(enhanced_row)
-        else:
-            enhanced_rows.append(row)
-    
-    # Write enhanced file back
-    with open(gene_file_path, 'w', encoding='utf-8', newline='') as f:
-        writer = csv.writer(f, delimiter='\t')
-        writer.writerows(enhanced_rows)
-    
-    logger.info(f"Enhanced {len(enhanced_rows)} gene nodes")
-    logger.info(f"Genes found in NCBI data: {genes_found}")
-    logger.info(f"Genes not found in NCBI data: {genes_not_found}")
-    logger.info(f"New format: {len(enhanced_rows[0])} columns")
-
-def enhance_gene_header(header_file_path):
-    """Update Gene header to include NCBI properties (excluding synonyms)"""
-    logger.info(f"Updating gene header: {header_file_path}")
-    
-    # Read the original header
-    with open(header_file_path, 'r', encoding='utf-8') as f:
-        original_header = f.read().strip()
-    
-    # Add NCBI columns to header (excluding synonyms)
-    new_header = original_header + "\tdescription\ttype_of_gene"
-    
-    # Write the new header
-    with open(header_file_path, 'w', encoding='utf-8') as f:
-        f.write(new_header)
-    
-    logger.info(f"Updated header: {new_header}")
-
-def synchronize_schema_with_config(column_config_path, schema_config_path):
+def create_adapters(data_files, use_urls=False):
     """
-    Synchronize the schema configuration with the column configuration
-    to ensure that the schema only includes properties that are defined in the column config
+    Create HPO adapters for each data file, with support for URL downloads
+    
+    Args:
+        data_files: Dictionary with file paths or URL configurations
+        use_urls: Boolean indicating if data_files contains URL configurations
+        
+    Returns:
+        List of adapter instances
     """
-    logger.info(f"Synchronizing schema with column configuration...")
+    adapters = []
     
-    # Load column configuration
-    with open(column_config_path, 'r') as f:
-        column_config = yaml.safe_load(f)
-    
-    # Load schema configuration
-    with open(schema_config_path, 'r') as f:
-        schema_config = yaml.safe_load(f)
-    
-    # Map from column config sections to schema node and edge types
-    config_to_schema_map = {
-        'genes_to_disease': {
-            'node': 'gene',
-            'edge': 'gene to disease association'
-        },
-        'phenotype_to_genes': {
-            'node': 'phenotypic feature',
-            'edges': ['gene to phenotypic feature association', 'phenotypic feature to disease association']
-        },
-        'phenotype_hpoa': {
-            'node': 'disease',
-            'edge': 'disease to phenotypic feature association'
-        }
-    }
-    
-    # Track changes for reporting
-    changes_made = []
-    
-    # Update schema properties based on column config
-    for config_section, schema_types in config_to_schema_map.items():
-        if config_section not in column_config:
-            logger.warning(f"Warning: Section '{config_section}' not found in column config")
-            continue
-        
-        # Synchronize node properties
-        if 'node' in schema_types and schema_types['node'] in schema_config:
-            node_type = schema_types['node']
-            node_properties = column_config[config_section].get('node_properties', [])
-            
-            # Filter out any commented items (those starting with #)
-            if node_properties is None:
-                node_properties = []
-            node_properties = [prop for prop in node_properties if not isinstance(prop, str) or not prop.strip().startswith('#')]
-            
-            # Convert node properties to schema format
-            properties = {}
-            for prop in node_properties:
-                properties[prop] = 'str'
-            
-            # Update schema
-            if 'properties' not in schema_config[node_type]:
-                schema_config[node_type]['properties'] = {}
-            
-            old_props = schema_config[node_type].get('properties', {})
-            schema_config[node_type]['properties'] = properties
-            changes_made.append(f"Updated '{node_type}' properties: {old_props} -> {properties}")
-            
-        # Synchronize edge properties
-        if 'edge' in schema_types:
-            edge_type = schema_types['edge']
-            edge_properties = column_config[config_section].get('edge_properties', [])
-            
-            # Filter out any commented items (those starting with #)
-            if edge_properties is None:
-                edge_properties = []
-            edge_properties = [prop for prop in edge_properties if not isinstance(prop, str) or not prop.strip().startswith('#')]
-            
-            # Always add data_source if it's in global settings
-            if 'global' in column_config and 'data_source' in column_config['global']:
-                if 'data_source' not in edge_properties:
-                    edge_properties.append('data_source')
-            
-            # Convert edge properties to schema format
-            properties = {}
-            for prop in edge_properties:
-                properties[prop] = 'str'
-            
-            # Always ensure data_source is included
-            if 'data_source' not in properties:
-                properties['data_source'] = 'str'
-            
-            # Update schema
-            if edge_type in schema_config:
-                old_props = schema_config[edge_type].get('properties', {})
-                schema_config[edge_type]['properties'] = properties
-                changes_made.append(f"Updated '{edge_type}' properties: {old_props} -> {properties}")
-        
-        # Handle special cases for phenotype_to_genes which maps to multiple edge types
-        if 'edges' in schema_types:
-            for edge_type in schema_types['edges']:
-                if edge_type in schema_config:
-                    # Get special properties from config if available
-                    special_props = column_config[config_section].get('special_properties', {})
-                    
-                    # Special handling for phenotype_to_genes
-                    if edge_type == 'gene to phenotypic feature association':
-                        # Use configurable property name or default to "via_disease"
-                        via_property = special_props.get('gene_to_phenotype_via', 'via_disease')
-                        old_props = schema_config[edge_type].get('properties', {})
-                        schema_config[edge_type]['properties'] = {
-                            via_property: 'str',
-                            'data_source': 'str'
-                        }
-                        changes_made.append(f"Updated '{edge_type}' properties: {old_props} -> {schema_config[edge_type]['properties']}")
-                    elif edge_type == 'phenotypic feature to disease association':
-                        # Use configurable property name or default to "via_gene"
-                        via_property = special_props.get('phenotype_to_disease_via', 'via_gene')
-                        old_props = schema_config[edge_type].get('properties', {})
-                        schema_config[edge_type]['properties'] = {
-                            via_property: 'str',
-                            'data_source': 'str'
-                        }
-                        changes_made.append(f"Updated '{edge_type}' properties: {old_props} -> {schema_config[edge_type]['properties']}")
-    
-    # Write updated schema configuration
-    with open(schema_config_path, 'w') as f:
-        yaml.dump(schema_config, f, default_flow_style=False)
-    
-    logger.info(f"Schema configuration updated at {schema_config_path}")
-    
-    # Report changes
-    if changes_made:
-        logger.info("Changes made to schema:")
-        for change in changes_made:
-            logger.info(f"  - {change}")
+    if use_urls:
+        # Handle URL-based configuration
+        for dataset_name, dataset_config in data_files.items():
+            if 'url' in dataset_config:
+                url = dataset_config['url']
+                local_path = f"/tmp/{dataset_name}.txt"
+                
+                # Download file
+                if download_hpo_file(url, local_path):
+                    # Create appropriate adapter based on dataset name
+                    if dataset_name == 'phenotype_hpoa':
+                        logger.info(f"Creating PhenotypeHpoaAdapter for {local_path}")
+                        adapters.append(PhenotypeHpoaAdapter(local_path))
+                    elif dataset_name == 'phenotype_to_genes':
+                        logger.info(f"Creating PhenotypeToGenesAdapter for {local_path}")
+                        adapters.append(PhenotypeToGenesAdapter(local_path))
+                    elif dataset_name == 'genes_to_disease':
+                        logger.info(f"Creating GenesToDiseaseAdapter for {local_path}")
+                        adapters.append(GenesToDiseaseAdapter(local_path))
+                    else:
+                        logger.warning(f"Unknown dataset type: {dataset_name}")
+                else:
+                    logger.error(f"Failed to download {dataset_name} from {url}")
     else:
-        logger.info("No changes needed to schema configuration")
-
-def post_process_gene_file(gene_file_path, ncbi_file_path):
-    """
-    Post-process gene file to add NCBI data for each gene ID
-    This function ensures all genes get enhanced with NCBI data
-    """
-    logger.info(f"\nPost-processing gene file with NCBI data: {gene_file_path}")
-    
-    # Load NCBI gene data
-    gene_lookup = load_ncbi_gene_data(ncbi_file_path)
-    if not gene_lookup:
-        logger.info("Skipping post-processing (no NCBI data available)")
-        return
-    
-    # Read the gene file
-    rows = []
-    with open(gene_file_path, 'r', encoding='utf-8') as f:
-        reader = csv.reader(f, delimiter='\t')
-        for row in reader:
-            rows.append(row)
-    
-    if not rows:
-        logger.warning("No data found in gene file")
-        return
-    
-    logger.info(f"Original format: {len(rows[0])} columns")
-    
-    # Check if the file already has the NCBI columns
-    has_ncbi_columns = len(rows[0]) >= 6  # Assuming standard format plus 2 NCBI columns
-    if has_ncbi_columns:
-        logger.info("Gene file already has NCBI columns, skipping post-processing")
-        return
-    
-    # Enhance gene nodes with NCBI data
-    enhanced_rows = []
-    genes_found = 0
-    genes_not_found = 0
-    
-    for row in rows:
-        if len(row) >= 2:  # At least ID and name columns
-            gene_id = row[0].strip()
-            
-            # Extract gene symbol from ID (if it's in a different format)
-            gene_symbol = gene_id
-            if ':' in gene_id:
-                gene_symbol = gene_id.split(':')[-1]
-            
-            # Look up gene in NCBI data
-            if gene_symbol in gene_lookup:
-                gene_data = gene_lookup[gene_symbol]
-                # Add NCBI properties (properly quoted for CSV)
-                enhanced_row = row + [
-                    f'"{gene_data["description"]}"' if gene_data["description"] else '',
-                    f'"{gene_data["type_of_gene"]}"' if gene_data["type_of_gene"] else ''
-                ]
-                genes_found += 1
+        # Handle file-based configuration (original logic)
+        if 'phenotype_hpoa' in data_files:
+            file_path = data_files['phenotype_hpoa']
+            if os.path.exists(file_path):
+                logger.info(f"Creating PhenotypeHpoaAdapter for {file_path}")
+                adapters.append(PhenotypeHpoaAdapter(file_path))
             else:
-                # Add empty NCBI properties
-                enhanced_row = row + ['', '']
-                genes_not_found += 1
-            
-            enhanced_rows.append(enhanced_row)
-        else:
-            enhanced_rows.append(row)
+                logger.warning(f"HPO phenotype.hpoa file not found: {file_path}")
+        
+        if 'phenotype_to_genes' in data_files:
+            file_path = data_files['phenotype_to_genes']
+            if os.path.exists(file_path):
+                logger.info(f"Creating PhenotypeToGenesAdapter for {file_path}")
+                adapters.append(PhenotypeToGenesAdapter(file_path))
+            else:
+                logger.warning(f"HPO phenotype_to_genes.txt file not found: {file_path}")
+        
+        if 'genes_to_disease' in data_files:
+            file_path = data_files['genes_to_disease']
+            if os.path.exists(file_path):
+                logger.info(f"Creating GenesToDiseaseAdapter for {file_path}")
+                adapters.append(GenesToDiseaseAdapter(file_path))
+            else:
+                logger.warning(f"HPO genes_to_disease.txt file not found: {file_path}")
     
-    # Write enhanced file back
-    with open(gene_file_path, 'w', encoding='utf-8', newline='') as f:
-        writer = csv.writer(f, delimiter='\t')
-        writer.writerows(enhanced_rows)
-    
-    logger.info(f"Enhanced {len(enhanced_rows)} gene nodes")
-    logger.info(f"Genes found in NCBI data: {genes_found}")
-    logger.info(f"Genes not found in NCBI data: {genes_not_found}")
-    logger.info(f"New format: {len(enhanced_rows[0])} columns")
-    
-    # Update the header file
-    gene_header_path = str(gene_file_path).replace('-part000.csv', '-header.csv')
-    if os.path.exists(gene_header_path):
-        enhance_gene_header(gene_header_path)
-    else:
-        logger.warning(f"Gene header file not found: {gene_header_path}")
+    return adapters
 
-def build_hpo_knowledge_graph(config_path=None, ncbi_file_path=None, output_dir=None, convert_to_neptune_format=False):
-    """Build HPO knowledge graph using BioCypher with configurable column mappings"""
+def build_hpo_knowledge_graph(config_path="/app/config/hpo_column_config.yaml", 
+                              output_dir="/app/output/hpo",
+                              convert_to_neptune_format=False,
+                              main_config=None):
+    """
+    Build HPO knowledge graph from configured data files
     
-    # Check config path
-    if not config_path:
-        config_path = os.path.join("config", "hpo_column_config.yaml")
-    
-    if not os.path.exists(config_path):
-        logger.error(f"Configuration file not found: {config_path}")
-        return None
-    
-    # Synchronize schema with column configuration
-    schema_config_path = os.path.join("config", "schema_config_hpo.yaml")
-    synchronize_schema_with_config(config_path, schema_config_path)
-    
-    # Initialize BioCypher with HPO schema
-    bc = BioCypher(
-        schema_config_path=schema_config_path,
-        output_directory=output_dir
-    )
+    Args:
+        config_path: Path to HPO configuration file
+        output_dir: Output directory for BioCypher files
+        convert_to_neptune_format: Whether to convert to Neptune format
+        main_config: Main configuration dictionary (for URL-based downloads)
+        
+    Returns:
+        Dictionary with build results
+    """
     
     logger.info("=" * 60)
-    logger.info(f"Building HPO Knowledge Graph with Configurable Columns")
-    logger.info(f"Using configuration: {config_path}")
-    if ncbi_file_path:
-        logger.info(f"With gene enhancement from: {ncbi_file_path}")
+    logger.info("HPO KNOWLEDGE GRAPH BUILDER")
     logger.info("=" * 60)
     
-    # Initialize configurable adapter
-    hpo_adapter = HPOConfigurableAdapter(config_path=config_path)
-    
-    # Parse all HPO data
-    logger.info("Parsing HPO data...")
-    hpo_adapter.parse_all()
-    
-    # Get statistics
-    stats = hpo_adapter.get_statistics()
-    logger.info(f"HPO Data Statistics:")
-    logger.info(f"  - Genes: {stats['genes']}")
-    logger.info(f"  - Diseases: {stats['diseases']}")
-    logger.info(f"  - Phenotypes: {stats['phenotypes']}")
-    logger.info(f"  - Total Edges: {stats['edges']}")
-    
-    # Process all nodes
-    logger.info("\nProcessing nodes...")
-    nodes_start = time.time()
-    all_nodes = list(hpo_adapter.get_nodes())
-    logger.info(f"Node extraction took: {time.time() - nodes_start:.2f} seconds")
-    logger.info(f"Total nodes extracted: {len(all_nodes):,}")
-    
-    # Process all edges
-    logger.info("\nProcessing edges...")
-    edges_start = time.time()
-    all_edges = list(hpo_adapter.get_edges())
-    logger.info(f"Edge extraction took: {time.time() - edges_start:.2f} seconds")
-    logger.info(f"Total edges extracted: {len(all_edges):,}")
-    
-    # Write knowledge graph
-    logger.info("\nWriting knowledge graph...")
-    write_start = time.time()
-    bc.write_nodes(all_nodes)
-    bc.write_edges(all_edges)
-    bc.write_import_call()
-    logger.info(f"Writing took: {time.time() - write_start:.2f} seconds")
-    
-    # Get the output directory
-    output_base = output_dir if output_dir else Path("biocypher-out")
-    
-    # Find the latest output directory
-    latest_dir = None
-    if output_base.exists():
-        subdirs = [d for d in output_base.iterdir() if d.is_dir()]
-        if subdirs:
-            latest_dir = max(subdirs, key=lambda x: x.stat().st_mtime)
-    
-    # Enhance gene files with NCBI data if provided
-    if latest_dir and ncbi_file_path:
-        logger.info(f"\nEnhancing gene files in {latest_dir}...")
-        
-        # Load NCBI gene data
-        gene_lookup = load_ncbi_gene_data(ncbi_file_path)
-        
-        # Enhance gene data file
-        gene_file = latest_dir / "Gene-part000.csv"
-        if gene_file.exists():
-            enhance_gene_file(gene_file, gene_lookup)
-        else:
-            logger.warning(f"Gene file not found: {gene_file}")
-        
-        # Enhance gene header file
-        gene_header = latest_dir / "Gene-header.csv"
-        if gene_header.exists():
-            enhance_gene_header(gene_header)
-        else:
-            logger.warning(f"Gene header file not found: {gene_header}")
-    
-    # Always post-process gene files with NCBI data if provided
-    # This ensures all genes get enhanced, even if they weren't enhanced during the initial processing
-    if latest_dir and ncbi_file_path:
-        gene_file = latest_dir / "Gene-part000.csv"
-        if gene_file.exists():
-            post_process_gene_file(gene_file, ncbi_file_path)
-    
-    # Convert to Neptune format if requested
-    if convert_to_neptune_format and latest_dir:
-        logger.info("\nConverting to Neptune format...")
-        neptune_dir = latest_dir.parent / f"{latest_dir.name}_neptune"
-        schema_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), schema_config_path)
-        neptune_output = convert_to_neptune(str(latest_dir), str(neptune_dir), schema_file=schema_path)
-        logger.info(f"Neptune conversion complete. Files available in: {neptune_output}")
-    
-    # Summary
-    logger.info("\n" + "=" * 60)
-    logger.info("HPO Knowledge Graph Build Complete!")
-    logger.info("=" * 60)
-    logger.info(f"Output directory: {output_base}")
-    
-    # List output files
-    if latest_dir:
-        logger.info(f"\nGenerated files in {latest_dir}:")
-        for file_path in sorted(latest_dir.iterdir()):
-            if file_path.is_file():
-                size_mb = file_path.stat().st_size / (1024 * 1024)
-                logger.info(f"  - {file_path.name}: {size_mb:.2f} MB")
-    
-    return output_base
-
-def main():
-    """Main function with argument parsing"""
-    parser = argparse.ArgumentParser(description="Build HPO Knowledge Graph with configurable column mappings")
-    parser.add_argument("--config", "-c", help="Path to the column configuration file")
-    parser.add_argument("--ncbi", "-n", help="Path to the NCBI gene data file for gene enhancement")
-    parser.add_argument("--output-dir", "-o", help="Output directory for the knowledge graph")
-    parser.add_argument("--neptune", "-p", action="store_true", help="Convert output to Neptune format")
-    args = parser.parse_args()
+    start_time = time.time()
     
     try:
-        output_dir = build_hpo_knowledge_graph(
-            config_path=args.config,
-            ncbi_file_path=args.ncbi,
-            output_dir=args.output_dir,
-            convert_to_neptune_format=args.neptune
+        # Load HPO configuration
+        logger.info(f"Loading HPO configuration from {config_path}")
+        hpo_config = load_hpo_config(config_path)
+        
+        if not hpo_config:
+            logger.error("Failed to load HPO configuration")
+            return {"status": "failed", "error": "Configuration loading failed"}
+        
+        # Get data file paths or URLs
+        data_files = get_hpo_data_files(hpo_config, main_config)
+        logger.info(f"HPO data configuration: {data_files}")
+        
+        # Determine if we're using URLs or files
+        use_urls = main_config and 'datasets' in main_config and 'hpo' in main_config['datasets']
+        logger.info(f"Using URL-based downloads: {use_urls}")
+        
+        # Create adapters
+        adapters = create_adapters(data_files, use_urls)
+        
+        if not adapters:
+            logger.warning("No valid HPO adapters created - no data files found")
+            return {"status": "failed", "error": "No valid data files found"}
+        
+        logger.info(f"Created {len(adapters)} HPO adapters")
+        
+        # Print adapter statistics
+        for adapter in adapters:
+            stats = adapter.get_statistics()
+            logger.info(f"{adapter.__class__.__name__}: {stats}")
+        
+        # Setup BioCypher
+        logger.info("Setting up BioCypher...")
+        
+        # Use HPO schema configuration
+        schema_config_path = "/app/config/schema_config_hpo.yaml"
+        if not os.path.exists(schema_config_path):
+            schema_config_path = "config/schema_config_hpo.yaml"
+        
+        # Use general biocypher configuration
+        biocypher_config_path = "/app/config/biocypher_config.yaml"
+        if not os.path.exists(biocypher_config_path):
+            biocypher_config_path = "config/biocypher_config.yaml"
+        
+        # Create output directory
+        os.makedirs(output_dir, exist_ok=True)
+        
+        # Initialize BioCypher with proper configuration
+        bc = BioCypher(
+            schema_config_path=schema_config_path,
+            biocypher_config_path=biocypher_config_path
         )
         
-        logger.info("\n" + "=" * 60)
-        logger.info("HPO Knowledge Graph Built Successfully!")
-        logger.info("=" * 60)
-        if output_dir:
-            logger.info(f"Output available in: {output_dir}")
+        # Set output directory manually
+        bc.output_dir = output_dir
+        
+        # Process nodes from all adapters
+        logger.info("Processing nodes...")
+        all_nodes = []
+        
+        for adapter in adapters:
+            logger.info(f"Processing nodes from {adapter.__class__.__name__}")
+            adapter_nodes = list(adapter.get_nodes())
+            all_nodes.extend(adapter_nodes)
+            logger.info(f"Added {len(adapter_nodes)} nodes from {adapter.__class__.__name__}")
+        
+        logger.info(f"Total nodes collected: {len(all_nodes)}")
+        
+        # Process edges from all adapters
+        logger.info("Processing edges...")
+        all_edges = []
+        
+        for adapter in adapters:
+            logger.info(f"Processing edges from {adapter.__class__.__name__}")
+            adapter_edges = list(adapter.get_edges())
+            all_edges.extend(adapter_edges)
+            logger.info(f"Added {len(adapter_edges)} edges from {adapter.__class__.__name__}")
+        
+        logger.info(f"Total edges collected: {len(all_edges)}")
+        
+        # Write knowledge graph
+        logger.info("Writing knowledge graph...")
+        
+        # Write nodes
+        try:
+            bc.write_nodes(all_nodes)
+            logger.info(f"Successfully wrote {len(all_nodes)} nodes")
+        except Exception as e:
+            logger.error(f"Error writing nodes: {e}")
+            import traceback
+            traceback.print_exc()
+        
+        # Write edges
+        try:
+            bc.write_edges(all_edges)
+            logger.info(f"Successfully wrote {len(all_edges)} edges")
+        except Exception as e:
+            logger.error(f"Error writing edges: {e}")
+            import traceback
+            traceback.print_exc()
+        
+        # Get output summary
+        summary = bc.summary()
+        logger.info("BioCypher Summary:")
+        logger.info(summary)
+        
+        end_time = time.time()
+        duration = end_time - start_time
+        
+        result = {
+            "status": "success",
+            "duration": duration,
+            "output_dir": output_dir,
+            "nodes": len(all_nodes),
+            "edges": len(all_edges),
+            "adapters_used": len(adapters),
+            "summary": summary
+        }
+        
+        # Convert to Neptune format if requested
+        if convert_to_neptune_format:
+            logger.info("Converting to Neptune format...")
+            neptune_dir = f"{output_dir}_neptune"
+            neptune_result = convert_to_neptune(output_dir, neptune_dir)
+            result["neptune_dir"] = neptune_result
+        
+        logger.info(f"HPO Knowledge Graph build completed in {duration:.2f} seconds")
+        logger.info(f"Output directory: {output_dir}")
+        
+        return result
         
     except Exception as e:
-        logger.error(f"Error building knowledge graph: {e}")
+        logger.error(f"Error building HPO knowledge graph: {e}")
         import traceback
         traceback.print_exc()
+        
+        return {
+            "status": "failed",
+            "error": str(e),
+            "output_dir": output_dir
+        }
+
+def main():
+    """Main function for command line usage"""
+    parser = argparse.ArgumentParser(description='Build HPO Knowledge Graph')
+    parser.add_argument('--config', default='/app/config/hpo_column_config.yaml',
+                        help='Path to HPO configuration file')
+    parser.add_argument('--output-dir', default='/app/output/hpo',
+                        help='Output directory for knowledge graph files')
+    parser.add_argument('--convert-to-neptune', action='store_true',
+                        help='Convert output to Neptune format')
+    
+    args = parser.parse_args()
+    
+    # Build knowledge graph
+    result = build_hpo_knowledge_graph(
+        config_path=args.config,
+        output_dir=args.output_dir,
+        convert_to_neptune_format=args.convert_to_neptune
+    )
+    
+    if result["status"] == "success":
+        print("✅ HPO Knowledge Graph build completed successfully!")
+        print(f"Duration: {result['duration']:.2f} seconds")
+        print(f"Nodes: {result['nodes']}")
+        print(f"Edges: {result['edges']}")
+        print(f"Output: {result['output_dir']}")
+    else:
+        print("❌ HPO Knowledge Graph build failed!")
+        print(f"Error: {result['error']}")
         sys.exit(1)
 
 if __name__ == "__main__":

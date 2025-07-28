@@ -4,7 +4,7 @@ disease:
     disease_name: str
   represented_as: node
 disease to phenotypic feature association:
-  input_label: has_phenotype
+  input_label: disease to phenotypic feature association
   is_a: association
   properties:
     data_source: str
@@ -15,13 +15,13 @@ disease to phenotypic feature association:
     sex: str
   represented_as: edge
   source: disease
-  target: phenotype
+  target: phenotypic feature
 gene:
   input_label: gene
   properties: {}
   represented_as: node
 gene to disease association:
-  input_label: associated_with_disease
+  input_label: gene to disease association
   is_a: association
   properties:
     association_type: str
@@ -31,26 +31,26 @@ gene to disease association:
   source: gene
   target: disease
 gene to phenotypic feature association:
-  input_label: associated_with_gene
+  input_label: gene to phenotypic feature association
   is_a: association
   properties:
     data_source: str
     via_disease: str
   represented_as: edge
   source: gene
-  target: phenotype
+  target: phenotypic feature
 phenotypic feature:
-  input_label: phenotype
+  input_label: phenotypic feature
   properties:
     hpo_name: str
     ncbi_gene_id: str
   represented_as: node
 phenotypic feature to disease association:
-  input_label: phenotype_to_disease
+  input_label: phenotypic feature to disease association
   is_a: association
   properties:
     data_source: str
     via_gene: str
   represented_as: edge
-  source: phenotype
+  source: phenotypic feature
   target: disease

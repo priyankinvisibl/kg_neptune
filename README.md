@@ -1,6 +1,6 @@
-# Knowledge Graph Builder
+# Knowledge Graph Builder (Multi-Builder v2)
 
-A tool for building knowledge graphs from various biomedical data sources, with support for Amazon Neptune integration.
+A containerized tool for building knowledge graphs from various biomedical data sources, with support for Amazon Neptune integration.
 
 ## Prerequisites
 
@@ -11,106 +11,147 @@ A tool for building knowledge graphs from various biomedical data sources, with 
 
 ## Quick Start
 
-Run the script with default settings (builds Enrichr knowledge graph):
+1. **Build the Docker image:**
+   ```bash
+   ./build_multi_v2.sh
+   ```
 
-```bash
-./run.sh
-```
+2. **Create workspace directory:**
+   ```bash
+   mkdir -p ./workspace && chmod 777 ./workspace
+   ```
 
-## Usage Examples
+3. **Run with a configuration file:**
+   ```bash
+   sudo docker run -it --rm \
+     -v "$(pwd)/workspace:/workspace" \
+     kg-builder:multi-v2 \
+     --config config/kg_config_enrichr_only.yaml
+   ```
 
-### 1. Build Enrichr Knowledge Graph
+## Configuration-Based Usage
 
-```bash
-./run.sh --builders enrichr
-```
+The multi-builder v2 uses YAML configuration files to define what to build and how to process the data.
 
-### 2. Build Multiple Knowledge Graphs
+### Available Configuration Files
 
-```bash
-./run.sh --builders "enrichr civic"
-```
+- `config/kg_config_enrichr_only.yaml` - Build only Enrichr knowledge graph
+- `config/kg_config_enrichr_hpo.yaml` - Build Enrichr + HPO knowledge graphs
+- `config/kg_config_enrichr_s3.yaml` - Build Enrichr with S3 upload
+- `config/kg_config_multi.yaml` - Build multiple knowledge graphs
+- `config/kg_config_all_builders.yaml` - Build all supported knowledge graphs
 
-### 3. Convert to Neptune Format
+### Example Usage
 
-```bash
-./run.sh --builders enrichr --neptune
-```
+1. **Build Enrichr knowledge graph only:**
+   ```bash
+   sudo docker run -it --rm \
+     -v "$(pwd)/workspace:/workspace" \
+     kg-builder:multi-v2 \
+     --config config/kg_config_enrichr_only.yaml
+   ```
 
-### 4. Upload to S3
+2. **Build Enrichr + HPO knowledge graphs:**
+   ```bash
+   sudo docker run -it --rm \
+     -v "$(pwd)/workspace:/workspace" \
+     kg-builder:multi-v2 \
+     --config config/kg_config_enrichr_hpo.yaml
+   ```
 
-```bash
-./run.sh --builders enrichr --neptune --upload-s3 --s3-buckets "enrichr:my-enrichr-bucket"
-```
-
-### 5. Load into Neptune
-
-```bash
-./run.sh --builders enrichr --neptune --upload-s3 --s3-buckets "enrichr:my-enrichr-bucket" --load-neptune --neptune-endpoint "my-neptune-endpoint.amazonaws.com" --iam-role-arn "arn:aws:iam::123456789012:role/NeptuneLoadRole"
-```
-
-### 6. Build Multiple Knowledge Graphs with Separate S3 Buckets
-
-```bash
-./run.sh --builders "enrichr civic" --neptune --upload-s3 --s3-buckets "enrichr:my-enrichr-bucket,civic:my-civic-bucket" --load-neptune --neptune-endpoint "my-neptune-endpoint.amazonaws.com" --iam-role-arn "arn:aws:iam::123456789012:role/NeptuneLoadRole"
-```
-
-## Command Line Arguments
-
-- `--builders`: Data libraries to build (required, space-separated list)
-- `--output-dir`: Local output directory (default: ./output)
-- `--neptune`: Convert output to Neptune format
-- `--upload-s3`: Upload Neptune files to S3
-- `--s3-buckets`: S3 bucket mapping (e.g., 'enrichr:bucket1,civic:bucket2')
-- `--s3-prefixes`: S3 prefix mapping (e.g., 'enrichr:prefix1,civic:prefix2')
-- `--load-neptune`: Load data into Neptune database
-- `--neptune-endpoint`: Neptune endpoint URL
-- `--iam-role-arn`: IAM role ARN for Neptune to access S3
-- `--image-name`: Docker image name (default: kg-builder:latest)
+3. **Build with S3 upload:**
+   ```bash
+   sudo docker run -it --rm \
+     -v "$(pwd)/workspace:/workspace" \
+     -e AWS_ACCESS_KEY_ID=your_key \
+     -e AWS_SECRET_ACCESS_KEY=your_secret \
+     kg-builder:multi-v2 \
+     --config config/kg_config_enrichr_s3.yaml
+   ```
 
 ## Supported Data Libraries
 
 The solution supports the following data libraries:
 
-- `enrichr`: Enrichr gene set libraries
-- `civic`: CIViC (Clinical Interpretation of Variants in Cancer)
-- `mesh_nt`: MESH (Medical Subject Headings) in NT format
-- `mesh_xml`: MESH (Medical Subject Headings) in XML format
-- `hpo`: HPO (Human Phenotype Ontology)
+- `enrichr_kg_builder` - Enrichr gene set libraries
+- `civic_kg_builder` - CIViC (Clinical Interpretation of Variants in Cancer)
+- `mesh_nt_kg` - MESH (Medical Subject Headings) in NT format
+- `mesh_xml_kg` - MESH (Medical Subject Headings) in XML format
+- `hpo_configurable_kg_builder` - HPO (Human Phenotype Ontology)
 
-## S3 Bucket and Prefix Mapping
+## Configuration File Structure
 
-The `--s3-buckets` and `--s3-prefixes` arguments accept a comma-separated list of key-value pairs in the format `library:value`. For example:
+Each configuration file should follow this structure:
+
+```yaml
+general:
+  builders:
+    - enrichr_kg_builder
+    - hpo_configurable_kg_builder
+  convert_to_neptune: true
+
+s3:
+  upload: false
+  buckets:
+    enrichr_kg_builder: "my-enrichr-bucket"
+    hpo_configurable_kg_builder: "my-hpo-bucket"
+  prefixes:
+    enrichr_kg_builder: "enrichr-data/2025"
+    hpo_configurable_kg_builder: "hpo-data/2025"
+
+neptune:
+  load: false
+  endpoint: "my-neptune-endpoint.amazonaws.com"
+  iam_role_arn: "arn:aws:iam::123456789012:role/NeptuneLoadRole"
+```
+
+## Output Structure
+
+The container creates the following directory structure in `/workspace`:
 
 ```
---s3-buckets "enrichr:my-enrichr-bucket,civic:my-civic-bucket"
---s3-prefixes "enrichr:enrichr-data/2025,civic:civic-data/2025"
+workspace/
+├── biocypher-out/          # Raw BioCypher output
+│   ├── enrichr_kg_builder/
+│   └── hpo_configurable_kg_builder/
+├── neptune/                # Neptune-formatted files
+│   ├── enrichr_kg_builder/
+│   └── hpo_configurable_kg_builder/
+├── config/                 # Configuration files
+└── logs/                   # Log files
 ```
 
 ## Running in AWS
 
 To run this container in AWS (e.g., on ECS or EC2):
 
-1. Build and push the Docker image to Amazon ECR:
+1. **Build and push to ECR:**
+   ```bash
+   aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 123456789012.dkr.ecr.us-east-1.amazonaws.com
+   docker tag kg-builder:multi-v2 123456789012.dkr.ecr.us-east-1.amazonaws.com/kg-builder:multi-v2
+   docker push 123456789012.dkr.ecr.us-east-1.amazonaws.com/kg-builder:multi-v2
+   ```
 
-```bash
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 123456789012.dkr.ecr.us-east-1.amazonaws.com
-docker build -t 123456789012.dkr.ecr.us-east-1.amazonaws.com/kg-builder:latest .
-docker push 123456789012.dkr.ecr.us-east-1.amazonaws.com/kg-builder:latest
-```
-
-2. Run the container on ECS or EC2 with the appropriate command-line arguments.
+2. **Run on ECS/EC2 with appropriate IAM roles and environment variables.**
 
 ## Troubleshooting
 
 ### Common Issues
 
-1. **AWS Credentials**: Ensure that your AWS credentials are properly configured and have the necessary permissions for S3 and Neptune.
-
-2. **Neptune Connection**: Verify that the Neptune endpoint is accessible from your environment and that the security group allows connections.
-
-3. **S3 Permissions**: Ensure that the IAM role has the necessary permissions to read from and write to the S3 buckets.
+1. **Permission Issues**: Ensure the workspace directory has proper permissions (777)
+2. **AWS Credentials**: Set AWS environment variables or use IAM roles
+3. **Memory Issues**: Some builders require significant memory (4GB+ recommended)
 
 ### Checking Logs
 
-The container logs will show the progress and any errors during the build process.
+Container logs show detailed progress and any errors during the build process.
+
+## Cleanup
+
+To remove unnecessary files and keep only what's needed for Dockerfile.multi.v2:
+
+```bash
+./cleanup_script.sh
+```
+
+This will remove old Dockerfiles, build scripts, and other unused files while preserving the essential components for the multi-builder v2 solution.
