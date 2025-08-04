@@ -78,6 +78,7 @@ def get_available_builders():
         "enrichr": "enrichr_kg_builder",
         "civic": "civic_kg_builder", 
         "hpo": "hpo_configurable_kg_builder",
+        "dgidb": "dgidb_kg_builder",
         "mesh_nt": "mesh_nt_kg",
         "mesh_xml": "mesh_xml_kg"
     }
@@ -165,12 +166,15 @@ def run_builder(builder_name, module_name, config, builder_output_dir):
             import civic_kg_builder
             
             print(f"Passing to civic builder:")
-            print(f"  output_dir: {builder_output_dir}")
             print(f"  convert_to_neptune_format: False")  # Handle in multi-builder
+            print(f"  download_data: True")  # Enable downloads from URLs
+            print(f"  config: {config is not None}")
             
             result = civic_kg_builder.build_civic_knowledge_graph(
-                output_dir=builder_output_dir,
-                convert_to_neptune_format=False  # Handle in multi-builder
+                output_dir=None,  # Use default BioCypher behavior like others
+                convert_to_neptune_format=False,  # Handle in multi-builder
+                download_data=True,  # Enable downloads from URLs
+                config=config  # Pass config for URL access
             )
             
             workspace_dir = copy_output_to_workspace(builder_output_dir, builder_name)
@@ -205,6 +209,23 @@ def run_builder(builder_name, module_name, config, builder_output_dir):
                 output_dir=builder_output_dir,
                 convert_to_neptune_format=False,  # Handle in multi-builder
                 main_config=config  # Pass main config for URL downloads
+            )
+            
+            workspace_dir = copy_output_to_workspace(builder_output_dir, builder_name)
+            
+        elif module_name == "dgidb_kg_builder":
+            import dgidb_kg_builder
+            
+            print(f"Passing to dgidb builder:")
+            print(f"  convert_to_neptune_format: False")  # Handle in multi-builder
+            print(f"  download_data: True")  # Enable downloads from URLs
+            print(f"  config: {config is not None}")
+            
+            result = dgidb_kg_builder.build_dgidb_knowledge_graph(
+                output_dir=None,  # Use default BioCypher behavior
+                convert_to_neptune_format=False,  # Handle in multi-builder
+                download_data=True,  # Enable downloads from URLs
+                config=config  # Pass config for URL access
             )
             
             workspace_dir = copy_output_to_workspace(builder_output_dir, builder_name)
@@ -283,6 +304,8 @@ def convert_to_neptune_format(biocypher_dir, neptune_dir, builder_name=""):
             "config/schema_civic.yaml",
             "/app/config/schema_hpo.yaml",
             "config/schema_hpo.yaml",
+            "/app/config/schema_dgidb.yaml",
+            "config/schema_dgidb.yaml",
             "/app/config/schema_mesh.yaml",
             "config/schema_mesh.yaml"
         ]

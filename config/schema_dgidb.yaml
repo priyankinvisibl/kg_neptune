@@ -1,0 +1,98 @@
+# BioCypher schema configuration for DGIdb data
+gene:
+  represented_as: node
+  input_label: gene
+  preferred_id: id
+  is_a: biolink:Gene
+  properties:
+    gene_name:
+      type: str
+      description: Gene name
+    gene_claim_name:
+      type: str
+      description: Gene claim name
+    concept_id:
+      type: str
+      description: Gene concept ID
+    nomenclature:
+      type: str
+      description: Nomenclature type
+    data_source:
+      type: str
+      description: Source of the data
+
+drug:
+  represented_as: node
+  input_label: drug
+  preferred_id: id
+  is_a: biolink:Drug
+  properties:
+    drug_name:
+      type: str
+      description: Drug name
+    drug_claim_name:
+      type: str
+      description: Drug claim name
+    concept_id:
+      type: str
+      description: Drug concept ID
+    nomenclature:
+      type: str
+      description: Nomenclature type
+    approved:
+      type: bool
+      description: Whether the drug is approved
+    immunotherapy:
+      type: bool
+      description: Whether the drug is an immunotherapy
+    anti_neoplastic:
+      type: bool
+      description: Whether the drug is anti-neoplastic
+    data_source:
+      type: str
+      description: Source of the data
+
+gene_category:
+  represented_as: node
+  input_label: gene_category
+  preferred_id: id
+  is_a: biolink:OntologyClass
+  properties:
+    name:
+      type: str
+      description: Category name
+    category_type:
+      type: str
+      description: Category type
+    data_source:
+      type: str
+      description: Source of the data
+
+# Edge definitions
+DRUG_GENE_INTERACTION:
+  represented_as: edge
+  input_label: DRUG_GENE_INTERACTION
+  source: drug
+  target: gene
+  is_a: biolink:interacts_with
+  properties:
+    interaction_type:
+      type: str
+      description: Type of interaction
+    interaction_score:
+      type: float
+      description: Interaction confidence score
+    data_source:
+      type: str
+      description: Source of the data
+
+BELONGS_TO_CATEGORY:
+  represented_as: edge
+  input_label: BELONGS_TO_CATEGORY
+  source: gene
+  target: gene_category
+  is_a: biolink:has_attribute
+  properties:
+    data_source:
+      type: str
+      description: Source of the data

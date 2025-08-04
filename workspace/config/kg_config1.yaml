@@ -3,7 +3,7 @@
 
 # General settings
 general:
-  builders: ["hpo","enrichr"]  # Fixed: Use correct builder name
+  builders: ["hpo","enrichr","civic","dgidb"]  # Added dgidb to the list
   output_dir: "/app/output"  # Output directory inside container
   convert_to_neptune: true
   
@@ -33,6 +33,7 @@ datasets:
     drug_targets:
       url: "https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=DGIdb_Drug_Targets_2024"
       adapter: "DrugDBAdapter"
+  
   hpo:
     # HPO data files downloaded from URLs
     phenotype_hpoa:
@@ -49,6 +50,55 @@ datasets:
       url: "http://purl.obolibrary.org/obo/hp/genes_to_disease.txt"
       adapter: "GenesToDiseaseAdapter"
       description: "Gene to disease associations"
+
+  civic:
+    # CIViC data files downloaded from URLs
+    features:
+      url: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-FeatureSummaries.tsv"
+      adapter: "CivicAdapter"
+      description: "Gene/Feature summaries from CIViC"
+    
+    variants:
+      url: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-VariantSummaries.tsv"
+      adapter: "CivicAdapter"
+      description: "Variant summaries from CIViC"
+    
+    molecular_profiles:
+      url: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-MolecularProfileSummaries.tsv"
+      adapter: "CivicAdapter"
+      description: "Molecular profile summaries from CIViC"
+    
+    evidence:
+      url: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-ClinicalEvidenceSummaries.tsv"
+      adapter: "CivicAdapter"
+      description: "Clinical evidence summaries from CIViC"
+    
+    assertions:
+      url: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-AssertionSummaries.tsv"
+      adapter: "CivicAdapter"
+      description: "Clinical assertions from CIViC"
+
+  dgidb:
+    # DGIdb data files downloaded from URLs
+    interactions:
+      url: "https://dgidb.org/data/latest/interactions.tsv"
+      adapter: "DgidbAdapter"
+      description: "Drug-gene interactions from DGIdb"
+    
+    genes:
+      url: "https://dgidb.org/data/latest/genes.tsv"
+      adapter: "DgidbAdapter"
+      description: "Gene entities from DGIdb"
+    
+    drugs:
+      url: "https://dgidb.org/data/latest/drugs.tsv"
+      adapter: "DgidbAdapter"
+      description: "Drug entities from DGIdb"
+    
+    categories:
+      url: "https://dgidb.org/data/latest/categories.tsv"
+      adapter: "DgidbAdapter"
+      description: "Gene categories from DGIdb"
 
 
 # S3 configuration

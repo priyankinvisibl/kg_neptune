@@ -1,0 +1,336 @@
+# BioCypher schema configuration for CIViC data
+feature:
+  represented_as: node
+  input_label: feature
+  preferred_id: id
+  is_a: biolink:GenomicEntity  # Changed from biolink:Gene
+  properties:
+    name:
+      type: str
+      description: Feature name
+    aliases:
+      type: str
+      description: Alternative names for the feature
+    description:
+      type: str
+      description: Description of the feature
+    entrez_id:
+      type: str
+      description: Entrez Gene ID
+    feature_type:
+      type: str
+      description: Type of feature (Gene, Fusion, etc.)
+    civic_url:
+      type: str
+      description: CIViC URL for the feature
+    data_source:
+      type: str
+      description: Source of the data
+
+variant:
+  represented_as: node
+  input_label: variant
+  preferred_id: id
+  is_a: biolink:SequenceVariant
+  properties:
+    name:
+      type: str
+      description: Variant name
+    feature_id:
+      type: str
+      description: ID of the associated feature (gene)
+    feature_name:
+      type: str
+      description: Name of the associated feature (gene)
+    feature_type:
+      type: str
+      description: Type of feature
+    variant_types:
+      type: str
+      description: Type of variant
+    aliases:
+      type: str
+      description: Alternative names for the variant
+    chromosome:
+      type: str
+      description: Chromosome location
+    start:
+      type: str
+      description: Start position
+    stop:
+      type: str
+      description: Stop position
+    reference_bases:
+      type: str
+      description: Reference bases
+    variant_bases:
+      type: str
+      description: Variant bases
+    civic_url:
+      type: str
+      description: CIViC URL for the variant
+    data_source:
+      type: str
+      description: Source of the data
+
+MolecularProfile:
+  represented_as: node
+  input_label: molecular_profile
+  preferred_id: id
+  is_a: biolink:MolecularEntity
+  properties:
+    name:
+      type: str
+      description: Molecular profile name
+    summary:
+      type: str
+      description: Summary of the molecular profile
+    variant_ids:
+      type: str
+      description: Associated variant IDs
+    evidence_item_ids:
+      type: str
+      description: Associated evidence item IDs
+    assertion_ids:
+      type: str
+      description: Associated assertion IDs
+    evidence_score:
+      type: str
+      description: Evidence score
+    aliases:
+      type: str
+      description: Alternative names for the molecular profile
+    data_source:
+      type: str
+      description: Source of the data
+
+evidence:
+  represented_as: node
+  input_label: evidence
+  preferred_id: id
+  is_a: biolink:EvidenceType
+  properties:
+    name:
+      type: str
+      description: Evidence name
+    molecular_profile_id:
+      type: str
+      description: Associated molecular profile ID
+    molecular_profile:
+      type: str
+      description: Associated molecular profile
+    disease:
+      type: str
+      description: Associated disease
+    doid:
+      type: str
+      description: Disease Ontology ID
+    therapies:
+      type: str
+      description: Associated therapies
+    evidence_level:
+      type: str
+      description: Level of evidence (A, B, C, D, E)
+    evidence_type:
+      type: str
+      description: Type of evidence
+    evidence_direction:
+      type: str
+      description: Direction of evidence (supports, does not support)
+    significance:
+      type: str
+      description: Clinical significance
+    evidence_statement:
+      type: str
+      description: Evidence statement
+    citation:
+      type: str
+      description: Citation information
+    rating:
+      type: str
+      description: Evidence rating
+    evidence_status:
+      type: str
+      description: Evidence status
+    civic_url:
+      type: str
+      description: CIViC URL for the evidence
+    data_source:
+      type: str
+      description: Source of the data
+
+assertion:
+  represented_as: node
+  input_label: assertion
+  preferred_id: id
+  is_a: biolink:Association
+  properties:
+    name:
+      type: str
+      description: Assertion name
+    molecular_profile_id:
+      type: str
+      description: Associated molecular profile ID
+    molecular_profile:
+      type: str
+      description: Associated molecular profile
+    disease:
+      type: str
+      description: Associated disease
+    doid:
+      type: str
+      description: Disease Ontology ID
+    therapies:
+      type: str
+      description: Associated therapies
+    assertion_type:
+      type: str
+      description: Type of assertion
+    assertion_direction:
+      type: str
+      description: Direction of assertion (supports, does not support)
+    significance:
+      type: str
+      description: Clinical significance
+    amp_category:
+      type: str
+      description: AMP/ASCO/CAP category
+    nccn_guideline:
+      type: str
+      description: NCCN guideline
+    regulatory_approval:
+      type: str
+      description: Regulatory approval status
+    assertion_summary:
+      type: str
+      description: Assertion summary
+    assertion_description:
+      type: str
+      description: Assertion description
+    evidence_item_ids:
+      type: str
+      description: Associated evidence item IDs
+    civic_url:
+      type: str
+      description: CIViC URL for the assertion
+    data_source:
+      type: str
+      description: Source of the data
+
+disease:
+  represented_as: node
+  input_label: disease
+  preferred_id: id
+  is_a: biolink:Disease
+  properties:
+    name:
+      type: str
+      description: Disease name
+    doid:
+      type: str
+      description: Disease Ontology ID
+    data_source:
+      type: str
+      description: Source of the data
+
+therapy:
+  represented_as: node
+  input_label: therapy
+  preferred_id: id
+  is_a: biolink:Drug
+  properties:
+    name:
+      type: str
+      description: Therapy name
+    data_source:
+      type: str
+      description: Source of the data
+
+# Edge definitions
+HasVariant:
+  represented_as: edge
+  input_label: HAS_VARIANT
+  source: feature
+  target: variant
+  is_a: biolink:has_variant
+  properties:
+    data_source:
+      type: str
+      description: Source of the data
+
+IncludesVariant:
+  represented_as: edge
+  input_label: INCLUDES_VARIANT
+  source: molecular_profile
+  target: variant
+  is_a: biolink:has_part
+  properties:
+    data_source:
+      type: str
+      description: Source of the data
+
+HasEvidence:
+  represented_as: edge
+  input_label: HAS_EVIDENCE
+  source: molecular_profile
+  target: evidence
+  is_a: biolink:has_evidence
+  properties:
+    data_source:
+      type: str
+      description: Source of the data
+
+SupportsAssertion:
+  represented_as: edge
+  input_label: SUPPORTS_ASSERTION
+  source: evidence
+  target: assertion
+  is_a: biolink:supports
+  properties:
+    data_source:
+      type: str
+      description: Source of the data
+
+AssociatedWithDisease:
+  represented_as: edge
+  input_label: ASSOCIATED_WITH_DISEASE
+  source: evidence
+  target: disease
+  is_a: biolink:related_to
+  properties:
+    data_source:
+      type: str
+      description: Source of the data
+
+EvidenceForTherapy:
+  represented_as: edge
+  input_label: EVIDENCE_FOR_THERAPY
+  source: evidence
+  target: therapy
+  is_a: biolink:related_to
+  properties:
+    data_source:
+      type: str
+      description: Source of the data
+
+AssertionForDisease:
+  represented_as: edge
+  input_label: ASSERTION_FOR_DISEASE
+  source: assertion
+  target: disease
+  is_a: biolink:related_to
+  properties:
+    data_source:
+      type: str
+      description: Source of the data
+
+AssertionForTherapy:
+  represented_as: edge
+  input_label: ASSERTION_FOR_THERAPY
+  source: assertion
+  target: therapy
+  is_a: biolink:related_to
+  properties:
+    data_source:
+      type: str
+      description: Source of the data

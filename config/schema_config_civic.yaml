@@ -17,6 +17,9 @@ gene:
     entrez_id:
       type: str
       description: Entrez Gene ID
+    feature_type:
+      type: str
+      description: Type of feature
     data_source:
       type: str
       description: Source of the data
@@ -36,15 +39,21 @@ variant:
     feature_name:
       type: str
       description: Name of the associated feature (gene)
+    feature_type:
+      type: str
+      description: Type of feature
     variant_types:
       type: str
       description: Type of variant
     aliases:
       type: list
       description: Alternative names for the variant
-    hgvs:
-      type: list
-      description: HGVS descriptions
+    gene:
+      type: str
+      description: Gene name
+    entrez_id:
+      type: str
+      description: Entrez Gene ID
     chromosome:
       type: str
       description: Chromosome location
@@ -60,15 +69,6 @@ variant:
     variant_bases:
       type: str
       description: Variant bases
-    representative_transcript:
-      type: str
-      description: Representative transcript
-    ensembl_version:
-      type: str
-      description: Ensembl version
-    reference_build:
-      type: str
-      description: Reference genome build
     data_source:
       type: str
       description: Source of the data
@@ -82,11 +82,14 @@ molecular_profile:
     name:
       type: str
       description: Molecular profile name
-    description:
+    summary:
       type: str
-      description: Description of the molecular profile
+      description: Summary of the molecular profile
+    variant_ids:
+      type: str
+      description: Associated variant IDs
     evidence_score:
-      type: float
+      type: str
       description: Evidence score
     aliases:
       type: list
@@ -101,9 +104,12 @@ evidence:
   preferred_id: id
   is_a: biolink:EvidenceType
   properties:
-    description:
+    name:
       type: str
-      description: Evidence statement
+      description: Evidence name
+    molecular_profile:
+      type: str
+      description: Associated molecular profile
     evidence_level:
       type: str
       description: Level of evidence (A, B, C, D, E)
@@ -113,24 +119,21 @@ evidence:
     evidence_direction:
       type: str
       description: Direction of evidence (supports, does not support)
-    clinical_significance:
+    significance:
       type: str
       description: Clinical significance
-    disease:
+    evidence_statement:
       type: str
-      description: Associated disease
-    doid:
-      type: str
-      description: Disease Ontology ID
-    therapies:
-      type: str
-      description: Associated therapies
-    rating:
-      type: str
-      description: Evidence rating
+      description: Evidence statement
     citation:
       type: str
       description: Citation information
+    rating:
+      type: str
+      description: Evidence rating
+    evidence_status:
+      type: str
+      description: Evidence status
     data_source:
       type: str
       description: Source of the data
@@ -141,47 +144,85 @@ assertion:
   preferred_id: id
   is_a: biolink:Association
   properties:
+    name:
+      type: str
+      description: Assertion name
+    molecular_profile:
+      type: str
+      description: Associated molecular profile
     description:
       type: str
       description: Assertion description
-      required: true
     assertion_type:
       type: str
       description: Type of assertion
-      required: true
     assertion_direction:
       type: str
       description: Direction of assertion (supports, does not support)
-      required: true
-    clinical_significance:
+    significance:
       type: str
       description: Clinical significance
-      required: true
     disease:
       type: str
       description: Associated disease
-      required: true
     doid:
       type: str
       description: Disease Ontology ID
-      required: true
     therapies:
       type: str
       description: Associated therapies
-      required: true
     summary:
       type: str
       description: Assertion summary
-      required: true
     amp_category:
       type: str
       description: AMP/ASCO/CAP category
-      required: true
+    nccn_guideline:
+      type: str
+      description: NCCN guideline
+    regulatory_approval:
+      type: str
+      description: Regulatory approval status
+    fda_companion_test:
+      type: str
+      description: FDA companion test status
+    evidence_item_ids:
+      type: str
+      description: Associated evidence item IDs
     data_source:
       type: str
       description: Source of the data
-      required: true
 
+disease:
+  represented_as: node
+  label_in_input: disease
+  preferred_id: id
+  is_a: biolink:Disease
+  properties:
+    name:
+      type: str
+      description: Disease name
+    doid:
+      type: str
+      description: Disease Ontology ID
+    data_source:
+      type: str
+      description: Source of the data
+
+therapy:
+  represented_as: node
+  label_in_input: therapy
+  preferred_id: id
+  is_a: biolink:Drug
+  properties:
+    name:
+      type: str
+      description: Therapy name
+    data_source:
+      type: str
+      description: Source of the data
+
+# Edge definitions
 HAS_VARIANT:
   represented_as: edge
   label_in_input: HAS_VARIANT
@@ -236,22 +277,56 @@ SUPPORTS_ASSERTION:
     data_source:
       type: str
       description: Source of the data
-ASSOCIATED_WITH_GENE:
+
+ASSOCIATED_WITH_DISEASE:
   represented_as: edge
-  label_in_input: ASSOCIATED_WITH_GENE
-  source: molecular_profile
-  target: gene
+  label_in_input: ASSOCIATED_WITH_DISEASE
+  source: evidence
+  target: disease
   is_a: biolink:related_to
   properties:
     data_source:
       type: str
       description: Source of the data
 
-ASSOCIATED_WITH_VARIANT:
+TREATS_DISEASE:
   represented_as: edge
-  label_in_input: ASSOCIATED_WITH_VARIANT
+  label_in_input: TREATS_DISEASE
+  source: therapy
+  target: disease
+  is_a: biolink:treats
+  properties:
+    data_source:
+      type: str
+      description: Source of the data
+
+EVIDENCE_FOR_THERAPY:
+  represented_as: edge
+  label_in_input: EVIDENCE_FOR_THERAPY
   source: evidence
-  target: variant
+  target: therapy
+  is_a: biolink:related_to
+  properties:
+    data_source:
+      type: str
+      description: Source of the data
+
+ASSERTION_FOR_THERAPY:
+  represented_as: edge
+  label_in_input: ASSERTION_FOR_THERAPY
+  source: assertion
+  target: therapy
+  is_a: biolink:related_to
+  properties:
+    data_source:
+      type: str
+      description: Source of the data
+
+ASSERTION_FOR_DISEASE:
+  represented_as: edge
+  label_in_input: ASSERTION_FOR_DISEASE
+  source: assertion
+  target: disease
   is_a: biolink:related_to
   properties:
     data_source:

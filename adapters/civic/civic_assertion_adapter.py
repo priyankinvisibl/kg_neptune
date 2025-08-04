@@ -4,7 +4,7 @@ Adapter for CIViC Assertions
 
 from . import CivicBaseAdapter
 import os
-import json
+import csv
 import logging
 
 class CivicAssertionAdapter(CivicBaseAdapter):
@@ -16,14 +16,14 @@ class CivicAssertionAdapter(CivicBaseAdapter):
         self.logger = logging.getLogger(__name__)
         
         # File paths
-        self.assertions_file = os.path.join(self.data_dir, "assertions.json")
+        self.assertions_file = os.path.join(self.data_dir, "01-Jul-2025-AssertionSummaries.tsv")
         
         # Data structures
         self.assertions = {}
     
     def parse_data(self):
-        """Parse assertion data from file"""
-        self.logger.info("Parsing CIViC assertion data")
+        """Parse assertion data from TSV file"""
+        self.logger.info("Parsing CIViC assertion data from TSV")
         
         # Check if file exists
         if not os.path.exists(self.assertions_file):
@@ -31,38 +31,28 @@ class CivicAssertionAdapter(CivicBaseAdapter):
             return
         
         # Parse assertions
-        with open(self.assertions_file, "r") as f:
-            assertions_data = json.load(f)
-            
-            for assertion in assertions_data["records"]:
-                assertion_id = f"civic_assertion:{assertion['id']}"
-                
-                # Extract disease
-                if assertion.get("disease"):
-                    disease_name = assertion["disease"].get("name", "")
-                    doid = assertion["disease"].get("doid", "")
-                else:
-                    disease_name = ""
-                    doid = ""
-                
-                # Extract therapies
-                therapy_names = []
-                if assertion.get("therapies"):
-                    for therapy in assertion["therapies"]:
-                        therapy_names.append(therapy.get("name", ""))
+        with open(self.assertions_file, "r", encoding='utf-8') as f:
+            reader = csv.DictReader(f, delimiter='\t')
+            for row in reader:
+                assertion_id = f"civic_assertion:{row['assertion_id']}"
                 
                 # Create assertion
                 self.assertions[assertion_id] = {
-                    "name": f"Assertion {assertion['id']}",
-                    "assertion_type": assertion.get("assertion_type", ""),
-                    "assertion_direction": assertion.get("assertion_direction", ""),
-                    "clinical_significance": assertion.get("clinical_significance", ""),
-                    "amp_category": assertion.get("amp_level", ""),
-                    "description": assertion.get("description", ""),
-                    "summary": assertion.get("summary", ""),
-                    "disease": disease_name,
-                    "doid": doid,
-                    "therapies": "|".join(therapy_names),
+                    "name": f"Assertion {row['assertion_id']}",
+                    "molecular_profile": row.get("molecular_profile", ""),
+                    "assertion_type": row.get("assertion_type", ""),
+                    "assertion_direction": row.get("assertion_direction", ""),
+                    "significance": row.get("significance", ""),
+                    "amp_category": row.get("amp_category", ""),
+                    "nccn_guideline": row.get("nccn_guideline", ""),
+                    "regulatory_approval": row.get("regulatory_approval", ""),
+                    "fda_companion_test": row.get("fda_companion_test", ""),
+                    "description": row.get("assertion_description", ""),
+                    "summary": row.get("assertion_summary", ""),
+                    "disease": row.get("disease", ""),
+                    "doid": row.get("doid", ""),
+                    "therapies": row.get("therapies", ""),
+                    "evidence_item_ids": row.get("evidence_item_ids", ""),
                     "source": "CIViC",
                     "data_source": "CIViC"
                 }
@@ -79,15 +69,20 @@ class CivicAssertionAdapter(CivicBaseAdapter):
                 {
                     "name": assertion.get("name", ""),
                     "id": assertion_id,
+                    "molecular_profile": assertion.get("molecular_profile", ""),
                     "assertion_type": assertion.get("assertion_type", ""),
                     "assertion_direction": assertion.get("assertion_direction", ""),
-                    "clinical_significance": assertion.get("clinical_significance", ""),
+                    "significance": assertion.get("significance", ""),
                     "amp_category": assertion.get("amp_category", ""),
+                    "nccn_guideline": assertion.get("nccn_guideline", ""),
+                    "regulatory_approval": assertion.get("regulatory_approval", ""),
+                    "fda_companion_test": assertion.get("fda_companion_test", ""),
                     "description": assertion.get("description", ""),
                     "summary": assertion.get("summary", ""),
                     "disease": assertion.get("disease", ""),
                     "doid": assertion.get("doid", ""),
                     "therapies": assertion.get("therapies", ""),
+                    "evidence_item_ids": assertion.get("evidence_item_ids", ""),
                     "source": assertion.get("source", "CIViC"),
                     "data_source": assertion.get("data_source", "CIViC")
                 }
