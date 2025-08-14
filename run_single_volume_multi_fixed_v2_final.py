@@ -330,7 +330,7 @@ def convert_to_neptune_format(biocypher_dir, neptune_dir, builder_name=""):
         print(f"Error converting to Neptune format: {e}")
         return None
 
-def upload_to_s3(neptune_dir, s3_config, builder_name):
+def upload_to_s3(neptune_dir, s3_config, builder_name, timestamp=None):
     """Upload Neptune files to S3"""
     try:
         import boto3
@@ -341,7 +341,14 @@ def upload_to_s3(neptune_dir, s3_config, builder_name):
         
         if not s3_bucket:
             print("No S3 bucket specified")
-            return []
+            return [], None
+        
+        # Use provided timestamp or generate new one
+        if not timestamp:
+            timestamp = time.strftime("%Y%m%d%H%M%S")
+            print(f"Generated new timestamp: {timestamp}")
+        else:
+            print(f"Using provided timestamp: {timestamp}")
         
         # Initialize S3 client
         s3_client = boto3.client('s3')
@@ -350,12 +357,12 @@ def upload_to_s3(neptune_dir, s3_config, builder_name):
         
         # Create S3 prefix with timestamp if not provided
         if not s3_prefix:
-            timestamp = time.strftime("%Y%m%d%H%M%S")
             s3_prefix = f"{builder_name}_kg/{timestamp}"
         else:
             # Add builder name and timestamp to prefix
-            timestamp = time.strftime("%Y%m%d%H%M%S")
             s3_prefix = f"{s3_prefix}/{builder_name}/{timestamp}"
+        
+        print(f"S3 prefix for upload: {s3_prefix}")
         
         # Upload files
         uploaded_uris = []
@@ -377,42 +384,60 @@ def upload_to_s3(neptune_dir, s3_config, builder_name):
                         print(f"❌ Failed to upload {file_path}: {e}")
         
         logger.info(f"Uploaded {len(uploaded_uris)} files to S3")
-        return uploaded_uris
+        return uploaded_uris, s3_prefix
         
     except NoCredentialsError:
         print("❌ AWS credentials not found")
-        return []
+        return [], None
     except Exception as e:
         print(f"Error uploading to S3: {e}")
-        return []
+        return [], None
 
-def load_to_neptune(s3_uris, s3_config, neptune_config, builder_name):
+def load_to_neptune(s3_uris, s3_config, neptune_config, builder_name, s3_prefix=None):
     """Load data from S3 to Neptune with proper ordering (nodes first, then edges)"""
     try:
-        from utils.neptune_loader import NeptuneLoader
+        from utils.neptune_loader_sdk import NeptuneLoaderSDK
         
         neptune_endpoint = neptune_config.get('endpoint')
         iam_role_arn = neptune_config.get('iam_role_arn')
         s3_bucket = s3_config.get('bucket')
-        s3_prefix = s3_config.get('prefix', '')
         
         if not all([neptune_endpoint, iam_role_arn, s3_bucket]):
             print("Missing Neptune configuration")
             return
         
-        loader = NeptuneLoader(neptune_endpoint, iam_role_arn)
+        # Extract region from Neptune endpoint or use default
+        region = "us-east-1"  # Default region
+        if "ap-southeast-1" in neptune_endpoint:
+            region = "ap-southeast-1"
+        elif "us-west-2" in neptune_endpoint:
+            region = "us-west-2"
+        elif "eu-west-1" in neptune_endpoint:
+            region = "eu-west-1"
         
-        # Construct S3 directory URI
-        timestamp = time.strftime("%Y%m%d%H%M%S")
-        if not s3_prefix:
-            s3_source_uri = f"s3://{s3_bucket}/{builder_name}_kg/{timestamp}/"
+        loader = NeptuneLoaderSDK(neptune_endpoint, iam_role_arn, region)
+        
+        # Use the S3 prefix from upload function to construct consistent S3 directory URI
+        if s3_prefix:
+            s3_source_uri = f"s3://{s3_bucket}/{s3_prefix}/"
+            print(f"Using S3 prefix from upload: {s3_prefix}")
         else:
-            s3_source_uri = f"s3://{s3_bucket}/{s3_prefix}/{builder_name}/{timestamp}/"
+            # Fallback to old method if s3_prefix not provided
+            timestamp = time.strftime("%Y%m%d%H%M%S")
+            config_prefix = s3_config.get('prefix', '')
+            if not config_prefix:
+                s3_source_uri = f"s3://{s3_bucket}/{builder_name}_kg/{timestamp}/"
+            else:
+                s3_source_uri = f"s3://{s3_bucket}/{config_prefix}/{builder_name}/{timestamp}/"
+            print(f"Generated fallback S3 URI with timestamp: {timestamp}")
+        
+        print(f"Final S3 source URI: {s3_source_uri}")
         
         print(f"🚀 Starting ordered Neptune load from: {s3_source_uri}")
         print("   Loading nodes first, then edges to prevent reference errors...")
+        print(f"   Using AWS SDK with IAM role: {iam_role_arn}")
         
-        # Use the new ordered loading method
+        # Use the new SDK-based ordered loading method
         results = loader.start_ordered_load_job(
             s3_source_uri,
             load_format="csv",
@@ -472,6 +497,10 @@ def organize_outputs(builder_results, config):
             print(f"\nProcessing directories created in current run:")
             print(f"Current run directories: {CURRENT_RUN_DIRECTORIES}")
             
+            # Generate a single timestamp for this entire run
+            run_timestamp = time.strftime("%Y%m%d%H%M%S")
+            print(f"Using consistent timestamp for this run: {run_timestamp}")
+            
             # Process only directories created in current run
             for subdir_path, builder_name in CURRENT_RUN_DIRECTORIES.items():
                 subdir = Path(subdir_path)
@@ -489,13 +518,13 @@ def organize_outputs(builder_results, config):
                 neptune_result = convert_to_neptune_format(str(subdir), neptune_subdir, builder_name)
                 
                 if neptune_result and upload_to_s3_enabled:
-                    # Upload to S3
-                    s3_uris = upload_to_s3(neptune_result, s3_config, builder_name)
+                    # Upload to S3 with consistent timestamp
+                    s3_uris, s3_prefix = upload_to_s3(neptune_result, s3_config, builder_name, run_timestamp)
                     all_s3_uris.extend(s3_uris)
                     
-                    if s3_uris and load_to_neptune_enabled:
-                        # Load to Neptune
-                        load_to_neptune(s3_uris, s3_config, neptune_config, builder_name)
+                    if s3_uris and load_to_neptune_enabled and s3_prefix:
+                        # Load to Neptune using the same S3 prefix
+                        load_to_neptune(s3_uris, s3_config, neptune_config, builder_name, s3_prefix)
         
         print("All outputs organized in workspace")
         

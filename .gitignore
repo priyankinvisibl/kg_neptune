@@ -16,6 +16,8 @@ workspace/
 # Environment variables
 .env
 .env.*
+civic/
+dgidb/
 
 # Distribution / packaging
 build/

@@ -1,9 +1,9 @@
 Multi-Builder Knowledge Graph Build Summary
 ==================================================
-Build completed at: 2025-08-01 07:06:09
+Build completed at: 2025-08-06 15:12:43
 
 Configuration:
-  Requested Builders: ['hpo', 'enrichr', 'civic', 'dgidb']
+  Requested Builders: ['civic']
   Convert to Neptune: True
   S3 Upload: True
   S3 Bucket: genaixpubmend
@@ -11,14 +11,8 @@ Configuration:
   Neptune Endpoint: biocuration-knowledge-graph-instance-1.cdayu8m0iuvf.ap-southeast-1.neptune.amazonaws.com
 
 Builder Results:
-  ✅ hpo: SUCCESS (137.38s)
-     Output: /workspace/biocypher-out/20250801070231
-  ✅ enrichr: SUCCESS (28.40s)
-     Output: /workspace/biocypher-out/20250801070340
-  ✅ civic: SUCCESS (15.30s)
-     Output: /workspace/biocypher-out/20250801070404
-  ✅ dgidb: SUCCESS (79.44s)
-     Output: /workspace/biocypher-out/20250801070436
+  ✅ civic: SUCCESS (31.99s)
+     Output: /workspace/biocypher-out/20250806151237
 
 Output Locations:
   BioCypher Output: /workspace/biocypher-out/

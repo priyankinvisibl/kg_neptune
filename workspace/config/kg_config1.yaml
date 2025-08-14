@@ -3,7 +3,7 @@
 
 # General settings
 general:
-  builders: ["hpo","enrichr","civic","dgidb"]  # Added dgidb to the list
+  builders: ["civic"]  # Added dgidb to the list
   output_dir: "/app/output"  # Output directory inside container
   convert_to_neptune: true
   
@@ -30,9 +30,9 @@ datasets:
       url: "https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=GO_Cellular_Component_2023"
       adapter: "CellComponentAdapter"
     
-    drug_targets:
-      url: "https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=DGIdb_Drug_Targets_2024"
-      adapter: "DrugDBAdapter"
+    # drug_targets:
+    #   url: "https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=DGIdb_Drug_Targets_2024"
+    #   adapter: "DrugDBAdapter"
   
   hpo:
     # HPO data files downloaded from URLs
@@ -62,6 +62,11 @@ datasets:
       url: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-VariantSummaries.tsv"
       adapter: "CivicAdapter"
       description: "Variant summaries from CIViC"
+    
+    variant_groups:
+      url: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-VariantGroupSummaries.tsv"
+      adapter: "CivicAdapter"
+      description: "Variant group summaries from CIViC"
     
     molecular_profiles:
       url: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-MolecularProfileSummaries.tsv"

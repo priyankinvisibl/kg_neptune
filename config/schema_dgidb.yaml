@@ -52,11 +52,11 @@ drug:
       type: str
       description: Source of the data
 
-gene_category:
+category:
   represented_as: node
   input_label: gene_category
   preferred_id: id
-  is_a: biolink:OntologyClass
+  is_a: biolink:category
   properties:
     name:
       type: str
@@ -69,12 +69,11 @@ gene_category:
       description: Source of the data
 
 # Edge definitions
-DRUG_GENE_INTERACTION:
+drug to gene association:
   represented_as: edge
   input_label: DRUG_GENE_INTERACTION
   source: drug
   target: gene
-  is_a: biolink:interacts_with
   properties:
     interaction_type:
       type: str
@@ -86,11 +85,11 @@ DRUG_GENE_INTERACTION:
       type: str
       description: Source of the data
 
-BELONGS_TO_CATEGORY:
+BelongsToCategory:
   represented_as: edge
   input_label: BELONGS_TO_CATEGORY
   source: gene
-  target: gene_category
+  target: category
   is_a: biolink:has_attribute
   properties:
     data_source:
