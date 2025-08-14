@@ -21,7 +21,6 @@ class CivicAdapterFixed(CivicBaseAdapter):
         # File paths for TSV files (downloaded from URLs)
         self.features_file = os.path.join(self.data_dir, "01-Jul-2025-FeatureSummaries.tsv")
         self.variants_file = os.path.join(self.data_dir, "01-Jul-2025-VariantSummaries.tsv")
-        self.variant_groups_file = os.path.join(self.data_dir, "01-Jul-2025-VariantGroupSummaries.tsv")
         self.molecular_profiles_file = os.path.join(self.data_dir, "01-Jul-2025-MolecularProfileSummaries.tsv")
         self.evidence_file = os.path.join(self.data_dir, "01-Jul-2025-ClinicalEvidenceSummaries.tsv")
         self.assertions_file = os.path.join(self.data_dir, "01-Jul-2025-AssertionSummaries.tsv")
@@ -29,7 +28,6 @@ class CivicAdapterFixed(CivicBaseAdapter):
         # Data structures for nodes
         self.features = {}  # Gene/Feature nodes
         self.variants = {}  # Variant nodes
-        self.variant_groups = {}  # Variant group data for lookup
         self.molecular_profiles = {}  # Molecular Profile nodes
         self.evidence_items = {}  # Evidence nodes
         self.assertions = {}  # Assertion nodes
@@ -46,7 +44,6 @@ class CivicAdapterFixed(CivicBaseAdapter):
         urls = {
             self.features_file: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-FeatureSummaries.tsv",
             self.variants_file: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-VariantSummaries.tsv",
-            self.variant_groups_file: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-VariantGroupSummaries.tsv",
             self.molecular_profiles_file: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-MolecularProfileSummaries.tsv",
             self.evidence_file: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-ClinicalEvidenceSummaries.tsv",
             self.assertions_file: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-AssertionSummaries.tsv"
@@ -79,9 +76,8 @@ class CivicAdapterFixed(CivicBaseAdapter):
         # Ensure files exist
         self._ensure_files_exist()
         
-        # Parse in order: Features → Variant Groups → Variants → Molecular Profiles → Evidence → Assertions
+        # Parse in order: Features → Variants → Molecular Profiles → Evidence → Assertions
         self._parse_features()
-        self._parse_variant_groups()
         self._parse_variants()
         self._parse_molecular_profiles()
         self._parse_evidence()
@@ -93,8 +89,8 @@ class CivicAdapterFixed(CivicBaseAdapter):
     def _ensure_files_exist(self):
         """Ensure all required files exist, download if missing"""
         missing_files = []
-        for file_path in [self.features_file, self.variants_file, self.variant_groups_file, 
-                         self.molecular_profiles_file, self.evidence_file, self.assertions_file]:
+        for file_path in [self.features_file, self.variants_file, self.molecular_profiles_file, 
+                         self.evidence_file, self.assertions_file]:
             if not os.path.exists(file_path):
                 missing_files.append(file_path)
         
@@ -122,24 +118,6 @@ class CivicAdapterFixed(CivicBaseAdapter):
                     "data_source": "CIViC"
                 }
 
-    def _parse_variant_groups(self):
-        """Parse Variant Group Summary File for lookup data"""
-        self.logger.info("Parsing variant groups...")
-        
-        with open(self.variant_groups_file, "r", encoding='utf-8') as f:
-            reader = csv.DictReader(f, delimiter='\t')
-            for row in reader:
-                variant_group_name = row.get("variant_group", "")
-                if variant_group_name:
-                    self.variant_groups[variant_group_name] = {
-                        "variant_group_id": row.get("variant_group_id", ""),
-                        "variant_group": variant_group_name,
-                        "description": row.get("description", ""),
-                        "civic_url": row.get("variant_group_civic_url", ""),
-                        "last_review_date": row.get("last_review_date", ""),
-                        "is_flagged": row.get("is_flagged", "")
-                    }
-
     def _parse_variants(self):
         """Parse Variant Summary File (Variant nodes)"""
         self.logger.info("Parsing variants...")
@@ -148,12 +126,6 @@ class CivicAdapterFixed(CivicBaseAdapter):
             reader = csv.DictReader(f, delimiter='\t')
             for row in reader:
                 variant_id = f"civic_variant:{row['variant_id']}"
-                
-                # Get variant group description if variant_groups field exists
-                variant_group_description = ""
-                variant_groups = row.get("variant_groups", "")
-                if variant_groups and variant_groups in self.variant_groups:
-                    variant_group_description = self.variant_groups[variant_groups].get("description", "")
                 
                 self.variants[variant_id] = {
                     "id": variant_id,
@@ -167,13 +139,6 @@ class CivicAdapterFixed(CivicBaseAdapter):
                     "stop": row.get("stop", ""),
                     "reference_bases": row.get("reference_bases", ""),
                     "variant_bases": row.get("variant_bases", ""),
-                    "variant_groups": variant_groups,
-                    "representative_transcript": row.get("representative_transcript", ""),
-                    "ensembl_version": row.get("ensembl_version", ""),
-                    "reference_build": row.get("reference_build", ""),
-                    "hgvs_descriptions": row.get("hgvs_descriptions", ""),
-                    "clinvar_ids": row.get("clinvar_ids", ""),
-                    "variant_group_description": variant_group_description,
                     "civic_url": row.get("variant_civic_url", ""),
                     "data_source": "CIViC"
                 }
@@ -494,7 +459,6 @@ class CivicAdapterFixed(CivicBaseAdapter):
     def _log_statistics(self):
         """Log parsing statistics"""
         self.logger.info(f"Parsed {len(self.features)} features (genes)")
-        self.logger.info(f"Parsed {len(self.variant_groups)} variant groups")
         self.logger.info(f"Parsed {len(self.variants)} variants")
         self.logger.info(f"Parsed {len(self.molecular_profiles)} molecular profiles")
         self.logger.info(f"Parsed {len(self.evidence_items)} evidence items")

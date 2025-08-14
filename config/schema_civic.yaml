@@ -66,27 +66,6 @@ variant:
     variant_bases:
       type: str
       description: Variant bases
-    variant_groups:
-      type: str
-      description: Variant groups this variant belongs to
-    representative_transcript:
-      type: str
-      description: Representative transcript
-    ensembl_version:
-      type: str
-      description: Ensembl version
-    reference_build:
-      type: str
-      description: Reference genome build
-    hgvs_descriptions:
-      type: str
-      description: HGVS descriptions
-    clinvar_ids:
-      type: str
-      description: ClinVar IDs
-    variant_group_description:
-      type: str
-      description: Description of the variant group from VariantGroupSummaries
     civic_url:
       type: str
       description: CIViC URL for the variant
