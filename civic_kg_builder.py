@@ -65,6 +65,7 @@ def get_civic_data_files(config, main_config=None):
     default_urls = {
         'features': 'https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-FeatureSummaries.tsv',
         'variants': 'https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-VariantSummaries.tsv',
+        'variant_groups': 'https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-VariantGroupSummaries.tsv',
         'molecular_profiles': 'https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-MolecularProfileSummaries.tsv',
         'evidence': 'https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-ClinicalEvidenceSummaries.tsv',
         'assertions': 'https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-AssertionSummaries.tsv'
@@ -122,7 +123,8 @@ def build_civic_knowledge_graph(data_dir=None, output_dir=None, download_data=Fa
     # Get CIViC data files
     if download_data or not any(os.path.exists(os.path.join(data_dir, f)) for f in [
         "01-Jul-2025-FeatureSummaries.tsv",
-        "01-Jul-2025-VariantSummaries.tsv", 
+        "01-Jul-2025-VariantSummaries.tsv",
+        "01-Jul-2025-VariantGroupSummaries.tsv", 
         "01-Jul-2025-MolecularProfileSummaries.tsv",
         "01-Jul-2025-ClinicalEvidenceSummaries.tsv",
         "01-Jul-2025-AssertionSummaries.tsv"
@@ -134,6 +136,7 @@ def build_civic_knowledge_graph(data_dir=None, output_dir=None, download_data=Fa
         file_mapping = {
             'features': '01-Jul-2025-FeatureSummaries.tsv',
             'variants': '01-Jul-2025-VariantSummaries.tsv',
+            'variant_groups': '01-Jul-2025-VariantGroupSummaries.tsv',
             'molecular_profiles': '01-Jul-2025-MolecularProfileSummaries.tsv',
             'evidence': '01-Jul-2025-ClinicalEvidenceSummaries.tsv',
             'assertions': '01-Jul-2025-AssertionSummaries.tsv'

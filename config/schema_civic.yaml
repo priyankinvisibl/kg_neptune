@@ -19,29 +19,47 @@ feature:
   represented_as: node
   input_label: feature
   preferred_id: id
-  is_a: biolink:GenomicEntity  # Changed from biolink:Gene
+  is_a: biolink:GenomicEntity
   properties:
-    name:
+    # Required columns
+    feature_id:
       type: str
-      description: Feature name
-    aliases:
+      description: CIViC feature ID
+    feature_civic_url:
       type: str
-      description: Alternative names for the feature
-    description:
-      type: str
-      description: Description of the feature
-    entrez_id:
-      type: str
-      description: Entrez Gene ID
+      description: CIViC URL for the feature
     feature_type:
       type: str
       description: Type of feature (Gene, Fusion, etc.)
-    civic_url:
+    name:
       type: str
-      description: CIViC URL for the feature
+      description: Feature name
+    description:
+      type: str
+      description: Description of the feature
+    # Additional metadata
+    aliases:
+      type: str
+      description: Alternative names for the feature
+    entrez_id:
+      type: str
+      description: Entrez Gene ID
     data_source:
       type: str
       description: Source of the data
+
+fusion:
+  represented_as: node
+  input_label: fusion
+  preferred_id: id
+  is_a: biolink:GenomicEntity
+  properties:
+    data_source:
+      type: str
+      description: Source of the data
+    civic_feature_id:
+      type: str
+      description: Associated CIViC feature ID
 
 variant:
   represented_as: node
@@ -49,24 +67,37 @@ variant:
   preferred_id: id
   is_a: biolink:SequenceVariant
   properties:
-    name:
+    # Required 20 columns
+    variant_id:
       type: str
-      description: Variant name
-    feature_id:
-      type: str
-      description: ID of the associated feature (gene)
-    feature_name:
-      type: str
-      description: Name of the associated feature (gene)
+      description: CIViC variant ID
     feature_type:
       type: str
-      description: Type of feature
+      description: Type of genomic feature
+    feature_id:
+      type: str
+      description: CIViC feature ID
+    feature_name:
+      type: str
+      description: Name of the associated feature
+    variant:
+      type: str
+      description: Variant name
+    variant_aliases:
+      type: str
+      description: Alternative names for the variant
+    variant_groups:
+      type: str
+      description: Variant group memberships
+    variant_group_description:
+      type: str
+      description: Description of variant groups
     variant_types:
       type: str
       description: Type of variant
-    aliases:
+    gene:
       type: str
-      description: Alternative names for the variant
+      description: Associated gene name
     chromosome:
       type: str
       description: Chromosome location
@@ -82,6 +113,25 @@ variant:
     variant_bases:
       type: str
       description: Variant bases
+    representative_transcript:
+      type: str
+      description: Representative transcript
+    ensembl_version:
+      type: str
+      description: Ensembl version
+    reference_build:
+      type: str
+      description: Reference genome build
+    hgvs_descriptions:
+      type: str
+      description: HGVS notation
+    clinvar_ids:
+      type: str
+      description: ClinVar identifiers
+    # Additional metadata
+    name:
+      type: str
+      description: Variant name (duplicate of variant for compatibility)
     civic_url:
       type: str
       description: CIViC URL for the variant
@@ -95,27 +145,35 @@ MolecularProfile:
   preferred_id: id
   is_a: biolink:MolecularEntity
   properties:
+    # Required columns
     name:
       type: str
       description: Molecular profile name
+    molecular_profile_id:
+      type: str
+      description: CIViC molecular profile ID
     summary:
       type: str
       description: Summary of the molecular profile
     variant_ids:
       type: str
       description: Associated variant IDs
+    variants_civic_url:
+      type: str
+      description: CIViC URLs for variants
+    evidence_score:
+      type: str
+      description: Evidence score
     evidence_item_ids:
       type: str
       description: Associated evidence item IDs
     assertion_ids:
       type: str
       description: Associated assertion IDs
-    evidence_score:
-      type: str
-      description: Evidence score
     aliases:
       type: str
       description: Alternative names for the molecular profile
+    # Additional metadata
     data_source:
       type: str
       description: Source of the data
@@ -126,51 +184,80 @@ evidence:
   preferred_id: id
   is_a: biolink:EvidenceType
   properties:
-    name:
-      type: str
-      description: Evidence name
-    molecular_profile_id:
-      type: str
-      description: Associated molecular profile ID
+    # Required columns
     molecular_profile:
       type: str
       description: Associated molecular profile
+    molecular_profile_id:
+      type: str
+      description: Associated molecular profile ID
     disease:
       type: str
       description: Associated disease
     doid:
       type: str
       description: Disease Ontology ID
+    phenotypes:
+      type: str
+      description: Associated phenotypes
     therapies:
       type: str
       description: Associated therapies
-    evidence_level:
+    therapy_interaction_type:
       type: str
-      description: Level of evidence (A, B, C, D, E)
+      description: Type of therapy interaction
     evidence_type:
       type: str
       description: Type of evidence
     evidence_direction:
       type: str
       description: Direction of evidence (supports, does not support)
+    evidence_level:
+      type: str
+      description: Level of evidence (A, B, C, D, E)
     significance:
       type: str
       description: Clinical significance
     evidence_statement:
       type: str
       description: Evidence statement
+    citation_id:
+      type: str
+      description: Citation ID
+    source_type:
+      type: str
+      description: Type of source
+    asco_abstract_id:
+      type: str
+      description: ASCO abstract ID
     citation:
       type: str
       description: Citation information
+    nct_ids:
+      type: str
+      description: NCT IDs
     rating:
       type: str
       description: Evidence rating
+    evidence_id:
+      type: str
+      description: CIViC evidence ID
+    variant_origin:
+      type: str
+      description: Origin of variant
+    evidence_civic_url:
+      type: str
+      description: CIViC URL for the evidence
+    molecular_profile_civic_url:
+      type: str
+      description: CIViC URL for molecular profile
+    # Additional metadata
+    name:
+      type: str
+      description: Evidence name
     evidence_status:
       type: str
       description: Evidence status
-    civic_url:
-      type: str
-      description: CIViC URL for the evidence
     data_source:
       type: str
       description: Source of the data
@@ -181,6 +268,44 @@ assertion:
   preferred_id: id
   is_a: biolink:Association
   properties:
+    # Required columns
+    assertion_direction:
+      type: str
+      description: Direction of assertion (supports, does not support)
+    significance:
+      type: str
+      description: Clinical significance
+    acmg_codes:
+      type: str
+      description: ACMG codes
+    amp_category:
+      type: str
+      description: AMP/ASCO/CAP category
+    nccn_guideline:
+      type: str
+      description: NCCN guideline
+    regulatory_approval:
+      type: str
+      description: Regulatory approval status
+    fda_companion_test:
+      type: str
+      description: FDA companion test status
+    assertion_summary:
+      type: str
+      description: Assertion summary
+    assertion_description:
+      type: str
+      description: Assertion description
+    assertion_id:
+      type: str
+      description: CIViC assertion ID
+    evidence_item_ids:
+      type: str
+      description: Associated evidence item IDs
+    assertion_civic_url:
+      type: str
+      description: CIViC URL for the assertion
+    # Existing columns
     name:
       type: str
       description: Assertion name
@@ -202,33 +327,6 @@ assertion:
     assertion_type:
       type: str
       description: Type of assertion
-    assertion_direction:
-      type: str
-      description: Direction of assertion (supports, does not support)
-    significance:
-      type: str
-      description: Clinical significance
-    amp_category:
-      type: str
-      description: AMP/ASCO/CAP category
-    nccn_guideline:
-      type: str
-      description: NCCN guideline
-    regulatory_approval:
-      type: str
-      description: Regulatory approval status
-    assertion_summary:
-      type: str
-      description: Assertion summary
-    assertion_description:
-      type: str
-      description: Assertion description
-    evidence_item_ids:
-      type: str
-      description: Associated evidence item IDs
-    civic_url:
-      type: str
-      description: CIViC URL for the assertion
     data_source:
       type: str
       description: Source of the data

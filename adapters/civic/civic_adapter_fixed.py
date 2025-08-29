@@ -21,6 +21,7 @@ class CivicAdapterFixed(CivicBaseAdapter):
         # File paths for TSV files (downloaded from URLs)
         self.features_file = os.path.join(self.data_dir, "01-Jul-2025-FeatureSummaries.tsv")
         self.variants_file = os.path.join(self.data_dir, "01-Jul-2025-VariantSummaries.tsv")
+        self.variant_groups_file = os.path.join(self.data_dir, "01-Jul-2025-VariantGroupSummaries.tsv")
         self.molecular_profiles_file = os.path.join(self.data_dir, "01-Jul-2025-MolecularProfileSummaries.tsv")
         self.evidence_file = os.path.join(self.data_dir, "01-Jul-2025-ClinicalEvidenceSummaries.tsv")
         self.assertions_file = os.path.join(self.data_dir, "01-Jul-2025-AssertionSummaries.tsv")
@@ -28,6 +29,7 @@ class CivicAdapterFixed(CivicBaseAdapter):
         # Data structures for nodes
         self.features = {}  # Gene/Feature nodes
         self.variants = {}  # Variant nodes
+        self.variant_groups = {}  # Variant group descriptions
         self.molecular_profiles = {}  # Molecular Profile nodes
         self.evidence_items = {}  # Evidence nodes
         self.assertions = {}  # Assertion nodes
@@ -36,8 +38,9 @@ class CivicAdapterFixed(CivicBaseAdapter):
         self.diseases = {}
         self.therapies = {}
         
-        # Gene nodes extracted from features
+        # Gene and fusion nodes extracted from features
         self.genes = {}
+        self.fusions = {}
 
     def download_data(self, force=False):
         """Download data from CIViC URLs if files don't exist"""
@@ -47,6 +50,7 @@ class CivicAdapterFixed(CivicBaseAdapter):
         urls = {
             self.features_file: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-FeatureSummaries.tsv",
             self.variants_file: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-VariantSummaries.tsv",
+            self.variant_groups_file: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-VariantGroupSummaries.tsv",
             self.molecular_profiles_file: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-MolecularProfileSummaries.tsv",
             self.evidence_file: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-ClinicalEvidenceSummaries.tsv",
             self.assertions_file: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-AssertionSummaries.tsv"
@@ -79,8 +83,9 @@ class CivicAdapterFixed(CivicBaseAdapter):
         # Ensure files exist
         self._ensure_files_exist()
         
-        # Parse in order: Features → Variants → Molecular Profiles → Evidence → Assertions
+        # Parse in order: Features → Variant Groups → Variants → Molecular Profiles → Evidence → Assertions
         self._parse_features()
+        self._parse_variant_groups()
         self._parse_variants()
         self._parse_molecular_profiles()
         self._parse_evidence()
@@ -92,8 +97,8 @@ class CivicAdapterFixed(CivicBaseAdapter):
     def _ensure_files_exist(self):
         """Ensure all required files exist, download if missing"""
         missing_files = []
-        for file_path in [self.features_file, self.variants_file, self.molecular_profiles_file, 
-                         self.evidence_file, self.assertions_file]:
+        for file_path in [self.features_file, self.variants_file, self.variant_groups_file, 
+                         self.molecular_profiles_file, self.evidence_file, self.assertions_file]:
             if not os.path.exists(file_path):
                 missing_files.append(file_path)
         
@@ -102,31 +107,46 @@ class CivicAdapterFixed(CivicBaseAdapter):
             self.download_data()
 
     def _parse_features(self):
-        """Parse Feature Summary File (Feature nodes) and extract Gene nodes"""
-        self.logger.info("Parsing features and extracting genes...")
+        """Parse Feature Summary File (Feature nodes) with all required columns and extract Gene/Fusion nodes"""
+        self.logger.info("Parsing features and extracting genes/fusions...")
         
         with open(self.features_file, "r", encoding='utf-8') as f:
             reader = csv.DictReader(f, delimiter='\t')
             for row in reader:
                 feature_id = f"civic_feature:{row['feature_id']}"
                 
-                # Create Feature node
+                # Create Feature node with all required columns
                 self.features[feature_id] = {
-                    "id": feature_id,
-                    "name": row.get("name", ""),
+                    # Required columns
+                    "feature_id": row.get("feature_id", ""),
+                    "feature_civic_url": row.get("feature_civic_url", ""),
                     "feature_type": row.get("feature_type", ""),
+                    "name": row.get("name", ""),
                     "description": row.get("description", ""),
+                    
+                    # Additional metadata
+                    "id": feature_id,
                     "aliases": row.get("feature_aliases", ""),
                     "entrez_id": row.get("entrez_id", ""),
-                    "civic_url": row.get("feature_civic_url", ""),
                     "data_source": "CIViC"
                 }
                 
-                # Extract Gene node if this feature represents a gene
-                self._extract_gene_from_feature(row, feature_id)
+                # Extract Gene or Fusion node based on feature type
+                self._extract_gene_or_fusion_from_feature(row, feature_id)
+
+    def _parse_variant_groups(self):
+        """Parse Variant Group Summary File to get descriptions"""
+        self.logger.info("Parsing variant groups...")
+        
+        with open(self.variant_groups_file, "r", encoding='utf-8') as f:
+            reader = csv.DictReader(f, delimiter='\t')
+            for row in reader:
+                variant_group_name = row.get("variant_group", "").strip()
+                if variant_group_name:
+                    self.variant_groups[variant_group_name] = row.get("description", "")
 
     def _parse_variants(self):
-        """Parse Variant Summary File (Variant nodes)"""
+        """Parse Variant Summary File (Variant nodes) with all 20 required columns"""
         self.logger.info("Parsing variants...")
         
         with open(self.variants_file, "r", encoding='utf-8') as f:
@@ -134,24 +154,47 @@ class CivicAdapterFixed(CivicBaseAdapter):
             for row in reader:
                 variant_id = f"civic_variant:{row['variant_id']}"
                 
+                # Get variant group description
+                variant_groups = row.get("variant_groups", "")
+                variant_group_description = ""
+                if variant_groups:
+                    # Get description for the first variant group
+                    group_names = [g.strip() for g in variant_groups.split(",") if g.strip()]
+                    if group_names and group_names[0] in self.variant_groups:
+                        variant_group_description = self.variant_groups[group_names[0]]
+                
                 self.variants[variant_id] = {
-                    "id": variant_id,
-                    "name": row.get("variant", ""),
-                    "feature_id": f"civic_feature:{row['feature_id']}" if row.get('feature_id') else None,
+                    # Required 20 columns
+                    "variant_id": row.get("variant_id", ""),
+                    "feature_type": row.get("feature_type", ""),
+                    "feature_id": row.get("feature_id", ""),
                     "feature_name": row.get("feature_name", ""),
+                    "variant": row.get("variant", ""),
+                    "variant_aliases": row.get("variant_aliases", ""),
+                    "variant_groups": variant_groups,
+                    "variant_group_description": variant_group_description,
                     "variant_types": row.get("variant_types", ""),
-                    "aliases": row.get("variant_aliases", ""),
+                    "gene": row.get("gene", ""),
                     "chromosome": row.get("chromosome", ""),
                     "start": row.get("start", ""),
                     "stop": row.get("stop", ""),
                     "reference_bases": row.get("reference_bases", ""),
                     "variant_bases": row.get("variant_bases", ""),
+                    "representative_transcript": row.get("representative_transcript", ""),
+                    "ensembl_version": row.get("ensembl_version", ""),
+                    "reference_build": row.get("reference_build", ""),
+                    "hgvs_descriptions": row.get("hgvs_descriptions", ""),
+                    "clinvar_ids": row.get("clinvar_ids", ""),
+                    
+                    # Additional metadata
+                    "id": variant_id,
+                    "name": row.get("variant", ""),
                     "civic_url": row.get("variant_civic_url", ""),
                     "data_source": "CIViC"
                 }
 
     def _parse_molecular_profiles(self):
-        """Parse Molecular Profile Summary File (Molecular Profile nodes)"""
+        """Parse Molecular Profile Summary File (Molecular Profile nodes) with all required columns"""
         self.logger.info("Parsing molecular profiles...")
         
         with open(self.molecular_profiles_file, "r", encoding='utf-8') as f:
@@ -159,20 +202,41 @@ class CivicAdapterFixed(CivicBaseAdapter):
             for row in reader:
                 profile_id = f"civic_molecular_profile:{row['molecular_profile_id']}"
                 
+                # Convert variant_ids to full format (civic_variant:ID)
+                variant_ids_raw = row.get("variant_ids", "")
+                variant_ids_formatted = ""
+                if variant_ids_raw:
+                    ids = [vid.strip() for vid in variant_ids_raw.split(",") if vid.strip()]
+                    formatted_ids = [f"civic_variant:{vid}" for vid in ids]
+                    variant_ids_formatted = ",".join(formatted_ids)
+                
+                # Convert evidence_item_ids to full format (civic_evidence:ID)
+                evidence_ids_raw = row.get("evidence_item_ids", "")
+                evidence_ids_formatted = ""
+                if evidence_ids_raw:
+                    ids = [eid.strip() for eid in evidence_ids_raw.split(",") if eid.strip()]
+                    formatted_ids = [f"civic_evidence:{eid}" for eid in ids]
+                    evidence_ids_formatted = ",".join(formatted_ids)
+                
                 self.molecular_profiles[profile_id] = {
-                    "id": profile_id,
+                    # Required columns
                     "name": row.get("name", ""),
+                    "molecular_profile_id": row.get("molecular_profile_id", ""),
                     "summary": row.get("summary", ""),
-                    "variant_ids": row.get("variant_ids", ""),  # For MP → Variant edges
-                    "evidence_item_ids": row.get("evidence_item_ids", ""),  # For MP → Evidence edges
-                    "assertion_ids": row.get("assertion_ids", ""),
+                    "variant_ids": variant_ids_formatted,  # Formatted to match variant node IDs
+                    "variants_civic_url": row.get("variants_civic_url", ""),
                     "evidence_score": row.get("evidence_score", ""),
+                    "evidence_item_ids": evidence_ids_formatted,  # Formatted to match evidence node IDs
+                    "assertion_ids": row.get("assertion_ids", ""),
                     "aliases": row.get("aliases", ""),
+                    
+                    # Additional metadata
+                    "id": profile_id,
                     "data_source": "CIViC"
                 }
 
     def _parse_evidence(self):
-        """Parse Clinical Evidence Summary File (Evidence nodes)"""
+        """Parse Clinical Evidence Summary File (Evidence nodes) with all required columns"""
         self.logger.info("Parsing evidence items...")
         
         with open(self.evidence_file, "r", encoding='utf-8') as f:
@@ -185,21 +249,34 @@ class CivicAdapterFixed(CivicBaseAdapter):
                 self._extract_therapies_from_evidence(row)
                 
                 self.evidence_items[evidence_id] = {
-                    "id": evidence_id,
-                    "molecular_profile_id": f"civic_molecular_profile:{row['molecular_profile_id']}" if row.get('molecular_profile_id') else None,
+                    # Required columns
                     "molecular_profile": row.get("molecular_profile", ""),
+                    "molecular_profile_id": row.get("molecular_profile_id", ""),
                     "disease": row.get("disease", ""),
                     "doid": row.get("doid", ""),
+                    "phenotypes": row.get("phenotypes", ""),
                     "therapies": row.get("therapies", ""),
+                    "therapy_interaction_type": row.get("therapy_interaction_type", ""),
                     "evidence_type": row.get("evidence_type", ""),
                     "evidence_direction": row.get("evidence_direction", ""),
                     "evidence_level": row.get("evidence_level", ""),
                     "significance": row.get("significance", ""),
                     "evidence_statement": row.get("evidence_statement", ""),
+                    "citation_id": row.get("citation_id", ""),
+                    "source_type": row.get("source_type", ""),
+                    "asco_abstract_id": row.get("asco_abstract_id", ""),
                     "citation": row.get("citation", ""),
+                    "nct_ids": row.get("nct_ids", ""),
                     "rating": row.get("rating", ""),
+                    "evidence_id": row.get("evidence_id", ""),
+                    "variant_origin": row.get("variant_origin", ""),
+                    "evidence_civic_url": row.get("evidence_civic_url", ""),
+                    "molecular_profile_civic_url": row.get("molecular_profile_civic_url", ""),
+                    
+                    # Additional metadata
+                    "id": evidence_id,
+                    "name": row.get("molecular_profile", ""),
                     "evidence_status": row.get("evidence_status", ""),
-                    "civic_url": row.get("evidence_civic_url", ""),
                     "data_source": "CIViC"
                 }
 
@@ -216,7 +293,30 @@ class CivicAdapterFixed(CivicBaseAdapter):
                 self._extract_disease_from_assertion(row)
                 self._extract_therapies_from_assertion(row)
                 
+                # Convert evidence_item_ids to full format (civic_evidence:ID)
+                evidence_ids_raw = row.get("evidence_item_ids", "")
+                evidence_ids_formatted = ""
+                if evidence_ids_raw:
+                    ids = [eid.strip() for eid in evidence_ids_raw.split(",") if eid.strip()]
+                    formatted_ids = [f"civic_evidence:{eid}" for eid in ids]
+                    evidence_ids_formatted = ",".join(formatted_ids)
+                
                 self.assertions[assertion_id] = {
+                    # Required columns
+                    "assertion_direction": row.get("assertion_direction", ""),
+                    "significance": row.get("significance", ""),
+                    "acmg_codes": row.get("acmg_codes", ""),
+                    "amp_category": row.get("amp_category", ""),
+                    "nccn_guideline": row.get("nccn_guideline", ""),
+                    "regulatory_approval": row.get("regulatory_approval", ""),
+                    "fda_companion_test": row.get("fda_companion_test", ""),
+                    "assertion_summary": row.get("assertion_summary", ""),
+                    "assertion_description": row.get("assertion_description", ""),
+                    "assertion_id": row.get("assertion_id", ""),
+                    "evidence_item_ids": evidence_ids_formatted,
+                    "assertion_civic_url": row.get("assertion_civic_url", ""),
+                    
+                    # Existing columns
                     "id": assertion_id,
                     "molecular_profile_id": f"civic_molecular_profile:{row['molecular_profile_id']}" if row.get('molecular_profile_id') else None,
                     "molecular_profile": row.get("molecular_profile", ""),
@@ -224,15 +324,6 @@ class CivicAdapterFixed(CivicBaseAdapter):
                     "doid": row.get("doid", ""),
                     "therapies": row.get("therapies", ""),
                     "assertion_type": row.get("assertion_type", ""),
-                    "assertion_direction": row.get("assertion_direction", ""),
-                    "significance": row.get("significance", ""),
-                    "amp_category": row.get("amp_category", ""),
-                    "nccn_guideline": row.get("nccn_guideline", ""),
-                    "regulatory_approval": row.get("regulatory_approval", ""),
-                    "assertion_summary": row.get("assertion_summary", ""),
-                    "assertion_description": row.get("assertion_description", ""),
-                    "evidence_item_ids": row.get("evidence_item_ids", ""),  # For Evidence → Assertion edges
-                    "civic_url": row.get("assertion_civic_url", ""),
                     "data_source": "CIViC"
                 }
 
@@ -258,27 +349,34 @@ class CivicAdapterFixed(CivicBaseAdapter):
                 "data_source": "CIViC"
             }
 
-    def _extract_gene_from_feature(self, row, feature_id):
-        """Extract Gene node from Feature data"""
+    def _extract_gene_or_fusion_from_feature(self, row, feature_id):
+        """Extract Gene or Fusion node from Feature data based on feature_type"""
         feature_type = row.get("feature_type", "").lower()
-        gene_name = row.get("name", "").strip()
+        name = row.get("name", "").strip()
         entrez_id = row.get("entrez_id", "").strip()
         
-        # Only create gene nodes for features that are actually genes
-        if feature_type == "gene" and gene_name and entrez_id:
-            # Use gene name as primary identifier for genes
-            gene_id = gene_name
-            
-            # Avoid duplicates (multiple features might reference same gene)
+        if feature_type == "gene" and name and entrez_id:
+            # Create gene node
+            gene_id = name
             if gene_id not in self.genes:
                 self.genes[gene_id] = {
-                    "id": gene_id,  # Use gene name as ID
+                    "id": gene_id,
                     "entrez_id": entrez_id,
                     "data_source": "CIViC",
-                    "civic_feature_id": feature_id  # Track which feature this came from
+                    "civic_feature_id": feature_id
                 }
-                
                 self.logger.debug(f"Extracted gene: {gene_id} (Entrez: {entrez_id}) from feature {feature_id}")
+        
+        elif feature_type == "fusion" and name:
+            # Create fusion node
+            fusion_id = name
+            if fusion_id not in self.fusions:
+                self.fusions[fusion_id] = {
+                    "id": fusion_id,
+                    "data_source": "CIViC",
+                    "civic_feature_id": feature_id
+                }
+                self.logger.debug(f"Extracted fusion: {fusion_id} from feature {feature_id}")
 
     def _extract_therapies_from_evidence(self, row):
         """Extract therapy information from evidence row"""
@@ -316,7 +414,15 @@ class CivicAdapterFixed(CivicBaseAdapter):
         
         self.logger.info(f"Generated {gene_count} gene nodes")
         
-        # Feature nodes (not Gene - these are Features in CIViC)
+        # Fusion nodes (extracted from features)
+        fusion_count = 0
+        for fusion_id, fusion in self.fusions.items():
+            fusion_count += 1
+            yield (fusion_id, "fusion", fusion)
+        
+        self.logger.info(f"Generated {fusion_count} fusion nodes")
+        
+        # Feature nodes
         feature_count = 0
         for feature_id, feature in self.features.items():
             feature_count += 1
@@ -377,32 +483,54 @@ class CivicAdapterFixed(CivicBaseAdapter):
         
         edge_counter = 0
         
-        # 0. Gene → Feature edges (new)
+        # 0. Gene → Feature edges
         for feature_id, feature in self.features.items():
             gene_name = feature.get("name", "").strip()
             feature_type = feature.get("feature_type", "").lower()
             
             # Only create edge if this feature has a corresponding gene
             if feature_type == "gene" and gene_name:
-                gene_id = gene_name  # Use gene name as ID
+                gene_id = gene_name
                 if gene_id in self.genes:
                     edge_counter += 1
                     yield (
-                        f"civic_edge_{edge_counter}",  # edge_id
-                        gene_id,                       # source: gene
-                        feature_id,                    # target: feature
+                        f"civic_edge_{edge_counter}",
+                        gene_id,
+                        feature_id,
                         "HAS_FEATURE",
                         {"data_source": "CIViC", "relationship_type": "gene_to_feature"}
+                    )
+        
+        # 0b. Fusion → Feature edges
+        for feature_id, feature in self.features.items():
+            fusion_name = feature.get("name", "").strip()
+            feature_type = feature.get("feature_type", "").lower()
+            
+            # Only create edge if this feature has a corresponding fusion
+            if feature_type == "fusion" and fusion_name:
+                fusion_id = fusion_name
+                if fusion_id in self.fusions:
+                    edge_counter += 1
+                    yield (
+                        f"civic_edge_{edge_counter}",
+                        fusion_id,
+                        feature_id,
+                        "HAS_FEATURE",
+                        {"data_source": "CIViC", "relationship_type": "fusion_to_feature"}
                     )
         
         # 1. Feature → Variant edges
         for variant_id, variant in self.variants.items():
             if variant.get("feature_id"):
+                # Ensure feature_id is in full format
+                feature_id_raw = variant["feature_id"]
+                feature_id_full = f"civic_feature:{feature_id_raw}" if not feature_id_raw.startswith("civic_feature:") else feature_id_raw
+                
                 edge_counter += 1
                 yield (
-                    f"civic_edge_{edge_counter}",  # edge_id
-                    variant["feature_id"],         # source: feature
-                    variant_id,                    # target: variant
+                    f"civic_edge_{edge_counter}",
+                    feature_id_full,
+                    variant_id,
                     "HAS_VARIANT",
                     {"data_source": "CIViC"}
                 )
@@ -517,6 +645,8 @@ class CivicAdapterFixed(CivicBaseAdapter):
         """Log parsing statistics"""
         self.logger.info(f"Parsed {len(self.features)} features")
         self.logger.info(f"Extracted {len(self.genes)} genes from features")
+        self.logger.info(f"Extracted {len(self.fusions)} fusions from features")
+        self.logger.info(f"Parsed {len(self.variant_groups)} variant groups")
         self.logger.info(f"Parsed {len(self.variants)} variants")
         self.logger.info(f"Parsed {len(self.molecular_profiles)} molecular profiles")
         self.logger.info(f"Parsed {len(self.evidence_items)} evidence items")
