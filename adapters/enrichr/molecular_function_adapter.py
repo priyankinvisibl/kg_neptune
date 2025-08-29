@@ -21,11 +21,11 @@ class MolecularFunctionAdapter(EnrichrAdapter):
                 match = re.search(r"(GO:\d+)", items[0])
                 if match:
                     fid = match.group(0)
-                    yield (fid, "molecular_function", {"name": name})
+                    yield (fid, "molecular_function", {"name": name, "data_source": "Gene Ontology"})
                 for gene in items[1:]:
                     gene = gene.strip()
                     if gene:
-                        yield (gene, "gene", {})
+                        yield (gene, "gene", {"data_source": "Gene Ontology"})
     
     def get_edges(self):
         """Get edges for the knowledge graph"""
@@ -39,4 +39,7 @@ class MolecularFunctionAdapter(EnrichrAdapter):
                     for gene in items[1:]:
                         gene = gene.strip()
                         if gene:
-                            yield (f"interaction-{fid}-{gene}", fid, gene, "involved_in", {"function_name": name})
+                            yield (f"interaction-{fid}-{gene}", fid, gene, "involved_in", {
+                                "function_name": name, 
+                                "data_source": "Gene Ontology"
+                            })

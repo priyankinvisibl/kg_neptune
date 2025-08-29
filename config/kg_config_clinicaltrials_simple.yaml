@@ -1,0 +1,45 @@
+# Simple Clinical Trials Configuration - No problematic fields parameter
+general:
+  builders: ["clinicaltrials"]
+  convert_to_neptune: true
+
+# Clinical Trials configuration - simplified to avoid API issues
+clinical_trials:
+  query_params:
+    format: "json"
+    query.cond: "cancer"  # Add a condition filter to get manageable results
+    pageSize: 100  # Smaller page size for testing
+    # Remove fields parameter that was causing API errors
+  
+  node_types:
+    - "STUDY"
+    - "SPONSOR"
+    - "DRUG"
+    - "DISEASE"
+    - "LOCATION"
+  
+  node_fields:
+    - "ID"
+    - "BRIEF_TITLE"
+    - "OFFICIAL_TITLE"
+    - "STATUS"
+    - "BRIEF_SUMMARY"
+    - "TYPE"
+  
+  edge_types:
+    - "STUDY_TO_DRUG"
+    - "STUDY_TO_DISEASE"
+    - "STUDY_TO_LOCATION"
+    - "STUDY_TO_SPONSOR"
+
+# S3 configuration
+s3:
+  upload: true
+  bucket: "your-s3-bucket-name"
+  prefix: "clinical-trials-simple"
+
+# Neptune configuration
+neptune:
+  load: false
+  endpoint: "your-neptune-endpoint"
+  iam_role_arn: "your-iam-role-arn"

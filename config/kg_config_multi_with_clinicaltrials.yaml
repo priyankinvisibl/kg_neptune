@@ -1,0 +1,61 @@
+# Multi-Builder Knowledge Graph Configuration with Clinical Trials
+general:
+  builders: ["enrichr", "civic", "clinicaltrials"]
+  convert_to_neptune: true
+
+# Clinical Trials specific configuration
+clinical_trials:
+  # Query parameters for ClinicalTrials.gov API
+  query_params:
+    format: "json"
+    query.cond: "cancer"  # Broader search for more results
+    pageSize: 50  # Limit results for testing
+  
+  # Node types to include
+  node_types:
+    - STUDY
+    - SPONSOR
+    - DRUG
+    - DISEASE
+    - LOCATION
+  
+  # Study fields to include
+  node_fields:
+    - ID
+    - BRIEF_TITLE
+    - OFFICIAL_TITLE
+    - STATUS
+    - BRIEF_SUMMARY
+    - TYPE
+    - PHASES
+    - NUMBER_OF_PATIENTS
+    - SEX
+    - MINIMUM_AGE
+    - MAXIMUM_AGE
+  
+  # Edge types to include
+  edge_types:
+    - STUDY_TO_DRUG
+    - STUDY_TO_DISEASE
+    - STUDY_TO_LOCATION
+    - STUDY_TO_SPONSOR
+
+# Enrichr configuration (if needed)
+enrichr:
+  gene_sets: ["GO_Biological_Process_2023", "KEGG_2021_Human"]
+  
+# CIViC configuration (if needed)
+civic:
+  download_data: true
+
+# S3 configuration for upload
+s3:
+  upload: false  # Set to true to enable S3 upload
+  bucket: "your-s3-bucket-name"
+  prefix: "multi-kg"
+
+# Neptune configuration for loading
+neptune:
+  load: false  # Set to true to enable Neptune loading
+  endpoint: "your-neptune-endpoint"
+  iam_role_arn: "your-iam-role-arn"

@@ -1,4 +1,20 @@
 # BioCypher schema configuration for CIViC data
+gene:
+  represented_as: node
+  input_label: gene
+  preferred_id: id
+  is_a: biolink:Gene
+  properties:
+    entrez_id:
+      type: str
+      description: Entrez Gene ID
+    civic_feature_id:
+      type: str
+      description: Associated CIViC feature ID
+    data_source:
+      type: str
+      description: Source of the data
+
 feature:
   represented_as: node
   input_label: feature
@@ -247,6 +263,20 @@ therapy:
       description: Source of the data
 
 # Edge definitions
+HasFeature:
+  represented_as: edge
+  input_label: HAS_FEATURE
+  source: gene
+  target: feature
+  is_a: biolink:has_part
+  properties:
+    relationship_type:
+      type: str
+      description: Type of relationship
+    data_source:
+      type: str
+      description: Source of the data
+
 HasVariant:
   represented_as: edge
   input_label: HAS_VARIANT

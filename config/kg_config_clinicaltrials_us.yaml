@@ -1,0 +1,73 @@
+# Clinical Trials Configuration for US STUDIES ONLY
+# Geographic filtering to US-based studies
+
+general:
+  builders: ["clinicaltrials"]
+  convert_to_neptune: true
+
+clinical_trials:
+  query_params:
+    format: "json"
+    filter.geo: "United States"  # US studies only
+    pageSize: 1000
+    
+    # Optional: combine with recency filter
+    # query.term: "AREA[LastUpdatePostDate]RANGE[2020-01-01,MAX]"
+    
+    # Optional: filter by status
+    # filter.overallStatus: ["RECRUITING", "NOT_YET_RECRUITING", "ACTIVE_NOT_RECRUITING"]
+    
+    fields: [
+      "NCTId", 
+      "BriefTitle", 
+      "OfficialTitle",
+      "OverallStatus", 
+      "BriefSummary",
+      "StudyType",
+      "Phase",
+      "EnrollmentCount",
+      "Condition",
+      "InterventionName",
+      "LocationFacility",
+      "LocationCity",
+      "LocationState",
+      "LocationCountry",
+      "LeadSponsorName"
+    ]
+  
+  node_types:
+    - "STUDY"
+    - "SPONSOR"
+    - "DRUG"
+    - "DISEASE"
+    - "LOCATION"
+  
+  node_fields:
+    - "ID"
+    - "BRIEF_TITLE"
+    - "OFFICIAL_TITLE"
+    - "STATUS"
+    - "BRIEF_SUMMARY"
+    - "TYPE"
+    - "PHASES"
+    - "NUMBER_OF_PATIENTS"
+    - "ELIGIBILITY_CRITERIA"
+    - "SEX"
+    - "MINIMUM_AGE"
+    - "MAXIMUM_AGE"
+  
+  edge_types:
+    - "STUDY_TO_DRUG"
+    - "STUDY_TO_DISEASE"
+    - "STUDY_TO_LOCATION"
+    - "STUDY_TO_SPONSOR"
+
+s3:
+  upload: true
+  bucket: "your-clinical-trials-bucket"
+  prefix: "us-studies-only"
+
+neptune:
+  load: false
+  endpoint: "your-neptune-endpoint"
+  iam_role_arn: "your-iam-role"

@@ -1,0 +1,68 @@
+# Knowledge Graph Builder Configuration - NO FIELD LIMITS for Full Data
+# This configuration removes field limitations to ensure all data including outcomes is retrieved
+
+# General settings
+general:
+  builders: ["clinicaltrials"]
+  output_dir: "/app/output"
+  convert_to_neptune: true
+
+clinical_trials:
+  # Maximum number of studies to fetch (for testing)
+  max_studies: 1000  # Limit for testing - remove for full dataset
+  
+  # Query parameters for fetching studies
+  query_params:
+    format: "json"
+    query.cond: "iga nephropathy"  # Add condition filter for testing
+    pageSize: 1000
+    # REMOVED fields parameter to get full study data including outcomes
+  
+  # Include all node types for comprehensive data
+  node_types:
+    - "STUDY"
+    - "SPONSOR"
+    - "DRUG"
+    - "DISEASE"
+    - "LOCATION"
+    - "OUTCOME"  # Enabled to include outcome nodes
+  
+  # Include comprehensive study fields
+  node_fields:
+    - "ID"
+    - "BRIEF_TITLE"
+    - "OFFICIAL_TITLE"
+    - "STATUS"
+    - "BRIEF_SUMMARY"
+    - "TYPE"
+    - "ALLOCATION"
+    - "PHASES"
+    - "MODEL"
+    - "PRIMARY_PURPOSE"
+    - "NUMBER_OF_PATIENTS"
+    - "ELIGIBILITY_CRITERIA"
+    - "HEALTHY_VOLUNTEERS"
+    - "SEX"
+    - "MINIMUM_AGE"
+    - "MAXIMUM_AGE"
+    - "STANDARDISED_AGES"
+  
+  # Include all edge types
+  edge_types:
+    - "STUDY_TO_DRUG"
+    - "STUDY_TO_DISEASE"
+    - "STUDY_TO_LOCATION"
+    - "STUDY_TO_SPONSOR"
+    - "STUDY_TO_OUTCOME"  # Enabled to include study-outcome relationships
+
+# S3 configuration
+s3:
+  upload: true
+  bucket: "neptune-test-data"
+  prefix: "clinicaltrials-with-outcomes"
+
+# Neptune configuration
+neptune:
+  load: true
+  endpoint: "db-neptune-1-instance-1.cigfmmqgs6p9.us-east-1.neptune.amazonaws.com"
+  iam_role_arn: "arn:aws:iam::554248189203:role/NeptuneETLRole"

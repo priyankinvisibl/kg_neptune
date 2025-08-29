@@ -13,6 +13,7 @@ ENV/
 env/
 .virtualenv/
 workspace/
+civic/
 # Environment variables
 .env
 .env.*

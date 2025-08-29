@@ -61,9 +61,12 @@ gene_category:
     name:
       type: str
       description: Category name
-    category_type:
+    source_db_name:
       type: str
-      description: Category type
+      description: Source database name
+    source_db_version:
+      type: str
+      description: Source database version
     data_source:
       type: str
       description: Source of the data

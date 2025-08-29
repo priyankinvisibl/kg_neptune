@@ -1,0 +1,59 @@
+# Clinical Trials Knowledge Graph Configuration
+general:
+  builders: ["clinicaltrials"]
+  convert_to_neptune: true
+
+# Clinical Trials specific configuration
+clinical_trials:
+  # Query parameters for ClinicalTrials.gov API
+  query_params:
+    format: "json"
+    query.cond: "iga nephropathy"  # Change this to your condition of interest
+    # Uncomment and modify these as needed:
+    # filter.overallStatus: ["NOT_YET_RECRUITING", "RECRUITING"]
+    # pageSize: 100
+  
+  # Node types to include (comment out to include all)
+  # node_types:
+  #   - STUDY
+  #   - SPONSOR
+  #   - DRUG
+  #   - DISEASE
+  #   - LOCATION
+  #   - OUTCOME
+  #   - ORGANISATION
+  
+  # Study fields to include (comment out to include all)
+  # node_fields:
+  #   - ID
+  #   - BRIEF_TITLE
+  #   - OFFICIAL_TITLE
+  #   - STATUS
+  #   - BRIEF_SUMMARY
+  #   - TYPE
+  #   - PHASES
+  #   - NUMBER_OF_PATIENTS
+  #   - ELIGIBILITY_CRITERIA
+  #   - SEX
+  #   - MINIMUM_AGE
+  #   - MAXIMUM_AGE
+  
+  # Edge types to include (comment out to include all)
+  # edge_types:
+  #   - STUDY_TO_DRUG
+  #   - STUDY_TO_DISEASE
+  #   - STUDY_TO_LOCATION
+  #   - STUDY_TO_SPONSOR
+  #   - STUDY_TO_OUTCOME
+
+# S3 configuration for upload
+s3:
+  upload: false  # Set to true to enable S3 upload
+  bucket: "your-s3-bucket-name"
+  prefix: "clinical-trials-kg"
+
+# Neptune configuration for loading
+neptune:
+  load: false  # Set to true to enable Neptune loading
+  endpoint: "your-neptune-endpoint"
+  iam_role_arn: "your-iam-role-arn"

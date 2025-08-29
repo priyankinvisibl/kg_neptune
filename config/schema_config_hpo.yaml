@@ -2,6 +2,7 @@ disease:
   input_label: disease
   properties:
     disease_name: str
+    data_source: str
   represented_as: node
 disease to phenotypic feature association:
   input_label: disease to phenotypic feature association
@@ -18,7 +19,8 @@ disease to phenotypic feature association:
   target: phenotypic feature
 gene:
   input_label: gene
-  properties: {}
+  properties:
+    data_source: str
   represented_as: node
 gene to disease association:
   input_label: gene to disease association
@@ -44,6 +46,7 @@ phenotypic feature:
   properties:
     hpo_name: str
     ncbi_gene_id: str
+    data_source: str
   represented_as: node
 phenotypic feature to disease association:
   input_label: phenotypic feature to disease association

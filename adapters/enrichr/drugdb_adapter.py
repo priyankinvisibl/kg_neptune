@@ -17,11 +17,11 @@ class DrugDBAdapter(EnrichrAdapter):
             for line in f:
                 items = line.strip().split('\t')
                 drug = items[0].strip()
-                yield (drug, "drug", {})
+                yield (drug, "drug", {"data_source": "DGIdb"})
                 for gene in items[1:]:
                     gene = gene.strip()
                     if gene:
-                        yield (gene, "gene", {})
+                        yield (gene, "gene", {"data_source": "DGIdb"})
     
     def get_edges(self):
         """Get edges for the knowledge graph"""
@@ -32,4 +32,4 @@ class DrugDBAdapter(EnrichrAdapter):
                 for gene in items[1:]:
                     gene = gene.strip()
                     if gene:
-                        yield (f"interaction-{drug}-{gene}", drug, gene, "targets", {})
+                        yield (f"interaction-{drug}-{gene}", drug, gene, "targets", {"data_source": "DGIdb"})

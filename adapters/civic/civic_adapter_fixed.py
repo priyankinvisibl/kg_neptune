@@ -35,6 +35,9 @@ class CivicAdapterFixed(CivicBaseAdapter):
         # Additional entities extracted from evidence/assertions
         self.diseases = {}
         self.therapies = {}
+        
+        # Gene nodes extracted from features
+        self.genes = {}
 
     def download_data(self, force=False):
         """Download data from CIViC URLs if files don't exist"""
@@ -99,14 +102,15 @@ class CivicAdapterFixed(CivicBaseAdapter):
             self.download_data()
 
     def _parse_features(self):
-        """Parse Feature Summary File (Gene nodes)"""
-        self.logger.info("Parsing features (genes)...")
+        """Parse Feature Summary File (Feature nodes) and extract Gene nodes"""
+        self.logger.info("Parsing features and extracting genes...")
         
         with open(self.features_file, "r", encoding='utf-8') as f:
             reader = csv.DictReader(f, delimiter='\t')
             for row in reader:
                 feature_id = f"civic_feature:{row['feature_id']}"
                 
+                # Create Feature node
                 self.features[feature_id] = {
                     "id": feature_id,
                     "name": row.get("name", ""),
@@ -117,6 +121,9 @@ class CivicAdapterFixed(CivicBaseAdapter):
                     "civic_url": row.get("feature_civic_url", ""),
                     "data_source": "CIViC"
                 }
+                
+                # Extract Gene node if this feature represents a gene
+                self._extract_gene_from_feature(row, feature_id)
 
     def _parse_variants(self):
         """Parse Variant Summary File (Variant nodes)"""
@@ -251,12 +258,35 @@ class CivicAdapterFixed(CivicBaseAdapter):
                 "data_source": "CIViC"
             }
 
+    def _extract_gene_from_feature(self, row, feature_id):
+        """Extract Gene node from Feature data"""
+        feature_type = row.get("feature_type", "").lower()
+        gene_name = row.get("name", "").strip()
+        entrez_id = row.get("entrez_id", "").strip()
+        
+        # Only create gene nodes for features that are actually genes
+        if feature_type == "gene" and gene_name and entrez_id:
+            # Use gene name as primary identifier for genes
+            gene_id = gene_name
+            
+            # Avoid duplicates (multiple features might reference same gene)
+            if gene_id not in self.genes:
+                self.genes[gene_id] = {
+                    "id": gene_id,  # Use gene name as ID
+                    "entrez_id": entrez_id,
+                    "data_source": "CIViC",
+                    "civic_feature_id": feature_id  # Track which feature this came from
+                }
+                
+                self.logger.debug(f"Extracted gene: {gene_id} (Entrez: {entrez_id}) from feature {feature_id}")
+
     def _extract_therapies_from_evidence(self, row):
         """Extract therapy information from evidence row"""
         if row.get("therapies"):
             therapies = [t.strip() for t in row["therapies"].split(",") if t.strip()]
             for therapy_name in therapies:
-                therapy_id = f"civic_therapy:{therapy_name.replace(' ', '_').replace('/', '_')}"
+                # Use therapy name directly as ID (cleaned)
+                therapy_id = therapy_name.strip()
                 self.therapies[therapy_id] = {
                     "id": therapy_id,
                     "name": therapy_name,
@@ -268,7 +298,8 @@ class CivicAdapterFixed(CivicBaseAdapter):
         if row.get("therapies"):
             therapies = [t.strip() for t in row["therapies"].split(",") if t.strip()]
             for therapy_name in therapies:
-                therapy_id = f"civic_therapy:{therapy_name.replace(' ', '_').replace('/', '_')}"
+                # Use therapy name directly as ID (cleaned)
+                therapy_id = therapy_name.strip()
                 self.therapies[therapy_id] = {
                     "id": therapy_id,
                     "name": therapy_name,
@@ -277,6 +308,14 @@ class CivicAdapterFixed(CivicBaseAdapter):
 
     def get_nodes(self):
         """Get all nodes for the knowledge graph"""
+        # Gene nodes (extracted from features)
+        gene_count = 0
+        for gene_id, gene in self.genes.items():
+            gene_count += 1
+            yield (gene_id, "gene", gene)
+        
+        self.logger.info(f"Generated {gene_count} gene nodes")
+        
         # Feature nodes (not Gene - these are Features in CIViC)
         feature_count = 0
         for feature_id, feature in self.features.items():
@@ -337,6 +376,24 @@ class CivicAdapterFixed(CivicBaseAdapter):
         """Get all edges for the knowledge graph with proper IDs"""
         
         edge_counter = 0
+        
+        # 0. Gene → Feature edges (new)
+        for feature_id, feature in self.features.items():
+            gene_name = feature.get("name", "").strip()
+            feature_type = feature.get("feature_type", "").lower()
+            
+            # Only create edge if this feature has a corresponding gene
+            if feature_type == "gene" and gene_name:
+                gene_id = gene_name  # Use gene name as ID
+                if gene_id in self.genes:
+                    edge_counter += 1
+                    yield (
+                        f"civic_edge_{edge_counter}",  # edge_id
+                        gene_id,                       # source: gene
+                        feature_id,                    # target: feature
+                        "HAS_FEATURE",
+                        {"data_source": "CIViC", "relationship_type": "gene_to_feature"}
+                    )
         
         # 1. Feature → Variant edges
         for variant_id, variant in self.variants.items():
@@ -415,7 +472,7 @@ class CivicAdapterFixed(CivicBaseAdapter):
             if evidence.get("therapies"):
                 therapies = [t.strip() for t in evidence["therapies"].split(",") if t.strip()]
                 for therapy_name in therapies:
-                    therapy_id = f"civic_therapy:{therapy_name.replace(' ', '_').replace('/', '_')}"
+                    therapy_id = therapy_name.strip()  # Use therapy name directly as ID
                     if therapy_id in self.therapies:
                         edge_counter += 1
                         yield (
@@ -445,7 +502,7 @@ class CivicAdapterFixed(CivicBaseAdapter):
             if assertion.get("therapies"):
                 therapies = [t.strip() for t in assertion["therapies"].split(",") if t.strip()]
                 for therapy_name in therapies:
-                    therapy_id = f"civic_therapy:{therapy_name.replace(' ', '_').replace('/', '_')}"
+                    therapy_id = therapy_name.strip()  # Use therapy name directly as ID
                     if therapy_id in self.therapies:
                         edge_counter += 1
                         yield (
@@ -458,7 +515,8 @@ class CivicAdapterFixed(CivicBaseAdapter):
 
     def _log_statistics(self):
         """Log parsing statistics"""
-        self.logger.info(f"Parsed {len(self.features)} features (genes)")
+        self.logger.info(f"Parsed {len(self.features)} features")
+        self.logger.info(f"Extracted {len(self.genes)} genes from features")
         self.logger.info(f"Parsed {len(self.variants)} variants")
         self.logger.info(f"Parsed {len(self.molecular_profiles)} molecular profiles")
         self.logger.info(f"Parsed {len(self.evidence_items)} evidence items")

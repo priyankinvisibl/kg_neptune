@@ -34,15 +34,16 @@ class PhenotypeToGenesAdapter(HPOAdapter):
                         # Store phenotype info
                         self.phenotypes[hpo_id] = {
                             'hpo_name': hpo_name,
-                            'ncbi_gene_id': ncbi_gene_id  # This might be confusing, but keeping as per schema
+                            'ncbi_gene_id': ncbi_gene_id,  # This might be confusing, but keeping as per schema
+                            'data_source': 'HPO'
                         }
                         
                         # Store gene info
-                        self.genes[gene_symbol] = {}
+                        self.genes[gene_symbol] = {'data_source': 'HPO'}
                         
                         # Store disease info (if available)
                         if disease_id:
-                            self.diseases[disease_id] = {}
+                            self.diseases[disease_id] = {'data_source': 'HPO'}
                         
                         # Store association
                         association = {

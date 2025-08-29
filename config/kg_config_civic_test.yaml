@@ -1,0 +1,26 @@
+# Test configuration for CIViC with Gene nodes
+general:
+  builders: ["civic"]
+  convert_to_neptune: true
+
+# Dataset configurations
+datasets:
+  civic:
+    features:
+      url: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-FeatureSummaries.tsv"
+    variants:
+      url: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-VariantSummaries.tsv"
+    molecular_profiles:
+      url: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-MolecularProfileSummaries.tsv"
+    evidence:
+      url: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-ClinicalEvidenceSummaries.tsv"
+    assertions:
+      url: "https://civicdb.org/downloads/01-Jul-2025/01-Jul-2025-AssertionSummaries.tsv"
+
+# S3 configuration (disabled for test)
+s3:
+  upload: false
+
+# Neptune configuration (disabled for test)
+neptune:
+  load: false

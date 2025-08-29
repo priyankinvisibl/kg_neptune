@@ -31,10 +31,10 @@ class GenesToDiseaseAdapter(HPOAdapter):
                     
                     if gene_symbol and disease_id:
                         # Store gene info
-                        self.genes[gene_symbol] = {}
+                        self.genes[gene_symbol] = {'data_source': 'HPO'}
                         
                         # Store disease info
-                        self.diseases[disease_id] = {}
+                        self.diseases[disease_id] = {'data_source': 'HPO'}
                         
                         # Store association
                         association = {

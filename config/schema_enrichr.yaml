@@ -4,6 +4,7 @@ gene:
     input_label: gene
     properties:
      ensembl_id: str
+     data_source: str
 
 
 material sample:
@@ -51,6 +52,8 @@ drug:
     represented_as: node
     preferred_id: drug_id
     input_label: drug
+    properties:
+        data_source: str
 
 pathway:
     represented_as: node
@@ -58,6 +61,7 @@ pathway:
     input_label: pathway
     properties:
      name: str
+     data_source: str
 
 biological process:
     represented_as: node
@@ -65,6 +69,7 @@ biological process:
     input_label: biological_process
     properties:
      name: str
+     data_source: str
 
 molecular activity:
     represented_as: node
@@ -72,6 +77,7 @@ molecular activity:
     input_label: molecular_function
     properties:
      name: str
+     data_source: str
 
 cellular component:
     represented_as: node
@@ -79,6 +85,7 @@ cellular component:
     input_label: cell_component
     properties:
      name: str
+     data_source: str
 
 
 macromolecular machine to molecular activity association:
@@ -87,6 +94,7 @@ macromolecular machine to molecular activity association:
   input_label: involved_in
   properties:
    function_name: str
+   data_source: str
 
 pathway gene interaction:
   is_a: gene to pathway association
@@ -95,11 +103,14 @@ pathway gene interaction:
   input_label: associated_with
   properties:
    pathway_name: str
+   data_source: str
 
 drug to gene association:
   represented_as: edge
   preferred_id: D2G_id
   input_label: targets
+  properties:
+   data_source: str
 
 macromolecular machine to cellular component association:
   represented_as: edge
@@ -107,3 +118,4 @@ macromolecular machine to cellular component association:
   input_label: located_in
   properties:
    component_name: str
+   data_source: str

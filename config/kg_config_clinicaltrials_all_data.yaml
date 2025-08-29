@@ -1,0 +1,73 @@
+# Clinical Trials Configuration for ALL DATA
+# WARNING: This will fetch ALL clinical trials from ClinicalTrials.gov
+# Current database contains 400,000+ studies - expect long processing time
+
+general:
+  builders: ["clinicaltrials"]
+  convert_to_neptune: true
+
+# Clinical Trials configuration for ALL data
+clinical_trials:
+  # Query parameters for fetching ALL studies
+  query_params:
+    format: "json"
+    # Remove query.cond to get ALL studies (not filtered by condition)
+    # query.cond: ""  # Comment out to get all studies
+    
+    # Optional filters to reduce dataset size:
+    # filter.overallStatus: ["RECRUITING", "NOT_YET_RECRUITING", "ACTIVE_NOT_RECRUITING", "COMPLETED"]
+    # filter.geo: "United States"  # Limit to specific geography
+    # query.term: "AREA[LastUpdatePostDate]RANGE[2020-01-01,MAX]"  # Only recent studies
+    
+    pageSize: 1000  # Maximum allowed by API (1000 studies per page)
+    
+    # Fields to include (comma-separated string, not list)
+    fields: "NCTId,BriefTitle,OfficialTitle,OverallStatus,BriefSummary,StudyType,Phase,EnrollmentCount,Condition,InterventionName,LocationFacility,LocationCity,LocationCountry,LeadSponsorName"
+  
+  # Include all node types for comprehensive data
+  node_types:
+    - "STUDY"
+    - "SPONSOR"
+    - "DRUG"
+    - "DISEASE"
+    - "LOCATION"
+    # - "OUTCOME"  # Uncomment if needed (increases processing time)
+  
+  # Include comprehensive study fields
+  node_fields:
+    - "ID"
+    - "BRIEF_TITLE"
+    - "OFFICIAL_TITLE"
+    - "STATUS"
+    - "BRIEF_SUMMARY"
+    - "TYPE"
+    - "ALLOCATION"
+    - "PHASES"
+    - "MODEL"
+    - "PRIMARY_PURPOSE"
+    - "NUMBER_OF_PATIENTS"
+    - "ELIGIBILITY_CRITERIA"
+    - "HEALTHY_VOLUNTEERS"
+    - "SEX"
+    - "MINIMUM_AGE"
+    - "MAXIMUM_AGE"
+    - "STANDARDISED_AGES"
+  
+  # Include all edge types
+  edge_types:
+    - "STUDY_TO_DRUG"
+    - "STUDY_TO_DISEASE"
+    - "STUDY_TO_LOCATION"
+    - "STUDY_TO_SPONSOR"
+
+# S3 configuration - HIGHLY RECOMMENDED for large datasets
+s3:
+  upload: true  # Enable S3 upload for large datasets
+  bucket: "your-clinical-trials-bucket"
+  prefix: "all-clinical-trials"
+
+# Neptune configuration
+neptune:
+  load: false  # Disable auto-load for large datasets - load manually after review
+  endpoint: "your-neptune-endpoint"
+  iam_role_arn: "your-iam-role-arn"

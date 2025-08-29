@@ -21,11 +21,11 @@ class WikiPathwayAdapter(EnrichrAdapter):
                 match = re.search(r"(WP\d+)", items[0])
                 if match:
                     pid = match.group(0)
-                    yield (pid, "pathway", {"name": name})
+                    yield (pid, "pathway", {"name": name, "data_source": "WikiPathways"})
                 for gene in items[1:]:
                     gene = gene.strip()
                     if gene:
-                        yield (gene, "gene", {})
+                        yield (gene, "gene", {"data_source": "WikiPathways"})
     
     def get_edges(self):
         """Get edges for the knowledge graph"""
@@ -39,4 +39,7 @@ class WikiPathwayAdapter(EnrichrAdapter):
                     for gene in items[1:]:
                         gene = gene.strip()
                         if gene:
-                            yield (f"interaction-{pid}-{gene}", pid, gene, "associated_with", {"pathway_name": name})
+                            yield (f"interaction-{pid}-{gene}", pid, gene, "associated_with", {
+                                "pathway_name": name, 
+                                "data_source": "WikiPathways"
+                            })

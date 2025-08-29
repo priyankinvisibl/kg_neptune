@@ -80,7 +80,8 @@ def get_available_builders():
         "hpo": "hpo_configurable_kg_builder",
         "dgidb": "dgidb_kg_builder",
         "mesh_nt": "mesh_nt_kg",
-        "mesh_xml": "mesh_xml_kg"
+        "mesh_xml": "mesh_xml_kg",
+        "clinicaltrials": "clinicaltrials_kg_builder"
     }
 
 def copy_output_to_workspace(app_output_dir, builder_name):
@@ -254,6 +255,21 @@ def run_builder(builder_name, module_name, config, builder_output_dir):
             result = mesh_xml_kg.build_mesh_xml_knowledge_graph(
                 output_dir=builder_output_dir,
                 convert_to_neptune_format=False  # Handle in multi-builder
+            )
+            
+            workspace_dir = copy_output_to_workspace(builder_output_dir, builder_name)
+            
+        elif module_name == "clinicaltrials_kg_builder":
+            import clinicaltrials_kg_builder
+            
+            print(f"Passing to clinical trials builder:")
+            print(f"  convert_to_neptune_format: False")  # Handle in multi-builder
+            print(f"  config: {config is not None}")
+            
+            result = clinicaltrials_kg_builder.build_clinical_trials_knowledge_graph(
+                output_dir=None,  # Use default BioCypher behavior like civic
+                convert_to_neptune_format=False,  # Handle in multi-builder
+                config=config  # Pass config for adapter configuration
             )
             
             workspace_dir = copy_output_to_workspace(builder_output_dir, builder_name)

@@ -21,11 +21,11 @@ class CellComponentAdapter(EnrichrAdapter):
                 match = re.search(r"(GO:\d+)", items[0])
                 if match:
                     cid = match.group(0)
-                    yield (cid, "cell_component", {"name": name})
+                    yield (cid, "cell_component", {"name": name, "data_source": "Gene Ontology"})
                 for gene in items[1:]:
                     gene = gene.strip()
                     if gene:
-                        yield (gene, "gene", {})
+                        yield (gene, "gene", {"data_source": "Gene Ontology"})
     
     def get_edges(self):
         """Get edges for the knowledge graph"""
@@ -39,4 +39,7 @@ class CellComponentAdapter(EnrichrAdapter):
                     for gene in items[1:]:
                         gene = gene.strip()
                         if gene:
-                            yield (f"interaction-{cid}-{gene}", cid, gene, "located_in", {"component_name": name})
+                            yield (f"interaction-{cid}-{gene}", cid, gene, "located_in", {
+                                "component_name": name, 
+                                "data_source": "Gene Ontology"
+                            })

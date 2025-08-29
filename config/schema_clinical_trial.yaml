@@ -1,0 +1,127 @@
+clinical trial:
+    represented_as: node
+    input_label: study
+    properties:
+        brief_title: str
+        official_title: str
+        status: str
+        brief_summary: str
+        type: str
+        allocation: str
+        phases: str
+        model: str
+        primary_purpose: str
+        number_of_patients: str
+        eligibility_criteria: str
+        healthy_volunteers: bool
+        sex: str
+        minimum_age: str
+        maximum_age: str
+        standardised_ages: str[]
+        data_source: str
+
+drug:
+    represented_as: node
+    input_label: drug
+    properties:
+        type: str
+        description: str
+        mapped_names: str
+        data_source: str
+        # mechanism of action: str
+        # target: str
+        # adverse event: str
+        # contraindication: str
+
+organisation:
+    is_a: administrative entity
+    represented_as: node
+    input_label: organisation
+
+sponsor:
+    is_a: administrative entity
+    represented_as: node
+    input_label: sponsor
+    properties:
+        class: str
+        data_source: str
+
+outcome:
+    is_a: clinical entity
+    represented_as: node
+    input_label: outcome
+    properties:
+        primary: bool
+        description: str
+        time_frame: str
+        data_source: str
+
+disease:
+    represented_as: node
+    input_label: disease
+    properties:
+        name: str
+        original_id: str
+        keywords: str[]
+        data_source: str
+
+location:
+    synonym_for: geographic location
+    represented_as: node
+    input_label: location
+    properties:
+        country: str
+        state: str
+        city: str
+        data_source: str
+
+study to drug association:
+    is_a: association
+    represented_as: edge
+    input_label: study_has_drug
+    source: study
+    target: drug
+    properties:
+        description: str
+        dose: str
+        run in period: str
+        data_source: str
+
+study to disease association:
+    is_a: association
+    represented_as: edge
+    input_label: study_has_disease
+    source: study
+    target: disease
+    properties:
+        data_source: str
+
+study to location association:
+    is_a: association
+    represented_as: edge
+    input_label: study_has_location
+    source: study
+    target: location
+    properties:
+        data_source: str
+
+study to sponsor association:
+    is_a: association
+    represented_as: edge
+    input_label: study_has_sponsor
+    source: study
+    target: sponsor
+    properties:
+        data_source: str
+
+study to outcome association:
+    is_a: association
+    represented_as: edge
+    input_label: study_has_outcome
+    source: study
+    target: outcome
+    properties:
+        primary: bool
+        description: str
+        time_frame: str
+        data_source: str

@@ -44,11 +44,12 @@ class PhenotypeHpoaAdapter(HPOAdapter):
                     if database_id and disease_name and hpo_id:
                         # Store disease info
                         self.diseases[database_id] = {
-                            'disease_name': disease_name
+                            'disease_name': disease_name,
+                            'data_source': 'HPO'
                         }
                         
                         # Store phenotype info (we'll get the name from phenotype_to_genes.txt)
-                        self.phenotypes[hpo_id] = {}
+                        self.phenotypes[hpo_id] = {'data_source': 'HPO'}
                         
                         # Store association
                         association = {

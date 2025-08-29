@@ -28,8 +28,9 @@ class DgidbAdapter(DgidbBaseAdapter):
         # Data structures for nodes
         self.genes = {}          # gene_name -> gene_data
         self.drugs = {}          # drug_name -> drug_data
-        self.categories = {}     # category_name -> category_data
+        self.categories = {}     # category_name -> category_data (category_name is used as ID)
         self.interactions = []   # list of interaction records
+        self.gene_category_relationships = []  # list of gene-category relationships
 
     def download_data(self, config=None):
         """Download data from DGIdb URLs"""
@@ -154,20 +155,35 @@ class DgidbAdapter(DgidbBaseAdapter):
             self.logger.warning(f"Categories file not found: {self.categories_file}")
             return
         
+        # Track gene-category relationships for edge generation
+        self.gene_category_relationships = []
+        
         with open(self.categories_file, "r", encoding='utf-8') as f:
             reader = csv.DictReader(f, delimiter='\t')
             for row in reader:
-                category_name = row.get("name", "").strip()
+                gene_name = row.get("name", "").strip()
+                category_name = row.get("name-2", "").strip()
+                source_db_name = row.get("source_db_name", "").strip()
+                source_db_version = row.get("source_db_version", "").strip()
                 
-                if category_name:
-                    category_id = f"dgidb_category_{category_name.replace(' ', '_')}"
+                if gene_name and category_name:
+                    # Store gene-category relationship for edge generation
+                    self.gene_category_relationships.append({
+                        'gene_name': gene_name,
+                        'category_name': category_name
+                    })
                     
-                    self.categories[category_id] = {
-                        "id": category_id,
-                        "name": category_name,
-                        "category_type": row.get("name-2", ""),
-                        "data_source": "DGIdb"
-                    }
+                    # Create category node (use category name as ID)
+                    category_id = category_name
+                    
+                    if category_id not in self.categories:
+                        self.categories[category_id] = {
+                            "id": category_id,
+                            "name": category_name,  # Category name
+                            "source_db_name": source_db_name,
+                            "source_db_version": source_db_version,
+                            "data_source": "DGIdb"
+                        }
 
     def _parse_interactions(self):
         """Parse interactions.tsv file"""
@@ -274,29 +290,26 @@ class DgidbAdapter(DgidbBaseAdapter):
                 properties
             )
         
-        # Gene-Category edges (link genes to categories by name matching)
-        for gene_id, gene_data in self.genes.items():
-            gene_name = gene_data['gene_name']
+        # Gene-Category edges (from gene-category relationships)
+        for relationship in self.gene_category_relationships:
+            gene_name = relationship['gene_name']
+            category_name = relationship['category_name']
             
-            # Find matching categories
-            for category_id, category_data in self.categories.items():
-                category_name = category_data['name']
+            # Check if both gene and category exist in our data
+            if gene_name in self.genes and category_name in self.categories:
+                edge_counter += 1
                 
-                # Simple name matching (can be enhanced)
-                if gene_name.upper() == category_name.upper():
-                    edge_counter += 1
-                    
-                    properties = {
-                        'data_source': 'DGIdb'
-                    }
-                    
-                    yield (
-                        f"dgidb_category_{edge_counter}",  # edge_id
-                        gene_id,                           # source: gene
-                        category_id,                       # target: category
-                        "BELONGS_TO_CATEGORY",
-                        properties
-                    )
+                properties = {
+                    'data_source': 'DGIdb'
+                }
+                
+                yield (
+                    f"dgidb_category_{edge_counter}",  # edge_id
+                    gene_name,                         # source: gene name (as stored in genes dict)
+                    category_name,                     # target: category name (as stored in categories dict)
+                    "BELONGS_TO_CATEGORY",
+                    properties
+                )
 
     def _log_statistics(self):
         """Log parsing statistics"""

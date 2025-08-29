@@ -21,11 +21,11 @@ class BiologicalProcessAdapter(EnrichrAdapter):
                 match = re.search(r"(GO:\d+)", items[0])
                 if match:
                     pid = match.group(0)
-                    yield (pid, "biological_process", {"name": name})
+                    yield (pid, "biological_process", {"name": name, "data_source": "Gene Ontology"})
                 for gene in items[1:]:
                     gene = gene.strip()
                     if gene:
-                        yield (gene, "gene", {})
+                        yield (gene, "gene", {"data_source": "Gene Ontology"})
     
     def get_edges(self):
         """Get edges for the knowledge graph"""
@@ -39,4 +39,7 @@ class BiologicalProcessAdapter(EnrichrAdapter):
                     for gene in items[1:]:
                         gene = gene.strip()
                         if gene:
-                            yield (f"interaction-{pid}-{gene}", pid, gene, "involved_in", {"function_name": name})
+                            yield (f"interaction-{pid}-{gene}", pid, gene, "involved_in", {
+                                "function_name": name, 
+                                "data_source": "Gene Ontology"
+                            })

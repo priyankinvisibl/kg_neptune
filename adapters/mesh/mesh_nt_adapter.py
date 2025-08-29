@@ -183,7 +183,8 @@ class MeshAdapterComprehensive(MeshAdapter):
                 {
                     "name": concept.get("label", ""),
                     "id": concept_id,
-                    "uri": concept.get("uri", "")
+                    "uri": concept.get("uri", ""),
+                    "data_source": "MeSH"
                 }
             )
         
@@ -195,7 +196,8 @@ class MeshAdapterComprehensive(MeshAdapter):
                 {
                     "name": term.get("label", ""),
                     "id": term_id,
-                    "uri": term.get("uri", "")
+                    "uri": term.get("uri", ""),
+                    "data_source": "MeSH"
                 }
             )
         

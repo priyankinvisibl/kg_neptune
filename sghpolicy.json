@@ -1,0 +1,78 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ListAllBuckets",
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListAllMyBuckets"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Sid": "InvisblCloudS3Permissions",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectVersion",
+                "s3:ListBucket",
+                "s3:ListBucketVersions",
+                "s3:GetBucketLocation",
+                "s3:GetBucketAcl",
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::genaixpubmed",
+                "arn:aws:s3:::genaixpubmed/*",
+                "arn:aws:s3:::genaixpubmed/knowledge-graph",
+                "arn:aws:s3:::genaixpubmed/knowledge-graph/*"
+            ]
+        },
+        {
+            "Sid": "InvisblCloudNeptunePermissions",
+            "Effect": "Allow",
+            "Action": [
+                "neptune-db:connect",
+                "neptune-db:ReadDataViaQuery",
+                "neptune-db:WriteDataViaQuery",
+                "neptune-db:DeleteDataViaQuery",
+                "neptune-db:GetEngineStatus",
+                "neptune-db:GetQueryStatus",
+                "neptune-db:CancelQuery",
+                "rds:DescribeDBClusters",
+                "rds:DescribeDBInstances",
+                "rds:AddRoleToDBCluster",
+                "iam:PassRole"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Sid": "InvisblCloudEC2Permissions",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:StartInstances",
+                "ec2:StopInstances"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "ec2:ResourceTag/Project": "knowledge-graph"
+                }
+            },
+            "Resource": "*"
+        },
+        {
+            "Sid": "InvisblDescribeInstances",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeInstances"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

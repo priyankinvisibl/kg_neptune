@@ -1,0 +1,44 @@
+# Minimal Clinical Trials Test Configuration
+general:
+  builders: ["clinicaltrials"]
+  convert_to_neptune: false
+
+# Clinical Trials specific configuration - minimal for testing
+clinical_trials:
+  # Query parameters for ClinicalTrials.gov API
+  query_params:
+    format: "json"
+    query.cond: "cancer"
+    pageSize: 10  # Small for testing but enough to get meaningful results
+  
+  # Node types to include (excluding ORGANISATION to avoid the variable scope issue)
+  node_types:
+    - "STUDY"
+    - "SPONSOR"
+    - "DRUG"
+    - "DISEASE"
+    - "LOCATION"
+  
+  # Study fields to include
+  node_fields:
+    - "ID"
+    - "BRIEF_TITLE"
+    - "OFFICIAL_TITLE"
+    - "STATUS"
+    - "BRIEF_SUMMARY"
+    - "TYPE"
+  
+  # Edge types to include
+  edge_types:
+    - "STUDY_TO_DRUG"
+    - "STUDY_TO_DISEASE"
+    - "STUDY_TO_LOCATION"
+    - "STUDY_TO_SPONSOR"
+
+# S3 configuration for upload
+s3:
+  upload: false
+
+# Neptune configuration for loading
+neptune:
+  load: false

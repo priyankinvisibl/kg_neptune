@@ -204,7 +204,8 @@ class MeshXmlAdapter(MeshAdapter):
                 "mesh_concept",
                 {
                     "name": concept.get("name", ""),
-                    "id": concept_id
+                    "id": concept_id,
+                    "data_source": "MeSH"
                 }
             )
         
@@ -215,7 +216,8 @@ class MeshXmlAdapter(MeshAdapter):
                 "mesh_term",
                 {
                     "name": term.get("name", ""),
-                    "id": term_id
+                    "id": term_id,
+                    "data_source": "MeSH"
                 }
             )
     

@@ -25,6 +25,7 @@ COPY hpo_configurable_kg_builder.py .
 COPY dgidb_kg_builder.py .
 COPY mesh_nt_kg.py .
 COPY mesh_xml_kg.py .
+COPY clinicaltrials_kg_builder.py .
 COPY run_single_volume_multi_fixed_v2_final.py .
 COPY adapters/ ./adapters/
 COPY utils/ ./utils/
